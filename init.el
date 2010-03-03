@@ -1,5 +1,3 @@
-;;; -*- mode: emacs-lisp; -*-
-
 ;;; .emacs - configuration file for emacs, still needing much clean-up
 ;;; Author: Cameron Desautels
 
@@ -343,9 +341,20 @@ This only makes sense for empty buffers."
 (when (require 'slime nil t)
   (slime-setup))
 
-;; NEW
-(set-background-color "black")
-(set-foreground-color "white")
+;; Only under Aquamacs Emacs
+(when (boundp 'aquamacs-version)
+  (set-background-color "black")
+  (set-foreground-color "white")
+
+  (setq mac-command-modifier 'meta)
+  (setq x-select-enable-clipboard t)
+
+  (setq mac-allow-anti-aliasing t)
+  ;; To turn off antialiasing (looks like crap with current font):
+  ;; 1. (setq mac-allow-anti-aliasing nil)
+  ;; 2. `defaults write org.gnu.AquamacsEmacs AppleAntiAliasingThreshold 0`
+)
+
 
 (setq user-full-name "Cameron Desautels")
 (setq user-mail-address "camdez@gmail.com")
@@ -384,9 +393,10 @@ This only makes sense for empty buffers."
 (mouse-wheel-mode 1)                    ; make the mouse wheel work
 (auto-image-file-mode 1)                ; open images as images
 (auto-compression-mode 1)               ; automagically explore compressed files when visited
-(menu-bar-mode -1)                      ; hide the menu bar
-(tool-bar-mode -1)                      ; hide the tool bar
-(scroll-bar-mode -1)            ; put the scroll bar on the right where it should be
+(when window-system
+  (menu-bar-mode -1)                    ; hide the menu bar
+  (tool-bar-mode -1)                    ; hide the tool bar
+  (scroll-bar-mode -1))                 ; put the scroll bar on the right where it should be
 
 ;; Enable disabled operations
 (put 'upcase-region 'disabled nil)
@@ -474,15 +484,6 @@ This only makes sense for empty buffers."
 (global-set-key "\C-cf" 'auto-fill-mode)
 (global-set-key "\C-cl" 'goto-line)
 (global-set-key "\C-ch" 'hl-line-mode)
-
-;; NEW For Aquamacs TODO make conditional
-(setq mac-command-modifier 'meta)
-(setq x-select-enable-clipboard t)
-
-(setq mac-allow-anti-aliasing t)
-;; To turn off antialiasing (looks like crap with current font)
-;(setq mac-allow-anti-aliasing nil)
-;defaults write org.gnu.AquamacsEmacs AppleAntiAliasingThreshold 0
 
 (setq html-mode-hook
       '(lambda ()
