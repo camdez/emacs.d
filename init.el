@@ -1,47 +1,39 @@
 ;;; .emacs - configuration file for emacs, still needing much clean-up
 ;;; Author: Cameron Desautels
 
-;; Load up personal elisp files (those not in global path)
-(add-to-list 'load-path (expand-file-name "~/.elisp"))
-(add-to-list 'load-path (expand-file-name "~/.elisp/icicles"))
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/")
+;;; 3RD PARTY LIBRARIES
 
-;; DISABLED
-;;(load-library "icicles")
-;;(icy-mode)
+(add-to-list 'load-path "~/.emacs.d/lib/")
 
-;(load-library "javascript")
+;; icicles - badass input completion
+(add-to-list 'load-path "~/.emacs.d/lib/icicles/")
+(when (require 'icicles nil t)
+  (icy-mode))
 
-;; (require 'muse-mode)
-;; (require 'muse-html)
-;; (require 'muse-latex)
-;; (require 'muse-project)                 ; publish files in projects
-;; (require 'autoinsert)
+;; muse-mode - publish to various formats
+(when (require 'muse-mode nil t)
+  (require 'muse-html)
+  (require 'muse-latex)
+  (require 'muse-project) ; publish files in projects
 
-;; (setq muse-project-alist
-;;       '(("Work Notes" ("~/notes" :default "index")
-;;          (:base "xhtml" :path "~/tmp/published_notes")
-;;                                         ;(:base "pdf" :path "~/public_html/pdf")
-;;          )))
-;; (setq muse-xhtml-style-sheet "<link type=\"text/css\" rel=\"stylesheet\" href=\"file:///home/cdesaute/notes/muse.css\" />")
+  (setq muse-project-alist
+        '(("Work Notes" ("~/notes" :default "index")
+           (:base "xhtml" :path "~/tmp/published_notes")
+           (:base "pdf" :path "~/public_html/pdf"))))
 
-(set-register ?e '(file . "~/.emacs"))
-(set-register ?n '(file . "~/notes/index.muse"))
-(set-register ?u '(file . "~/notes/UAApps.muse"))
+  (setq muse-xhtml-style-sheet "<link type=\"text/css\" rel=\"stylesheet\" href=\"file:///home/cdesaute/notes/muse.css\" />"))
 
-(setq desktop-dirname "/home/cdesaute/.emacs_desktop/")
+;; genfoc-mode - my creation for running my hilarious genfoc system
+(require 'genfoc-mode nil t)
 
-(desktop-save-mode 1)
-(setq history-length 250)
-(add-to-list 'desktop-globals-to-save 'file-name-history)
-(add-to-list 'desktop-modes-not-to-save 'dired-mode)
-(add-to-list 'desktop-modes-not-to-save 'Info-mode)
-(add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
-(add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
+;; slime - the superior lisp interaction mode for emacs
+(when (require 'slime nil t)
+  (slime-setup))
 
-;; check out v:custom-file, 
 
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+;;; STOCK LIBRARIES
+(require 'autoinsert)
+
 
 ;;; MY COMMANDS
 
@@ -210,6 +202,7 @@ to:")
   (forward-line -1)                   ; go back a line
   (c-indent-line))
 
+;; TODO This isn't portable because there are various places to put the file (maybe use path of current file?)
 (defun reread-config-file ()
   "Reread .emacs file"
   (interactive)
@@ -327,20 +320,6 @@ This only makes sense for empty buffers."
 
 ;; OPTIONS AND CONFIGURATION
 
-(require 'genfoc-mode nil t)
-
-;; Set up mail
-(require 'smtpmail)
-(setq smtpmail-smtp-server "")
-(setq smtpmail-local-domain "")
-(setq send-mail-function 'smtpmail-send-it)
-
-;; Set up xtla (Arch browser) (C-x T C-h for more info)
-(require 'xtla nil t)
-
-(when (require 'slime nil t)
-  (slime-setup))
-
 ;; Only under Aquamacs Emacs
 (when (boundp 'aquamacs-version)
   (set-background-color "black")
@@ -353,7 +332,7 @@ This only makes sense for empty buffers."
   ;; To turn off antialiasing (looks like crap with current font):
   ;; 1. (setq mac-allow-anti-aliasing nil)
   ;; 2. `defaults write org.gnu.AquamacsEmacs AppleAntiAliasingThreshold 0`
-)
+  )
 
 
 (setq user-full-name "Cameron Desautels")
@@ -397,6 +376,23 @@ This only makes sense for empty buffers."
   (menu-bar-mode -1)                    ; hide the menu bar
   (tool-bar-mode -1)                    ; hide the tool bar
   (scroll-bar-mode -1))                 ; put the scroll bar on the right where it should be
+
+(set-register ?e '(file . "~/.emacs"))
+(set-register ?n '(file . "~/notes/index.muse"))
+(set-register ?u '(file . "~/notes/UAApps.muse"))
+
+(setq history-length 250)
+;; (setq desktop-dirname "/home/cdesaute/.emacs_desktop/")
+;; (desktop-save-mode 1)
+;; (add-to-list 'desktop-globals-to-save 'file-name-history)
+;; (add-to-list 'desktop-modes-not-to-save 'dired-mode)
+;; (add-to-list 'desktop-modes-not-to-save 'Info-mode)
+;; (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
+;; (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
+
+;; check out v:custom-file,
+
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Enable disabled operations
 (put 'upcase-region 'disabled nil)
