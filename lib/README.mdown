@@ -1,0 +1,6 @@
+lib/ Directory
+==============
+
+Contains Emacs libraries I've pulled from various sources around the
+net. This code belongs to its various authors and I take no credit for
+it.
