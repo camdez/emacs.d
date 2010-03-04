@@ -9,7 +9,7 @@
 ;; icicles - badass input completion
 (add-to-list 'load-path "~/.emacs.d/lib/icicles/")
 (when (require 'icicles nil t)
-  (icy-mode))
+  (icy-mode t))
 
 ;; muse-mode - publish to various formats
 (when (require 'muse-mode nil t)
@@ -164,11 +164,10 @@ to:")
   (forward-line -1)                   ; go back a line
   (c-indent-line))
 
-;; TODO This isn't portable because there are various places to put the file (maybe use path of current file?)
 (defun reread-config-file ()
   "Reread .emacs file"
   (interactive)
-  (load-file "~/.emacs"))
+  (load-file user-init-file))
 
 (defun kill-buffer-other-window ()
   "Kill the buffer currently displayed in the other window."
@@ -307,43 +306,37 @@ This only makes sense for empty buffers."
 (setq x-stretch-cursor t)               ; make the cursor wide over spaces, etc.
 (setq-default indent-tabs-mode nil)     ; use spaces (not tabs) for indenting
 (setq kill-ring-max 10)                 ; don't save too many kills (I don't use many)
+(setq history-length 250)
 (setq require-final-newline t)          ; always terminate last line in file
 (setq default-major-mode 'text-mode)    ; default mode is text mode
-(setq default-indicate-empty-lines t)   ; mark the end of the buffer
+(setq default-indicate-empty-lines t)   ; show which lines at the end of the buffer are blank via the gutter
+(cua-mode 0)                            ; Aquamacs turns this crap on (messes with transient-mark-mode too)
 
 (global-font-lock-mode t)               ; use syntax highlighting
 (show-paren-mode t)                     ; highlight matching parentheses
-(setq show-paren-style 'mixed)
-(setq show-paren-style 'parenthesis)
-(setq blink-matching-paren nil)
+(setq blink-matching-paren nil)         ; not needed since I'm highlighting the matches
 
 (setq-default truncate-lines t)
 
 (which-func-mode t)                     ; show current function in modeline
-(setq display-time-day-and-date nil)      ; display day and date
-;(display-time)                          ; display the time
 
 (setq frame-title-format "Emacs: %b %+%+ %f")
 (setq ange-ftp-ftp-program-name "ftp")
 
 ;; This needs to be a mode-hook, in emacs22 it requires that we are in CC mode
-;(c-set-style "bsd")                     ; set the c-indentation style to GNU style
-(setq-default tab-width 2)
-(setq-default c-basic-offset 2)
+;(c-set-style "bsd")                     ; set the c-indentation style to BSD style
+(setq-default tab-width 2)              ; display tabs as being two spaces wide
+(setq-default c-basic-offset 2)         ; in C-like modes, indent by two spaces
 
 (mouse-wheel-mode 1)                    ; make the mouse wheel work
 (auto-image-file-mode 1)                ; open images as images
 (auto-compression-mode 1)               ; automagically explore compressed files when visited
+(menu-bar-mode -1)                      ; hide the menu bar
 (when window-system
-  (menu-bar-mode -1)                    ; hide the menu bar
   (tool-bar-mode -1)                    ; hide the tool bar
   (scroll-bar-mode -1))                 ; put the scroll bar on the right where it should be
 
-(set-register ?e '(file . "~/.emacs"))
-(set-register ?n '(file . "~/notes/index.muse"))
-(set-register ?u '(file . "~/notes/UAApps.muse"))
-
-(setq history-length 250)
+;; desktop-save-mode - save the current state of work (disabled for now)
 ;; (setq desktop-dirname "/home/cdesaute/.emacs_desktop/")
 ;; (desktop-save-mode 1)
 ;; (add-to-list 'desktop-globals-to-save 'file-name-history)
@@ -351,8 +344,6 @@ This only makes sense for empty buffers."
 ;; (add-to-list 'desktop-modes-not-to-save 'Info-mode)
 ;; (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
 ;; (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
-
-;; check out v:custom-file,
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
@@ -403,7 +394,6 @@ This only makes sense for empty buffers."
       version-control t)       ; use versioned backups
 
 
-
 ;;; KEYBINDINGS
 (global-set-key [f2] 'goto-line)
 (global-set-key [f3] (lambda ()
@@ -452,6 +442,7 @@ This only makes sense for empty buffers."
           '(lambda ()
              (define-key dired-mode-map "\r" 'dired-find-alternate-file)))
 
+(set-register ?e (cons 'file user-init-file))  ; quickly jump here with C-x r j e
 
 ;;; OTHER CRAP, GENERALLY WRITTEN BY OTHER PEOPLE
 ; Insert the date, the time, and the date and time at point. Insert the
@@ -559,17 +550,12 @@ if at the beginning of a line."
             (delete-frame)))
 
 
+;; Get that customization crap out of here:
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+
 ;;; SITE-SPECIFIC CODE
 (load "local" t)                        ;load anything site-specific
 
 ;;; END
-
-;; Make matching paren red on a black background
-(custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
-  ;; Your init file should contain only one such instance.
- '(show-paren-match-face ((((class color)) (:background "black" :foreground "red")))))
-(custom-set-variables
-  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
-  ;; Your init file should contain only one such instance.
- '(icicle-reminder-prompt-flag 0))
