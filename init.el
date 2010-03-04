@@ -1,4 +1,4 @@
-;;; .emacs - configuration file for emacs, still needing much clean-up
+;;; init.el - primary configuration file for Emacs (like a .emacs)
 ;;; Author: Cameron Desautels
 
 ;;; 3RD PARTY LIBRARIES
@@ -78,16 +78,6 @@ minibuffer"
 
 (defun count-words-buffer-using-wc nil "Count words in buffer" (interactive)
   (shell-command-on-region (point-min) (point-max) "wc -w"))
-
-;; Deprecated by the addition of kill-whole-line in 22.1
-;; (defun kill-entire-line ()
-;;   "Kills a line from beginning to end, including the following newline
-;; character."
-;;   (interactive)
-;;   (beginning-of-line)
-;;   (kill-line
-;;    (unless (looking-at "$")
-;;      1)))
 
 (defun duplicate-line ()
   "Duplicate the current line."
@@ -242,7 +232,8 @@ buffer is associated with."
    (if (fboundp 'php-mode)
        (php-mode))))
 
-;; SKELETONS
+
+;;; SKELETONS
 
 (define-skeleton blog-entry-skeleton
   "Inserts a PyBlosxom-style blog entry skeleton into the current buffer.
@@ -283,7 +274,7 @@ This only makes sense for empty buffers."
      (add-to-list 'auto-insert-alist '("\\.php\\'" . php-header-skeleton))))
 
 
-;; OPTIONS AND CONFIGURATION
+;;; OPTIONS AND CONFIGURATION
 
 ;; Only under Aquamacs Emacs
 (when (boundp 'aquamacs-version)
@@ -397,6 +388,8 @@ This only makes sense for empty buffers."
       kept-old-versions 2
       version-control t)       ; use versioned backups
 
+(setq inferior-lisp-program "sbcl --noinform --no-linedit")
+
 
 ;;; KEYBINDINGS
 (global-set-key [f2] 'goto-line)
@@ -448,28 +441,10 @@ This only makes sense for empty buffers."
 
 (set-register ?e (cons 'file user-init-file))  ; quickly jump here with C-x r j e
 
+
 ;;; OTHER CRAP, GENERALLY WRITTEN BY OTHER PEOPLE
-; Insert the date, the time, and the date and time at point. Insert the
-; date 31 days hence at point (eventually...). Useful for keeping
-; records. These are based on Glickstein.
 
-;; From Ulrik Jensen
-;; Highlighting long lines
-(defun highlight-long-lines-toggle ()
-  "Toggles highlighting lines with more than 80 characters"
-  (interactive)
-  (require 'hi-lock)                    ; needed
-  (if (member "^.\\{80\\}.+$" (mapcar
-                               (lambda (entry)
-                                 (car entry)) hi-lock-interactive-patterns))
-      (progn
-        (unhighlight-regexp "^.\\{80\\}.+$")
-        (message "Highlighting long lines off"))
-    (highlight-regexp "^.\\{80\\}.+$" 'zmacs-region)
-    (message "Highlighting long lines on")))
-
-;;;;;;;;;;;
-
+;; Insert the date, the time, and the date & time at point.
 (defvar insert-time-format "%T"
   "*Format for \\[insert-time] (c.f. 'format-time-string' for how to format).")
 
@@ -495,6 +470,21 @@ This only makes sense for empty buffers."
     (insert-date)
     (insert " ")
     (insert-time)))
+
+;; From Ulrik Jensen
+;; Highlighting long lines
+(defun highlight-long-lines-toggle ()
+  "Toggles highlighting lines with more than 80 characters"
+  (interactive)
+  (require 'hi-lock)                    ; needed
+  (if (member "^.\\{80\\}.+$" (mapcar
+                               (lambda (entry)
+                                 (car entry)) hi-lock-interactive-patterns))
+      (progn
+        (unhighlight-regexp "^.\\{80\\}.+$")
+        (message "Highlighting long lines off"))
+    (highlight-regexp "^.\\{80\\}.+$" 'zmacs-region)
+    (message "Highlighting long lines on")))
 
 (defun indent-or-complete ()
   "Complete if point is at end of a word, otherwise indent line."
@@ -537,9 +527,8 @@ if at the beginning of a line."
     (dotimes (i cc)
       (insert "="))))
 
-(setq inferior-lisp-program "sbcl --noinform --no-linedit")
 
-;; Emacs Server Stuff
+;;; EMACS SERVER STUFF
 (server-start)
 
 (add-hook 'server-switch-hook
@@ -554,7 +543,8 @@ if at the beginning of a line."
             (delete-frame)))
 
 
-;; Get that customization crap out of here:
+;;; GET THAT CUSTOMIZATION CRAP OUT OF HERE
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
