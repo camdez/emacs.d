@@ -52,11 +52,9 @@
   (interactive)
   (save-excursion
     (beginning-of-line)
-;;    (if (looking-at "^[ \t]* ; this would only work in a mode-specific way
     (let ((beg (point)))
       (end-of-line)
-      (let ((end (point)))
-        (comment-region beg end)))))
+      (comment-region beg (point)))))
 
 (defun count-words-buffer ()
   "Count the number of words in the current buffer and print the
@@ -82,7 +80,8 @@ minibuffer"
   (shell-command-on-region (point-min) (point-max) "wc -w"))
 
 (defun duplicate-line ()
-  "Duplicate the current line."
+  "Duplicate the current line below the original, leaving point
+  and mark in place."
   (interactive)
   (save-excursion
     (let ((beg (progn
