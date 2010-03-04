@@ -1,7 +1,5 @@
 ;;; custom.el --- a place for Emacs to store customization info
-
-;; Copyright (C) 2010  Cameron Desautels
-;; Author: Cameron Desautels <camdez@gmail.com>
+;;; Author: Cameron Desautels <camdez@gmail.com>
 
 ;;; Commentary:
 
