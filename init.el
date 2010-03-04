@@ -33,7 +33,9 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
 
+
 ;;; STOCK LIBRARIES
+
 (require 'autoinsert)
 
 
@@ -392,6 +394,7 @@ This only makes sense for empty buffers."
 
 
 ;;; KEYBINDINGS
+
 (global-set-key [f2] 'goto-line)
 (global-set-key [f3] (lambda ()
                        (interactive)
@@ -529,6 +532,7 @@ if at the beginning of a line."
 
 
 ;;; EMACS SERVER STUFF
+
 (server-start)
 
 (add-hook 'server-switch-hook
