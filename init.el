@@ -28,6 +28,10 @@
 (when (require 'slime nil t)
   (slime-setup))
 
+;; markdown-mode
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
 
 ;;; STOCK LIBRARIES
 (require 'autoinsert)
