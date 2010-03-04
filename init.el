@@ -1,7 +1,9 @@
 ;;; init.el - primary configuration file for Emacs (like a .emacs)
 ;;; Author: Cameron Desautels
 
-(defvar emacs-root "~/.emacs.d/")
+(defvar emacs-root
+  (file-name-directory (or load-file-name
+                           buffer-file-name)))
 (defvar library-root (concat emacs-root "lib/"))
 
 (add-to-list 'load-path emacs-root)
