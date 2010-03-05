@@ -11,6 +11,7 @@
 
 ;;; ROCK & ROLL
 
+(load-library "theme")                  ; make things look pretty
 (load-library "modes")                  ; modes for editing various types of files
 (load-library "utilities")              ; various utility functions
 (load-library "skeletons")              ; skeletons (templates) and autoinsert settings

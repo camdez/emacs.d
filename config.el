@@ -15,6 +15,7 @@
 (setq require-final-newline t)          ; always terminate last line in file
 (setq default-major-mode 'text-mode)    ; default mode is text mode
 (setq default-indicate-empty-lines t)   ; show which lines at the end of the buffer are blank via the gutter
+(transient-mark-mode 0)                 ; no way, dude
 (cua-mode 0)                            ; Aquamacs turns this crap on (messes with transient-mark-mode too)
 
 (global-font-lock-mode t)               ; use syntax highlighting
@@ -80,17 +81,13 @@
       version-control t)       ; use versioned backups
 
 ;; Only under Aquamacs Emacs
-(when (boundp 'aquamacs-version)
-  (set-background-color "black")
-  (set-foreground-color "white")
-
+(when (featurep 'aquamacs)
   (setq mac-command-modifier 'meta)
-  (setq x-select-enable-clipboard t)
-
   (setq mac-allow-anti-aliasing t)
-  ;; To turn off antialiasing (looks like crap with current font):
-  ;; 1. (setq mac-allow-anti-aliasing nil)
-  ;; 2. `defaults write org.gnu.AquamacsEmacs AppleAntiAliasingThreshold 0`
-  )
+  (setq x-select-enable-clipboard t))
+
+;; Only under Cocoa Emacs
+(when (featurep 'ns)
+  (setq ns-command-modifier 'meta))
 
 ;;; config.el ends here
