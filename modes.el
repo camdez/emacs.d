@@ -10,17 +10,17 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
 
 ;; muse-mode - publish to various formats
+(add-to-list 'load-path (concat library-root "muse-mode/"))
 (when (require 'muse-mode nil t)
   (require 'muse-html)
-  (require 'muse-latex)
-  (require 'muse-project) ; publish files in projects
+  ;;  (require 'muse-latex)
+  ;;  (require 'muse-project) ; publish files in projects
 
-  (setq muse-project-alist
-        '(("Work Notes" ("~/notes" :default "index")
-           (:base "xhtml" :path "~/tmp/published_notes")
-           (:base "pdf" :path "~/public_html/pdf"))))
-
-  (setq muse-xhtml-style-sheet "<link type=\"text/css\" rel=\"stylesheet\" href=\"file:///home/cdesaute/notes/muse.css\" />"))
+  ;;   (setq muse-project-alist
+  ;;         '(("Work Notes" ("~/notes" :default "index")
+  ;;            (:base "xhtml" :path "~/tmp/published_notes")
+  ;;            (:base "pdf" :path "~/public_html/pdf"))))
+  )
 
 ;; slime - the superior lisp interaction mode for emacs
 (when (require 'slime nil t)
