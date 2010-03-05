@@ -6,8 +6,8 @@
 
 (eval-after-load 'paren
   '(progn
-     (set-face-foreground `show-paren-match-face "red")
-     (set-face-background `show-paren-match-face "black")))
+     (set-face-foreground 'show-paren-match-face "red")
+     (set-face-background 'show-paren-match-face "black")))
 
 ;; Aquamacs has issues with the basic set-b/f-color calls at init time
 (when (featurep 'aquamacs)
