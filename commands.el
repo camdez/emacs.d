@@ -215,6 +215,16 @@ buffer is associated with."
    (if (fboundp 'php-mode)
        (php-mode))))
 
+;; TODO tool-bar-mode only exists under a window-system
+(defun toggle-chrome ()
+  "Toggle display of graphical elements (tool bar, menu bar)."
+  (interactive)
+    (if (eq menu-bar-mode tool-bar-mode)
+        (progn
+          (menu-bar-mode nil)
+          (tool-bar-mode nil))
+      (tool-bar-mode nil)))
+
 ;;; STUFF MOSTLY BORROWED FROM OTHERS
 
 ;; Insert the date, the time, and the date & time at point.

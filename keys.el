@@ -11,14 +11,7 @@
 ; tool-bar) instead of running tmm-menubar.  Don't toggle one off and
 ; one on.
 (if window-system
-    (global-set-key [f10] (lambda ()
-                            (interactive)
-                            (when (y-or-n-p "Are you sure you want to toggle the chrome? ")
-                              (if (eq menu-bar-mode tool-bar-mode)
-                                  (progn
-                                    (menu-bar-mode nil)
-                                    (tool-bar-mode))
-                                (menu-bar-mode nil))))))
+    (global-set-key [f10] 'toggle-chrome))
 (global-set-key [f11] 'compile)
 (global-set-key [f12] 'recompile)
 (global-set-key [del] 'delete-char)
