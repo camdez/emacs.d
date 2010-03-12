@@ -18,16 +18,16 @@
       (end-of-line)
       (comment-region beg (point)))))
 
-(defun count-words-buffer ()
+(defun count-words-buffer (&optional print-message)
   "Count the number of words in the current buffer and print the
 result in the minibuffer."
-  (interactive)
-  (count-words-region (point-min) (point-max)))
+  (interactive "p")
+  (count-words-region (point-min) (point-max) print-message))
 
-(defun count-words-region (region-start region-end)
+(defun count-words-region (region-start region-end &optional print-message)
   "Count the number of words in the region and print the result in the
 minibuffer"
-  (interactive "r")
+  (interactive "rp")
   (save-excursion
     (save-restriction
       (widen)
@@ -36,10 +36,30 @@ minibuffer"
         (while (< (point) region-end)
           (forward-word 1)
           (setq count (1+ count)))
-        (message "Contains %d words." count)))))
+        (when print-message
+          (message "Contains %d words." count))
+        count))))
 
 (defun count-words-buffer-using-wc nil "Count words in buffer" (interactive)
   (shell-command-on-region (point-min) (point-max) "wc -w"))
+
+(defvar words-per-novel-page 250
+  "A rough estimate of the number of words on an average page of
+  a novel. For use by \\[count-pages-buffer].")
+
+(defvar words-per-academic-page 500
+  "A rough estimate of the number of words on an average page of
+  an academic book. For use by \\[count-pages-buffer].")
+
+(defun count-pages-buffer ()
+  "Estimate the number of printed pages the current buffer would
+  will and print the result in the minibuffer."
+  (interactive)
+  (let* ((words (count-words-buffer))
+         (novel-pages (/ words words-per-novel-page))
+         (academic-pages (/ words words-per-academic-page)))
+    (message "Roughly %d novel pages in length, or %d academic pages."
+             novel-pages academic-pages)))
 
 (defun duplicate-line ()
   "Duplicate the current line below the original, leaving point
