@@ -13,7 +13,7 @@
 
 (load-library "theme")                  ; make things look pretty
 (load-library "modes")                  ; modes for editing various types of files
-(load-library "utilities")              ; various utility functions
+(load-library "commands")               ; various utility commands
 (load-library "skeletons")              ; skeletons (templates) and autoinsert settings
 (load-library "config")                 ; general settings
 (load-library "keys")                   ; keybindings

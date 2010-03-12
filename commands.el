@@ -1,4 +1,4 @@
-;;; utilities.el --- my utility functions
+;;; commands.el --- my utility commands
 
 ;; Copyright (C) 2010  Cameron Desautels
 ;; Author: Cameron Desautels <camdez@gmail.com>, others as noted
@@ -301,4 +301,4 @@ if at the beginning of a line."
       (insert "="))))
 
 
-;;; utilities.el ends here
+;;; commands.el ends here
