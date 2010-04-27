@@ -36,6 +36,10 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
 
+(autoload 'haml-mode "haml-mode"
+  "Major mode for editing HAML files" t)
+(add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
+
 ;; Don't insert spaces when inserting parentheses in php-mode
 (add-hook 'php-mode-hook '(lambda ()
                             (setq parens-require-spaces nil)))
