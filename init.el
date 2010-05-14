@@ -25,6 +25,12 @@
 (when (require 'icicles nil t)
   (icy-mode t))
 
+;; yasnippet - templated snippet insertion
+(add-to-list 'load-path (concat library-root "yasnippet/"))
+(when (require 'yasnippet nil t)
+  (yas/initialize)
+  (yas/load-directory (concat library-root "yasnippet/snippets")))
+
 ;;; EMACS SERVER
 
 (server-start)

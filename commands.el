@@ -126,21 +126,6 @@ With a prefix, makes a new header at the parent level."
              (define-key outline-mode-map "\C-j"
                'outline-newline-and-indent)))
 
-(defun insert-c-for-loop (variable max)
-  "Inserts a C-style for loop in which the given VARIABLE is \
-incremented from 0 to MAX."
-  (interactive "sVariable name for for loop:\nnValue to increment \
-to:")
-  (beginning-of-line)
-  (c-indent-line)
-  (insert (format "for (int %s = 0; %s < %d; %s++)"
-                  variable variable max variable))
-  (newline-and-indent)
-  (insert "{\n\n}")
-  (c-indent-line)
-  (forward-line -1)                   ; go back a line
-  (c-indent-line))
-
 (defun reread-config-file ()
   "Reread .emacs file"
   (interactive)
