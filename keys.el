@@ -19,7 +19,7 @@
 (global-set-key "\C-x1" 'delete-other-windows-replacement)
 (global-set-key "\C-x4k" 'kill-buffer-other-window)
 (global-set-key [C-right] 'next-buffer)
-(global-set-key [C-left] 'prev-buffer)
+(global-set-key [C-left] 'previous-buffer)
 (global-set-key [C-up] 'next-buffer-same-file-basename)
 ; This practially makes the previous line useless, but the differences
 ; should be investigated.
@@ -29,7 +29,8 @@
 (global-set-key "\C-cf" 'auto-fill-mode)
 (global-set-key "\C-cl" 'goto-line)
 (global-set-key "\C-ch" 'hl-line-mode)
+(global-set-key "\C-c#" 'comment-region)
 
-(set-register ?e (cons 'file user-init-file))  ; quickly jump here with C-x r j e
+(set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
 
 ;;; keys.el ends here
