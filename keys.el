@@ -20,6 +20,7 @@
 (global-set-key "\C-x4k" 'kill-buffer-other-window)
 (global-set-key [C-right] 'next-buffer)
 (global-set-key [C-left] 'previous-buffer)
+(global-set-key [C-down] 'find-file-at-point)
 (global-set-key [C-up] 'next-buffer-same-file-basename)
 ; This practially makes the previous line useless, but the differences
 ; should be investigated.
@@ -32,5 +33,6 @@
 (global-set-key "\C-c#" 'comment-region)
 
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
+(set-register ?s (cons 'file "~/.bashrc"))     ; quickly jump to .bashrc with C-x r j s
 
 ;;; keys.el ends here
