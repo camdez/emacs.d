@@ -14,13 +14,13 @@
 (when (require 'muse-mode nil t)
   (require 'muse-html)
   ;;  (require 'muse-latex)
-  ;;  (require 'muse-project) ; publish files in projects
+  (require 'muse-project) ; publish files in projects
 
-  ;;   (setq muse-project-alist
-  ;;         '(("Work Notes" ("~/notes" :default "index")
-  ;;            (:base "xhtml" :path "~/tmp/published_notes")
-  ;;            (:base "pdf" :path "~/public_html/pdf"))))
-  )
+  (setq muse-project-alist
+        '(("Personal Wiki" ("~/Writings/notes" :default "index")
+           (:base "xhtml" :path "~/tmp/html_notes")
+          ;(:base "pdf"   :path "~/tmp/pdf_notes")
+           ))))
 
 ;; slime - the superior lisp interaction mode for emacs
 (when (require 'slime nil t)
@@ -30,6 +30,8 @@
 
 ;; Automagically turn on eldoc mode for emacs-lisp buffers
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+
+(add-hook 'rst-mode-hook 'visual-line-mode)
 
 ;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
