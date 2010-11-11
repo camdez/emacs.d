@@ -67,9 +67,6 @@
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
 
-;; Start text mode with auto-fill on
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-
 ;; Use awesome buffer switching mode
 (if (> emacs-major-version 21)
     (iswitchb-mode 1)

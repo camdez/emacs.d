@@ -5,9 +5,9 @@
 (add-to-list 'auto-mode-alist '("\\.uc\\'" . java-mode)) ; open UnrealScript files as java
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . java-mode))
 (add-to-list 'auto-mode-alist '("mutt-.*-[0-9]+-[0-9]+-[0-9]+\\'" . post-mode))
-(add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.xhtml\\'" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
+
+;; text-mode
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; muse-mode - publish to various formats
 (add-to-list 'load-path (concat library-root "muse-mode/"))
@@ -33,6 +33,9 @@
 
 (add-hook 'rst-mode-hook 'visual-line-mode)
 
+;; ruby-mode
+(add-to-list 'auto-mode-alist '("\\(Gem\\|Rake\\)file\\'" . ruby-mode))
+
 ;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -46,20 +49,35 @@
   "Major mode for editing SASS files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(sass\\|scss\\)\\'" . sass-mode))
 
-;; Don't insert spaces when inserting parentheses in php-mode
-(add-hook 'php-mode-hook '(lambda ()
-                            (setq parens-require-spaces nil)))
+;; javascript-mode
+(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
+(setq js-indent-level 2)
 
-;; Mode-specific keybindings
+;; css-mode
+(setq css-indent-offset 2)
+
+;; php-mode
+(add-hook 'php-mode-hook
+  '(lambda ()
+     (setq parens-require-spaces nil))) ; Don't insert spaces when inserting parentheses
+
+;; html-mode
+(add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.xhtml\\'" . html-mode))
+
 (setq html-mode-hook
-      '(lambda ()
-         (auto-fill-mode 1)
-         (define-key html-mode-map "\C-c\C-p" 'php-mode)))
+  '(lambda ()
+     (auto-fill-mode 1)
+     (define-key html-mode-map "\C-c\C-p" 'php-mode)))
+
 (setq php-mode-hook
-      '(lambda ()
-         (define-key php-mode-map "\C-c\C-p" 'html-mode)))
+  '(lambda ()
+     (define-key php-mode-map "\C-c\C-p" 'html-mode)))
+
 (add-hook 'dired-mode-hook
-          '(lambda ()
-             (define-key dired-mode-map "\r" 'dired-find-alternate-file)))
+  '(lambda ()
+     (define-key dired-mode-map "\r" 'dired-find-alternate-file)))
+
+(add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
 
 ;;; modes.el ends here
