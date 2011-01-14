@@ -13,6 +13,12 @@
 (autoload 'magit-status "magit"
   "Mode for working with git." t)
 
+;; full-ack
+(autoload 'ack-same "full-ack" nil t)
+(autoload 'ack "full-ack" nil t)
+(autoload 'ack-find-same-file "full-ack" nil t)
+(autoload 'ack-find-file "full-ack" nil t)
+
 ;; muse-mode - publish to various formats
 (add-to-list 'load-path (concat library-root "muse-mode/"))
 (when (require 'muse-mode nil t)
