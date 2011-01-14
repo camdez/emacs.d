@@ -9,6 +9,10 @@
 ;; text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
+;; magit-mode
+(autoload 'magit-status "magit"
+  "Mode for working with git." t)
+
 ;; muse-mode - publish to various formats
 (add-to-list 'load-path (concat library-root "muse-mode/"))
 (when (require 'muse-mode nil t)
