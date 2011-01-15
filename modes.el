@@ -1,11 +1,6 @@
 ;;; modes.el --- load modes and tweaks for various file types
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
-;; open files in desirable modes based on file extensions
-(add-to-list 'auto-mode-alist '("\\.uc\\'" . java-mode)) ; open UnrealScript files as java
-(add-to-list 'auto-mode-alist '("\\.cs\\'" . java-mode))
-(add-to-list 'auto-mode-alist '("mutt-.*-[0-9]+-[0-9]+-[0-9]+\\'" . post-mode))
-
 ;; dired mode (+ dired-x)
 (add-hook 'dired-load-hook
           (lambda ()
@@ -15,7 +10,8 @@
                   (concat dired-omit-files "\\|.DS_Store$"))))
 (add-hook 'dired-mode-hook
           (lambda ()
-            (dired-omit-mode 1)))
+            (dired-omit-mode 1)
+            (define-key dired-mode-map "\r" 'dired-find-alternate-file)))
 
 ;; text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -52,6 +48,7 @@
 ;; Automagically turn on eldoc mode for emacs-lisp buffers
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
+;; rst-mode
 (add-hook 'rst-mode-hook 'visual-line-mode)
 
 ;; ruby-mode
@@ -62,10 +59,12 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
 
+;; haml-mode
 (autoload 'haml-mode "haml-mode"
   "Major mode for editing HAML files" t)
 (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
 
+;; sass-mode
 (autoload 'sass-mode "sass-mode"
   "Major mode for editing SASS files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(sass\\|scss\\)\\'" . sass-mode))
@@ -91,13 +90,10 @@
      (auto-fill-mode 1)
      (define-key html-mode-map "\C-c\C-p" 'php-mode)))
 
+;; php-mode
 (setq php-mode-hook
   '(lambda ()
      (define-key php-mode-map "\C-c\C-p" 'html-mode)))
-
-(add-hook 'dired-mode-hook
-  '(lambda ()
-     (define-key dired-mode-map "\r" 'dired-find-alternate-file)))
 
 ;; yaml-mode
 (autoload 'yaml-mode "yaml-mode"
