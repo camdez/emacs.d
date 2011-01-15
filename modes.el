@@ -6,6 +6,17 @@
 (add-to-list 'auto-mode-alist '("\\.cs\\'" . java-mode))
 (add-to-list 'auto-mode-alist '("mutt-.*-[0-9]+-[0-9]+-[0-9]+\\'" . post-mode))
 
+;; dired mode (+ dired-x)
+(add-hook 'dired-load-hook
+          (lambda ()
+            (load "dired-x")
+            ;; Set dired-x global variables here.
+            (setq dired-omit-files
+                  (concat dired-omit-files "\\|.DS_Store$"))))
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (dired-omit-mode 1)))
+
 ;; text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
