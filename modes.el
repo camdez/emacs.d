@@ -99,6 +99,14 @@
   '(lambda ()
      (define-key dired-mode-map "\r" 'dired-find-alternate-file)))
 
+;; yaml-mode
+(autoload 'yaml-mode "yaml-mode"
+  "Major mode for editing files in the YAML data serialization format" t)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-hook 'yaml-mode-hook
+          '(lambda ()
+             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
 (add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
 
 ;;; modes.el ends here
