@@ -24,7 +24,8 @@
 (global-set-key [C-up] 'next-buffer-same-file-basename)
 ; This practially makes the previous line useless, but the differences
 ; should be investigated.
-(global-set-key "\M-`" 'ff-find-other-file)
+;(global-set-key "\M-`" 'ff-find-other-file)
+(global-set-key "\M-`" 'other-frame)
 (global-set-key "\M-o" 'occur)
 
 (global-set-key "\C-cf" 'auto-fill-mode)
