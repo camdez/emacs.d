@@ -59,6 +59,9 @@
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
+(add-hook 'markdown-mode-hook
+  '(lambda ()
+     (define-key markdown-mode-map (kbd "<tab>") 'yas/expand)))
 
 ;; haml-mode
 (autoload 'haml-mode "haml-mode"
