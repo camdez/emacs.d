@@ -88,4 +88,12 @@
 (when (featurep 'ns)
   (setq ns-command-modifier 'meta))
 
+(defadvice kill-some-buffers (around kill-some-buffers-y-or-n first (&optional list))
+  "When running `kill-some-buffers' use 'y' and 'n' for response,
+regardless of if 'yes' or 'no' are generally preferred."
+  (flet ((yes-or-no-p (args)
+           (y-or-n-p args)))
+    ad-do-it))
+(ad-activate 'kill-some-buffers)
+
 ;;; config.el ends here
