@@ -1,14 +1,14 @@
 ;;; theme.el --- make things look pretty
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
-(set-foreground-color "white")
-(set-background-color "black")
-
 ;; Set font for Cocoa Emacs
 (when (featurep 'ns)
-  (setq ns-input-font "Droid Sans Mono")
-  (setq ns-input-fontsize 13)
+  (setq ns-input-font "Inconsolata")
+  (setq ns-input-fontsize 14)
   (ns-respond-to-change-font))
+
+(set-foreground-color "white")
+(set-background-color "black")
 
 ; use `current-frame-configuration` to check
 (setq frame-inherited-parameters
