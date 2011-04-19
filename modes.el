@@ -107,6 +107,13 @@
           '(lambda ()
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
+;; snippet-mode
+(add-hook 'snippet-mode-hook
+          '(lambda ()
+             (make-local-variable 'require-final-newline)
+             (setq require-final-newline nil)))
+
+;; other
 (add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
 
 ;;; modes.el ends here
