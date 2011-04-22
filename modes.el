@@ -81,6 +81,10 @@
 (setq css-indent-offset 2)
 
 ;; php-mode
+(autoload 'php-mode "php-mode"
+  "Major mode for editing PHP code.")
+(add-to-list 'auto-mode-alist '("\\.php[s34]?\\'" . php-mode))
+
 (add-hook 'php-mode-hook
   '(lambda ()
      (setq parens-require-spaces nil))) ; Don't insert spaces when inserting parentheses
