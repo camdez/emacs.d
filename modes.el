@@ -45,11 +45,11 @@
 
 (setq inferior-lisp-program "sbcl --noinform --no-linedit")
 
-;; Automagically turn on eldoc mode for emacs-lisp buffers
-(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+;; emacs-lisp-mode
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
 ;; rst-mode
-(add-hook 'rst-mode-hook 'visual-line-mode)
+(add-hook 'rst-mode-hook 'turn-on-visual-line-mode)
 
 ;; ruby-mode
 (add-to-list 'auto-mode-alist '("\\(Gem\\|Rake\\)file\\'" . ruby-mode))
@@ -59,9 +59,9 @@
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
-(add-hook 'markdown-mode-hook
-  '(lambda ()
-     (define-key markdown-mode-map (kbd "<tab>") 'yas/expand)))
+
+(eval-after-load 'markdown-mode
+  '(define-key markdown-mode-map (kbd "<tab>") 'yas/expand))
 
 ;; haml-mode
 (autoload 'haml-mode "haml-mode"
@@ -86,36 +86,31 @@
 (add-to-list 'auto-mode-alist '("\\.php[s34]?\\'" . php-mode))
 
 (add-hook 'php-mode-hook
-  '(lambda ()
-     (setq parens-require-spaces nil))) ; Don't insert spaces when inserting parentheses
+          '(lambda ()
+             (set (make-local-variable 'parens-require-spaces) nil))) ; Don't insert spaces when inserting parentheses
+
+(eval-after-load 'php-mode
+  '(define-key php-mode-map "\C-c\C-p" 'html-mode))
 
 ;; html-mode
 (add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.xhtml\\'" . html-mode))
 
-(setq html-mode-hook
-  '(lambda ()
-     (auto-fill-mode 1)
-     (define-key html-mode-map "\C-c\C-p" 'php-mode)))
-
-;; php-mode
-(setq php-mode-hook
-  '(lambda ()
-     (define-key php-mode-map "\C-c\C-p" 'html-mode)))
+(eval-after-load 'sgml-mode
+  '(define-key html-mode-map "\C-c\C-p" 'php-mode))
 
 ;; yaml-mode
 (autoload 'yaml-mode "yaml-mode"
   "Major mode for editing files in the YAML data serialization format" t)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-hook 'yaml-mode-hook
-          '(lambda ()
-             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+(eval-after-load 'yaml-mode
+  '(define-key yaml-mode-map "\C-m" 'newline-and-indent))
 
 ;; snippet-mode
 (add-hook 'snippet-mode-hook
           '(lambda ()
-             (make-local-variable 'require-final-newline)
-             (setq require-final-newline nil)))
+             (set (make-local-variable 'require-final-newline) 1)))
 
 ;; other
 (add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
