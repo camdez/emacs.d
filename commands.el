@@ -155,23 +155,23 @@ kill all other visible buffers."
           (kill-buffer (window-buffer window)))))
   (delete-other-windows))
 
-(defun buffer-file-basename (buf)
-  "Return the filename, with extension removed, of the file associated
-with the buffer `buf'.  Returns nil if there is no file associated
-with `buf'."
-  (let ((filename (buffer-file-name buf)))
+(defun buffer-file-basename (buffer)
+  "Return the filename, with extension removed, of the file
+associated with the buffer BUFFER.  Returns nil if there is no
+file associated with BUFFER."
+  (let ((filename (buffer-file-name buffer)))
     (if filename
         (file-name-nondirectory (file-name-sans-extension filename)))))
 
-(defun buffers-same-file-basename (buf)
-  "Return the list of buffers which are associated with files with the
-same basename (filename sans extension) as the file the buffer `buf'
-is associated with."
-  (let ((basename (buffer-file-basename buf)))
+(defun buffers-same-file-basename (buffer)
+  "Return the list of buffers which are associated with files
+with the same basename (filename sans extension) as the file the
+buffer BUFFER is associated with."
+  (let ((basename (buffer-file-basename buffer)))
     (remove nil
             (mapcar #'(lambda (obuf)
                         (unless
-                            (or (eq buf obuf)
+                            (or (eq buffer obuf)
                                 (not (string= basename (buffer-file-basename obuf))))
                           obuf))
                     (buffer-list)))))
@@ -294,6 +294,5 @@ if at the beginning of a line."
     (newline)
     (dotimes (i cc)
       (insert "="))))
-
 
 ;;; commands.el ends here
