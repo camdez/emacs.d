@@ -9,7 +9,6 @@
 (setq visible-bell t)
 (blink-cursor-mode -1)                  ; make the bloody cursor stop blinking
 (setq x-stretch-cursor t)               ; make the cursor wide over spaces, etc.
-(setq-default indent-tabs-mode nil)     ; use spaces (not tabs) for indenting
 (setq kill-ring-max 10)                 ; don't save too many kills (I don't use many)
 (setq history-length 250)
 (setq require-final-newline t)          ; always terminate last line in file
@@ -29,10 +28,8 @@
 (setq frame-title-format "Emacs: %b %+%+ %f")
 (setq ange-ftp-ftp-program-name "ftp")
 
-;; This needs to be a mode-hook, in emacs22 it requires that we are in CC mode
-;(c-set-style "bsd")                     ; set the c-indentation style to BSD style
 (setq-default tab-width 2)              ; display tabs as being two spaces wide
-(setq-default c-basic-offset 2)         ; in C-like modes, indent by two spaces
+(setq-default indent-tabs-mode nil)     ; use spaces (not tabs) for indenting
 
 (mouse-wheel-mode 1)                    ; make the mouse wheel work
 (auto-image-file-mode 1)                ; open images as images

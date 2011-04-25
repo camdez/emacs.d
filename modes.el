@@ -10,11 +10,19 @@
                   (concat dired-omit-files "\\|.DS_Store$"))))
 (add-hook 'dired-mode-hook
           (lambda ()
-            (dired-omit-mode 1)
-            (define-key dired-mode-map "\r" 'dired-find-alternate-file)))
+            (dired-omit-mode 1)))
+
+(eval-after-load 'dired
+  '(define-key dired-mode-map "\r" 'dired-find-alternate-file))
 
 ;; text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; cc-mode
+(add-hook 'c-mode-hook
+          (lambda ()
+            (c-set-style "bsd")
+            (setq c-basic-offset 2)))
 
 ;; magit-mode
 (autoload 'magit-status "magit"
@@ -73,12 +81,15 @@
   "Major mode for editing SASS files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(sass\\|scss\\)\\'" . sass-mode))
 
-;; javascript-mode
-(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
-(setq js-indent-level 2)
-
 ;; css-mode
-(setq css-indent-offset 2)
+(eval-after-load 'css-mode
+  '(setq css-indent-offset 2))
+
+;; js-mode
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+
+(eval-after-load 'js
+  '(setq js-indent-level 2))
 
 ;; php-mode
 (autoload 'php-mode "php-mode"
