@@ -72,7 +72,9 @@
 
 ;; Only under Cocoa Emacs
 (when (featurep 'ns)
-  (setq ns-command-modifier 'meta))
+  (setq ns-command-modifier 'meta)
+  (setq trash-directory "~/.Trash")
+  (setq delete-by-moving-to-trash t))
 
 (defadvice kill-some-buffers (around kill-some-buffers-y-or-n first (&optional list))
   "When running `kill-some-buffers' use 'y' and 'n' for response,
