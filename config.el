@@ -23,8 +23,6 @@
 
 (setq-default truncate-lines t)
 
-(which-func-mode t)                     ; show current function in modeline
-
 (setq frame-title-format "Emacs: %b %+%+ %f")
 (setq ange-ftp-ftp-program-name "ftp")
 
@@ -39,15 +37,6 @@
 (when window-system
   (tool-bar-mode -1)                    ; hide the tool bar
   (scroll-bar-mode -1))                 ; put the scroll bar on the right where it should be
-
-;; desktop-save-mode - save the current state of work (disabled for now)
-;; (setq desktop-dirname "/home/cdesaute/.emacs_desktop/")
-;; (desktop-save-mode 1)
-;; (add-to-list 'desktop-globals-to-save 'file-name-history)
-;; (add-to-list 'desktop-modes-not-to-save 'dired-mode)
-;; (add-to-list 'desktop-modes-not-to-save 'Info-mode)
-;; (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
-;; (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 

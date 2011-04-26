@@ -8,8 +8,7 @@
 (global-set-key [f8] 'eshell)
 (global-set-key [f9] 'speedbar)
 ; If running under X, have [f10] toggle display of menu-bar (and
-; tool-bar) instead of running tmm-menubar.  Don't toggle one off and
-; one on.
+; tool-bar) instead of running tmm-menubar.
 (if window-system
     (global-set-key [f10] 'toggle-chrome))
 (global-set-key [f11] 'compile)
@@ -29,9 +28,9 @@
 (global-set-key "\M-o" 'occur)
 
 (global-set-key "\C-cf" 'auto-fill-mode)
-(global-set-key "\C-cl" 'goto-line)
 (global-set-key "\C-ch" 'hl-line-mode)
 (global-set-key "\C-c#" 'comment-region)
+(global-set-key "\M-gf" 'find-function)
 
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
 (set-register ?s (cons 'file "~/.bashrc"))     ; quickly jump to .bashrc with C-x r j s

@@ -10,7 +10,7 @@
 (set-foreground-color "white")
 (set-background-color "black")
 
-; use `current-frame-configuration` to check
+; use `current-frame-configuration' to check
 (setq frame-inherited-parameters
       '(font fontsize background-color foreground-color))
 
