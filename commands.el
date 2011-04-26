@@ -26,7 +26,7 @@ result in the minibuffer."
 
 (defun count-words-region (region-start region-end &optional print-message)
   "Count the number of words in the region and print the result in the
-minibuffer"
+minibuffer."
   (interactive "rp")
   (save-excursion
     (save-restriction
@@ -45,15 +45,15 @@ minibuffer"
 
 (defvar words-per-novel-page 250
   "A rough estimate of the number of words on an average page of
-  a novel. For use by \\[count-pages-buffer].")
+a novel. For use by \\[count-pages-buffer].")
 
 (defvar words-per-academic-page 500
   "A rough estimate of the number of words on an average page of
-  an academic book. For use by \\[count-pages-buffer].")
+an academic book. For use by \\[count-pages-buffer].")
 
 (defun count-pages-buffer ()
   "Estimate the number of printed pages the current buffer would
-  will and print the result in the minibuffer."
+will and print the result in the minibuffer."
   (interactive)
   (let* ((words (count-words-buffer))
          (novel-pages (/ words words-per-novel-page))
@@ -63,7 +63,7 @@ minibuffer"
 
 (defun duplicate-line ()
   "Duplicate the current line below the original, leaving point
-  and mark in place."
+and mark in place."
   (interactive)
   (save-excursion
     (let ((beg (progn
@@ -78,7 +78,7 @@ minibuffer"
 
 (defun outline-increase-region-depth (region-start region-end &optional depth)
   "Increase the depth of header lines in region by DEPTH.
-  If no DEPTH is given, defaults to 1."
+If no DEPTH is given, defaults to 1."
   (interactive "r\np")
   (save-excursion
     (let ((indent-string (make-string depth ?*)))
@@ -127,7 +127,7 @@ With a prefix, makes a new header at the parent level."
                'outline-newline-and-indent)))
 
 (defun reread-config-file ()
-  "Reread .emacs file"
+  "Reread .emacs file."
   (interactive)
   (load-file user-init-file))
 
@@ -178,7 +178,7 @@ buffer BUFFER is associated with."
 
 (defun next-buffer-same-file-basename ()
   "Switch to the next buffer (if one exists) associated with a file of
-the same basename (filename sans extension) as the ile the current
+the same basename (filename sans extension) as the file the current
 buffer is associated with."
   (interactive)
   (let ((next-buffer (car (buffers-same-file-basename (current-buffer)))))
@@ -214,25 +214,27 @@ buffer is associated with."
 
 ;; Insert the date, the time, and the date & time at point.
 (defvar insert-time-format "%T"
-  "*Format for \\[insert-time] (c.f. 'format-time-string' for how to format).")
+  "*Format for \\[insert-time] (c.f. `format-time-string' for how to format).")
 
 (defvar insert-date-format "%Y-%m-%d"
-  "*Format for \\[insert-date] (c.f. 'format-time-string' for how to format).")
+  "*Format for \\[insert-date] (c.f. `format-time-string' for how to format).")
 
 (defun insert-time ()
-  "Insert the current time according to the variable \"insert-time-format\"."
+  "Insert the current time according to the variable `insert-time-format'."
   (interactive "*")
   (insert (format-time-string insert-time-format
 			      (current-time))))
 
 (defun insert-date ()
-  "Insert the current date according to the variable \"insert-date-format\"."
+  "Insert the current date according to the variable `insert-date-format'."
   (interactive "*")
   (insert (format-time-string insert-date-format
 			      (current-time))))
 
 (defun insert-date-and-time ()
-  "Insert the current date according to the variable \"insert-date-format\", then a space, then the current time according to the variable \"insert-time-format\"."
+  "Insert the current date according to the variable `insert-date-format',
+then a space, then the current time according to the variable
+`insert-time-format'."
   (interactive "*")
   (progn
     (insert-date)
@@ -260,19 +262,6 @@ buffer is associated with."
   (if (looking-at "\\>")
       (dabbrev-expand nil)
     (indent-for-tab-command)))
-
-;; (add-hook 'c-mode-common-hook
-;;           (function (lambda ()
-;;                       (local-set-key (kbd "<tab>") 'indent-or-complete)
-;;                       )))
-
-;;(defun indent-or-complete ()
-;;      "Complete if point is at end of line, and indent line."
-;;      (interactive)
-;;      (if (looking-at "$")
-;;          (hippie-expand nil))
-;;        (indent-for-tab-command))
-
 
 (defun pretty-lambdas ()
   (interactive)
