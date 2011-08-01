@@ -12,6 +12,9 @@
           (lambda ()
             (dired-omit-mode 1)))
 
+;; TODO this isn't exactly what I'm going for, I don't think. I really
+;; just want to do this if it's a file (not a directory). The goal is
+;; to not have a thousand dired buffers as I drill down.
 (eval-after-load 'dired
   '(define-key dired-mode-map "\r" 'dired-find-alternate-file))
 
