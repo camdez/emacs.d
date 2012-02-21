@@ -127,6 +127,11 @@
           '(lambda ()
              (set (make-local-variable 'require-final-newline) 1)))
 
+;; org-mode
+(add-to-list 'load-path (concat library-root "org-mode/lisp"))
+(add-to-list 'load-path (concat library-root "org-mode/contrib/lisp"))
+(require 'org-install)
+
 ;; other
 (add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
 
