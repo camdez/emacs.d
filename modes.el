@@ -65,6 +65,7 @@
 ;; ruby-mode
 (add-to-list 'auto-mode-alist '("\\(Gem\\|Rake\\)file\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
 
 ;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
