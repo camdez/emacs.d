@@ -19,13 +19,14 @@
      (set-face-foreground 'show-paren-match-face "red")
      (set-face-background 'show-paren-match-face "black")))
 
-(add-to-list 'load-path (concat library-root "color-theme/"))
-(add-to-list 'load-path (concat library-root "color-theme/themes/"))
-(require 'color-theme)
-(require 'color-theme-almost-monokai)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-almost-monokai)))
+(when window-system
+  (add-to-list 'load-path (concat library-root "color-theme/"))
+  (add-to-list 'load-path (concat library-root "color-theme/themes/"))
+  (require 'color-theme)
+  (require 'color-theme-almost-monokai)
+  (eval-after-load "color-theme"
+    '(progn
+       (color-theme-initialize)
+       (color-theme-almost-monokai))))
 
 ;;; theme.el ends here
