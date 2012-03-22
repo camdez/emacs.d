@@ -112,6 +112,12 @@
 (eval-after-load 'php-mode
   '(define-key php-mode-map "\C-c\C-p" 'html-mode))
 
+;; clojure-mode
+(add-to-list 'load-path (concat library-root "clojure-mode"))
+(autoload 'clojure-mode "clojure-mode"
+  "Major mode for editing Clojure.")
+(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
+
 ;; html-mode
 (add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.xhtml\\'" . html-mode))
