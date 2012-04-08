@@ -72,6 +72,10 @@
   (add-to-list 'load-path (concat library-root "rinari"))
   (require 'rinari nil t))
 
+;; feature-mode for Cucumber
+(add-to-list 'load-path (concat library-root "feature-mode"))
+(require 'feature-mode)
+
 ;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
