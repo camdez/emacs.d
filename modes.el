@@ -32,6 +32,7 @@
   "Mode for working with git." t)
 
 ;; full-ack
+(add-to-list 'load-path (concat library-root "full-ack/"))
 (autoload 'ack-same "full-ack" nil t)
 (autoload 'ack "full-ack" nil t)
 (autoload 'ack-find-same-file "full-ack" nil t)
