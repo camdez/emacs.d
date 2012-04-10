@@ -18,6 +18,10 @@
 (eval-after-load 'dired
   '(define-key dired-mode-map "\r" 'dired-find-alternate-file))
 
+;; help-mode
+(eval-after-load 'help-mode
+  '(define-key help-mode-map "l" 'help-go-back)) ; consistent with info-mode
+
 ;; text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
