@@ -9,7 +9,7 @@
 (setq visible-bell t)
 (blink-cursor-mode -1)                  ; make the bloody cursor stop blinking
 (setq x-stretch-cursor t)               ; make the cursor wide over spaces, etc.
-(setq kill-ring-max 10)                 ; don't save too many kills (I don't use many)
+(setq kill-ring-max 20)                 ; don't save too many kills (I don't use many)
 (setq history-length 250)
 (setq require-final-newline t)          ; always terminate last line in file
 (setq default-major-mode 'text-mode)    ; default mode is text mode
