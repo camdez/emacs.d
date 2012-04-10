@@ -17,6 +17,7 @@
  '(aquamacs-additional-fontsets nil t)
  '(aquamacs-customization-version-id 190 t)
  '(icicle-reminder-prompt-flag 0)
+ '(org-agenda-files (quote ("~/org/diary.org" "~/org/maxrvu.org" "~/org/personal.org")))
  '(safe-local-variable-values (quote ((encoding . utf-8)))))
 
 ;;; custom.el ends here
