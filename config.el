@@ -32,8 +32,7 @@
 (mouse-wheel-mode 1)                    ; make the mouse wheel work
 (auto-image-file-mode 1)                ; open images as images
 (auto-compression-mode 1)               ; automagically explore compressed files when visited
-(unless (featurep 'ns)
-  (menu-bar-mode -1))                   ; hide the menu bar
+(menu-bar-mode -1)                      ; hide the menu bar
 (when window-system
   (tool-bar-mode -1)                    ; hide the tool bar
   (scroll-bar-mode -1))                 ; put the scroll bar on the right where it should be
