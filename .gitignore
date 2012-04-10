@@ -1,2 +1,3 @@
 *.elc
 local.el
+.org-id-locations
