@@ -34,6 +34,8 @@
 
 (global-set-key "\C-ca" 'org-agenda)
 
+(define-key help-mode-map "l" 'help-go-back)   ; consistent with info-mode
+
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
 (set-register ?s (cons 'file "~/.bashrc"))     ; quickly jump to .bashrc with C-x r j s
 
