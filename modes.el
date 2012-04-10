@@ -32,6 +32,7 @@
             (setq c-basic-offset 2)))
 
 ;; magit-mode
+(add-to-list 'load-path (concat library-root "magit/"))
 (autoload 'magit-status "magit"
   "Mode for working with git." t)
 
@@ -82,6 +83,7 @@
 (require 'feature-mode)
 
 ;; markdown-mode
+(add-to-list 'load-path (concat library-root "markdown-mode/"))
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
@@ -90,11 +92,13 @@
   '(define-key markdown-mode-map (kbd "<tab>") 'yas/expand))
 
 ;; haml-mode
+(add-to-list 'load-path (concat library-root "haml-mode/"))
 (autoload 'haml-mode "haml-mode"
   "Major mode for editing HAML files" t)
 (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
 
 ;; sass-mode
+(add-to-list 'load-path (concat library-root "sass-mode/"))
 (autoload 'sass-mode "sass-mode"
   "Major mode for editing SASS files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(sass\\|scss\\)\\'" . sass-mode))
@@ -135,6 +139,7 @@
   '(define-key html-mode-map "\C-c\C-p" 'php-mode))
 
 ;; yaml-mode
+(add-to-list 'load-path (concat library-root "yaml-mode/"))
 (autoload 'yaml-mode "yaml-mode"
   "Major mode for editing files in the YAML data serialization format" t)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
