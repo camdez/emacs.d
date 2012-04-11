@@ -24,7 +24,7 @@
   (add-to-list 'load-path (concat library-root "color-theme/themes/"))
   (require 'color-theme)
   (require 'color-theme-almost-monokai)
-  (eval-after-load "color-theme"
+  (eval-after-load 'color-theme
     '(progn
        (color-theme-initialize)
        (color-theme-almost-monokai))))
