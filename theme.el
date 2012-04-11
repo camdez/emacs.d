@@ -29,4 +29,10 @@
        (color-theme-initialize)
        (color-theme-almost-monokai))))
 
+(eval-after-load 'diff-mode
+  '(progn
+     (set-face-foreground 'diff-removed "#F1266F")
+     (set-face-foreground 'diff-added "#A6E22A")
+     (set-face-foreground 'diff-changed "#66D9EF")))
+
 ;;; theme.el ends here
