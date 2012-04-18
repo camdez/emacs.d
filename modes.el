@@ -107,6 +107,13 @@
 (eval-after-load 'js
   '(setq js-indent-level 2))
 
+;; coffee-mode
+(add-to-list 'load-path (concat library-root "coffee-mode"))
+(autoload 'coffee-mode "coffee-mode"
+  "Major mode for editing CoffeeScript.")
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+
 ;; php-mode
 (autoload 'php-mode "php-mode"
   "Major mode for editing PHP code.")
