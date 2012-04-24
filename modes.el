@@ -152,6 +152,7 @@
 ;; conf-mode
 (add-to-list 'auto-mode-alist '("Procfile\\'" . conf-mode))
 (add-to-list 'auto-mode-alist '("Gemfile.lock\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.git\\(config\\|modules\\)\\'" . conf-mode))
 
 ;; snippet-mode
 (add-hook 'snippet-mode-hook
