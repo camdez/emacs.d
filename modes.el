@@ -112,8 +112,8 @@
 (add-to-list 'load-path (concat library-root "coffee-mode"))
 (autoload 'coffee-mode "coffee-mode"
   "Major mode for editing CoffeeScript.")
-(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile\\'" . coffee-mode))
 
 ;; php-mode
 (autoload 'php-mode "php-mode"
@@ -131,7 +131,7 @@
 (add-to-list 'load-path (concat library-root "clojure-mode"))
 (autoload 'clojure-mode "clojure-mode"
   "Major mode for editing Clojure.")
-(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 
 ;; html-mode
 (add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
@@ -144,7 +144,7 @@
 (add-to-list 'load-path (concat library-root "yaml-mode/"))
 (autoload 'yaml-mode "yaml-mode"
   "Major mode for editing files in the YAML data serialization format" t)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 (eval-after-load 'yaml-mode
   '(define-key yaml-mode-map "\C-m" 'newline-and-indent))
