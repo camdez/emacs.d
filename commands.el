@@ -7,6 +7,9 @@
 (fset 'escape-region-double-quotes
    "\C-xnn\C-[<\C-[%\"\C-m\\\"\C-m!\C-[>\C-xnw")
 
+(defalias 'elisp-mode 'emacs-lisp-mode)
+(defalias 'cleanup-whitespace 'whitespace-cleanup)
+
 ;; Should make this uncomment if the line is already commented. Or at
 ;; least do so when an argument is given.
 (defun comment-line ()
@@ -105,7 +108,7 @@ With a prefix, makes a new header at the parent level."
                 (beginning-of-line)
                 (point))
               (progn
-                (forward-word 1)  ; leave point just 
+                (forward-word 1)  ; leave point just
                 (backward-word 1) ;  before 1st word
                 (point)))))
         (goto-char current-pos)
@@ -223,13 +226,13 @@ buffer is associated with."
   "Insert the current time according to the variable `insert-time-format'."
   (interactive "*")
   (insert (format-time-string insert-time-format
-			      (current-time))))
+                              (current-time))))
 
 (defun insert-date ()
   "Insert the current date according to the variable `insert-date-format'."
   (interactive "*")
   (insert (format-time-string insert-date-format
-			      (current-time))))
+                              (current-time))))
 
 (defun insert-date-and-time ()
   "Insert the current date according to the variable `insert-date-format',
