@@ -63,9 +63,10 @@
 (add-hook 'rst-mode-hook 'turn-on-visual-line-mode)
 
 ;; ruby-mode
-(add-to-list 'auto-mode-alist '("\\(Gem\\|Rake\\)file\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\(Gem\\|Rake\\|Cap\\|Guard\\)file\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("config.ru\\'" . ruby-mode))
 
 ;; rinari
 (when (require 'ruby-mode nil t)
@@ -102,7 +103,7 @@
   '(setq css-indent-offset 2))
 
 ;; js-mode
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\(on\\)?\\'" . js-mode))
 
 (eval-after-load 'js
   '(setq js-indent-level 2))
@@ -147,6 +148,10 @@
 
 (eval-after-load 'yaml-mode
   '(define-key yaml-mode-map "\C-m" 'newline-and-indent))
+
+;; conf-mode
+(add-to-list 'auto-mode-alist '("Procfile\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("Gemfile.lock\\'" . conf-mode))
 
 ;; snippet-mode
 (add-hook 'snippet-mode-hook
