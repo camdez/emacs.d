@@ -68,6 +68,10 @@
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("config.ru\\'" . ruby-mode))
 
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (define-key ruby-mode-map "\C-x\C-t" 'transpose-lines)))
+
 ;; rinari
 (when (require 'ruby-mode nil t)
   (add-to-list 'load-path (concat library-root "rinari"))
