@@ -37,6 +37,8 @@
   (tool-bar-mode -1)                    ; hide the tool bar
   (scroll-bar-mode -1))                 ; put the scroll bar on the right where it should be
 
+(xterm-mouse-mode 1)
+
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Enable disabled operations
