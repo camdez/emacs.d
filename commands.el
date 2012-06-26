@@ -244,21 +244,6 @@ then a space, then the current time according to the variable
     (insert " ")
     (insert-time)))
 
-;; From Ulrik Jensen
-;; Highlighting long lines
-(defun highlight-long-lines-toggle ()
-  "Toggles highlighting lines with more than 80 characters"
-  (interactive)
-  (require 'hi-lock)                    ; needed
-  (if (member "^.\\{80\\}.+$" (mapcar
-                               (lambda (entry)
-                                 (car entry)) hi-lock-interactive-patterns))
-      (progn
-        (unhighlight-regexp "^.\\{80\\}.+$")
-        (message "Highlighting long lines off"))
-    (highlight-regexp "^.\\{80\\}.+$" 'zmacs-region)
-    (message "Highlighting long lines on")))
-
 (defun indent-or-complete ()
   "Complete if point is at end of a word, otherwise indent line."
   (interactive)
