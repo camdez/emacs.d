@@ -33,9 +33,10 @@
 (global-set-key "\M-gf" 'find-function)
 
 (global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cr" 'org-remember)
+(global-set-key "\C-cc" 'org-capture)
 
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
 (set-register ?s (cons 'file "~/.bashrc"))     ; quickly jump to .bashrc with C-x r j s
+(set-register ?o (cons 'file "~/org/personal.org"))
 
 ;;; keys.el ends here

@@ -167,10 +167,15 @@
 (add-to-list 'load-path (concat library-root "org-mode/lisp"))
 (add-to-list 'load-path (concat library-root "org-mode/contrib/lisp"))
 (require 'org-install)
+(setq org-default-notes-file "~/org/notes.org")
 
-;; remember-mode
-(org-remember-insinuate)
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-capture-templates
+      '(("t" "Task" entry (file+headline "~/org/personal.org" "Inbox")
+         "* TODO %?\n  %i")
+        ("d" "Diary Entry" plain (file+datetree+prompt "~/org/diary.org")
+         "%?\n%i\n")
+        ("r" "Reading" entry (file+headline "~/org/reading.org" "In-Progress")
+         "* TODO _%?_ %t--\n")))
 
 ;; other
 (add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
