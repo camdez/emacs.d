@@ -29,6 +29,7 @@
 (setq-default tab-width 2)              ; display tabs as being two spaces wide
 (setq-default indent-tabs-mode nil)     ; use spaces (not tabs) for indenting
 
+(global-auto-revert-mode 1)             ; automatically reload files which are externally modified
 (mouse-wheel-mode 1)                    ; make the mouse wheel work
 (auto-image-file-mode 1)                ; open images as images
 (auto-compression-mode 1)               ; automagically explore compressed files when visited
@@ -75,7 +76,8 @@
 (when (featurep 'ns)
   (setq ns-command-modifier 'meta)
   (setq trash-directory "~/.Trash")
-  (setq delete-by-moving-to-trash t))
+  (setq delete-by-moving-to-trash t)
+  (setq dired-use-ls-dired nil))
 
 (defadvice kill-some-buffers (around kill-some-buffers-y-or-n first (&optional list))
   "When running `kill-some-buffers' use 'y' and 'n' for response,
