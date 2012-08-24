@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: it
-# group : definitions
-# contributor: Cameron Desautels <camdez@gmail.com>
-# --
-it '${1:does some cool shit}' do
-  $0
-end

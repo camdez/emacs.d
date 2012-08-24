@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: def ... end
-# group : definitions
-# contributor: Cameron Desautels <camdez@gmail.com>
-# --
-def ${1:initialize}
-  $0
-end

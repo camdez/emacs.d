@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: namespace
-# group : rails
-# contributor: Cameron Desautels <camdez@gmail.com>
-# --
-namespace :${1:foo} do
-  $0
-end

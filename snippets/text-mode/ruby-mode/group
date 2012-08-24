@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: group
-# group: definitions
-# contributor: Cameron Desautels <camdez@gmail.com>
-# --
-group :${1:development} do
-  $0
-end

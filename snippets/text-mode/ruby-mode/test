@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name : test ... end
-# group : testing
-# contributor: Cameron Desautels <camdez@gmail.com>
-# --
-test "should ${1:check something}" do
-  $0
-end
