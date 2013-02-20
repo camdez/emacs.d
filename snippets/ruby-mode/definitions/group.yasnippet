@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: group ... end
+# key: group
+# group: definitions
+# contributor: Cameron Desautels <camdez@gmail.com>
+# --
+group :${1:$$(yas/choose-value '("development" "test" "production" "assets"))} do
+  $0
+end

@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: TomDoc comment
+# key: tom
+# group: general
+# contributor: Cameron Desautels <camdez@gmail.com>
+# expand-env: ((yas/triggers-in-field t)
+# --
+# ${1:$$(yas/choose-value '("Public" "Internal" "Deprecated"))}: ${2:A simple, high-level description.  Should end with a period.}
+#
+# targ$3
+#
+# Examples
+#
+#   log("An error occurred.")
+#
+#   log("No such file", "/var/log/server.log") do |time|
+#     time.strftime("%Y-%m-%d %H:%M:%S")
+#   end
+#
+# Returns ${4:nothing}.

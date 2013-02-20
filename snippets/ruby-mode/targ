@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: TomDoc argument
+# key: targ
+# --
+${1:name} - ${2:description}${3:
+targ$0}
