@@ -10,6 +10,8 @@
 (set-foreground-color "white")
 (set-background-color "black")
 
+(set-face-background 'trailing-whitespace "gray19")
+
 ; use `current-frame-configuration' to check
 (setq frame-inherited-parameters
       '(font fontsize background-color foreground-color))

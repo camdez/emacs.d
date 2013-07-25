@@ -28,17 +28,37 @@
 (global-set-key "\M-o" 'occur)
 
 (global-set-key "\C-cf" 'auto-fill-mode)
-(global-set-key "\C-ch" 'hl-line-mode)
+;(global-set-key "\C-ch" 'hl-line-mode)
+(global-set-key "\C-ch" 'global-hl-line-mode)
 (global-set-key "\C-c#" 'comment-region)
 (global-set-key "\M-gf" 'find-function)
 
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cg" 'gist-list)
+;(global-set-key "\C-cl" 'linum-mode)
+(global-set-key "\C-cm" 'magit-status)
+(global-set-key "\C-cs" (lambda ()
+                          (interactive)
+                          (switch-to-buffer "*scratch*")))
 (global-set-key "\C-ct" 'toggle-truncate-lines)
 (global-set-key "\C-cw" 'whitespace-mode)
+(global-set-key (kbd "C-'") 'other-window)
+
+(when window-system
+  (global-unset-key "\C-z"))
+
+(windmove-default-keybindings)
 
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
-(set-register ?s (cons 'file "~/.bashrc"))     ; quickly jump to .bashrc with C-x r j s
+(set-register ?k (cons 'file "~/Dropbox/Source/dotfiles/dot-emacs.d/keys.el"))
+(set-register ?x (cons 'file "~/Dropbox/Source/dotfiles/dot-emacs.d/experimental.el"))
+(set-register ?s (cons 'file "~/.zshrc"))     ; quickly jump to .bashrc with C-x r j s
+(set-register ?m (cons 'file "~/org/maxrvu.org"))
 (set-register ?o (cons 'file "~/org/personal.org"))
+(set-register ?p (cons 'file "~/org/posts.org"))
+
+;; How cool would it be if global-set-key could add a permanent
+;; binding?
 
 ;;; keys.el ends here

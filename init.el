@@ -17,23 +17,42 @@
 (load-library "skeletons")              ; skeletons (templates) and autoinsert settings
 (load-library "config")                 ; general settings
 (load-library "keys")                   ; keybindings
+(load-library "experimental")
 
 ;;; NON-MODE LIBRARIES
 
+(add-to-list 'load-path (concat library-root "git-commit-mode"))
+(require 'git-commit)
+
+(require 'cl-lib)
+(add-to-list 'load-path (concat library-root "diff-hl"))
+(require 'diff-hl)
+
+(add-to-list 'load-path (concat library-root "helm"))
+(require 'helm-config)
+
+(add-to-list 'load-path (concat library-root "projectile"))
+(require 's)
+(require 'dash)
+(require 'projectile)
+(projectile-global-mode)
+
 ;; icicles - badass input completion
-(add-to-list 'load-path (concat library-root "icicles/"))
-(when (require 'icicles nil t)
-  (icy-mode t))
+;(add-to-list 'load-path (concat library-root "icicles/"))
+;(when (require 'icicles nil t)
+;  (icy-mode t))
 
 ;; yasnippet - templated snippet insertion
 (add-to-list 'load-path (concat library-root "yasnippet/"))
 (when (require 'yasnippet nil t)
-  (yas/initialize)
-  (yas/load-directory (concat library-root "yasnippet/snippets")))
+  ;(setq yas/root-directory (concat emacs-root "snippets/"))
+  ;(yas/load-directory yas/root-directory)
+  (setq yas/snippet-dirs (list (concat emacs-root "snippets/")))
+  (yas/global-mode 1))
 
 ;;; EMACS SERVER
 
-(server-start)
+;(server-start)
 
 (add-hook 'server-switch-hook
           (lambda ()

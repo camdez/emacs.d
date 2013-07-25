@@ -5,6 +5,7 @@
 (setq user-mail-address "camdez@gmail.com")
 (setq user-copyright-holder "Cameron Desautels")           ;my creation
 
+(setq echo-keystrokes 0.02)
 (setq inhibit-startup-message t)
 (setq visible-bell t)
 (blink-cursor-mode -1)                  ; make the bloody cursor stop blinking
@@ -26,14 +27,17 @@
 (setq frame-title-format "Emacs: %b %+%+ %f")
 (setq ange-ftp-ftp-program-name "ftp")
 
+(setq vc-follow-symlinks t)
+
 (setq-default tab-width 2)              ; display tabs as being two spaces wide
 (setq-default indent-tabs-mode nil)     ; use spaces (not tabs) for indenting
+(setq-default show-trailing-whitespace t)
 
 (global-auto-revert-mode 1)             ; automatically reload files which are externally modified
 (mouse-wheel-mode 1)                    ; make the mouse wheel work
 (auto-image-file-mode 1)                ; open images as images
 (auto-compression-mode 1)               ; automagically explore compressed files when visited
-(menu-bar-mode -1)                      ; hide the menu bar
+;(menu-bar-mode -1)                      ; hide the menu bar
 (when window-system
   (tool-bar-mode -1)                    ; hide the tool bar
   (scroll-bar-mode -1))                 ; put the scroll bar on the right where it should be
@@ -56,9 +60,10 @@
           'comint-watch-for-password-prompt)
 
 ;; Use awesome buffer switching mode
-(if (> emacs-major-version 21)
-    (iswitchb-mode 1)
-  (iswitchb-default-keybindings))
+;; (if (> emacs-major-version 21)
+;;     (iswitchb-mode 1)
+;;   (iswitchb-default-keybindings))
+(ido-mode 1)
 
 ;; Keep numbered backups
 (setq delete-old-versions t
@@ -78,6 +83,10 @@
   (setq trash-directory "~/.Trash")
   (setq delete-by-moving-to-trash t)
   (setq dired-use-ls-dired nil))
+
+;; Only under the Mac port
+(when (featurep 'mac)
+  (setq mac-option-modifier 'meta))
 
 (defadvice kill-some-buffers (around kill-some-buffers-y-or-n first (&optional list))
   "When running `kill-some-buffers' use 'y' and 'n' for response,

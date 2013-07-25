@@ -46,6 +46,20 @@ This only makes sense for empty buffers."
   "# Date:   " (insert-date-and-time) \n
   \n \n)
 
+(define-skeleton markdown-readme-skeleton
+  "Inserts a README.md template."
+  nil
+  "# Intro" \n \n
+  "TODO" \n \n
+  "# Basic Usage" \n \n
+  "TODO" \n \n
+  "# Installation" \n \n
+  "TODO" \n \n
+  "# Contributing" \n \n
+  "TODO" \n \n
+  "# License" \n \n
+  "TODO" \n \n)
+
 (require 'autoinsert)
 
 ;; Autoinsert text into empty files where defined

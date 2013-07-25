@@ -16,8 +16,19 @@
 (eval-after-load 'help-mode
   '(define-key help-mode-map "l" 'help-go-back)) ; consistent with info-mode
 
+;; info-mode
+(defun camdez/Info-mode-hook ()
+  (interactive)
+  (setq show-trailing-whitespace nil))
+
+(add-hook 'Info-mode-hook 'camdez/Info-mode-hook)
+
 ;; text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; sh-mode
+(eval-after-load 'sh-script
+  '(setq sh-basic-offset 2))
 
 ;; cc-mode
 (add-hook 'c-mode-hook
@@ -59,6 +70,10 @@
 ;; emacs-lisp-mode
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
+;; shell-mode
+(add-hook 'shell-mode-hook (lambda ()
+                             (setq tab-width 8)))
+
 ;; rst-mode
 (add-hook 'rst-mode-hook 'turn-on-visual-line-mode)
 
@@ -67,6 +82,14 @@
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("config.ru\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.builder\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.prawn\\'" . ruby-mode))
+
+;; Could do it like this and make a single `add-to-list' call
+(regexp-opt '("Gemfile\\'" "Rakefile\\'" "Capfile\\'" "Guardfile\\'"
+              "\\.rake\\'" "\\.gemspec\\'" "config.ru\\'" "\\.jbuilder\\'"
+              "\\.builder\\'"))
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
@@ -166,16 +189,53 @@
 ;; org-mode
 (add-to-list 'load-path (concat library-root "org-mode/lisp"))
 (add-to-list 'load-path (concat library-root "org-mode/contrib/lisp"))
-(require 'org-install)
-(setq org-default-notes-file "~/org/notes.org")
+(add-hook 'org-load-hook
+          '(lambda ()
+             (add-to-list 'org-modules 'org-habit)
+             (add-to-list 'org-modules 'org-mac-iCal)))
 
-(setq org-capture-templates
-      '(("t" "Task" entry (file+headline "~/org/personal.org" "Inbox")
-         "* TODO %?\n  %i")
-        ("d" "Diary Entry" plain (file+datetree+prompt "~/org/diary.org")
-         "%?\n%i\n")
-        ("r" "Reading" entry (file+headline "~/org/reading.org" "In-Progress")
-         "* TODO _%?_ %t--\n")))
+(defun camdez/org-agenda-mode-hook ()
+  (interactive)
+  (hl-line-mode 1)
+  (setq show-trailing-whitespace nil))
+
+(add-hook 'org-agenda-mode-hook
+          'camdez/org-agenda-mode-hook)
+
+(require 'org-install)
+;(require 'ox-md)
+(setq org-default-notes-file "~/org/notes.org"
+      org-clock-idle-time 10
+      org-deadline-warning-days 3
+      org-enforce-todo-dependencies t
+      org-agenda-restore-windows-after-quit t
+      org-agenda-skip-deadline-if-done t
+      org-agenda-skip-scheduled-if-done t
+      org-agenda-start-with-log-mode t
+      org-agenda-span 'day
+      org-agenda-archives-mode t
+      org-log-done 'time
+      org-agenda-custom-commands '(("h" "Habits"
+                                    ((tags-todo "STYLE=\"habit\"")))
+                                   ("n" "Agenda and all TODO's"
+                                    ((agenda)
+                                     (alltodo)))
+                                   ("o" "Tasks older than a week"
+                                    ((tags-todo "CREATED<=\"<-1w>\"")))
+                                   ("f" "Agenda and Flagged Tasks"
+                                    ((agenda "")
+                                     (tags-todo "FLAGGED"))))
+      org-capture-templates '(("t" "Task" entry (file+headline "~/org/personal.org" "Inbox")
+                               "* TODO %?\n  %i")
+                              ("p" "Post Topic for Blog" entry (file "~/org/posts.org")
+                               "* %?\n  %i")
+                              ("d" "Diary Entry" plain (file+datetree+prompt "~/org/diary.org")
+                               "%?\n%i\n")
+                              ("r" "Reading" entry (file+headline "~/org/reading.org" "In-Progress")
+                               "* TODO _%?_ %t--\n")))
+
+(setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
 ;; other
 (add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
