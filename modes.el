@@ -37,12 +37,10 @@
             (setq c-basic-offset 2)))
 
 ;; magit-mode
-(add-to-list 'load-path (concat library-root "magit/"))
 (autoload 'magit-status "magit"
   "Mode for working with git." t)
 
 ;; full-ack
-(add-to-list 'load-path (concat library-root "full-ack/"))
 (autoload 'ack-same "full-ack" nil t)
 (autoload 'ack "full-ack" nil t)
 (autoload 'ack-find-same-file "full-ack" nil t)
@@ -100,12 +98,7 @@
   (add-to-list 'load-path (concat library-root "rinari"))
   (require 'rinari nil t))
 
-;; feature-mode for Cucumber
-(add-to-list 'load-path (concat library-root "feature-mode"))
-(require 'feature-mode)
-
 ;; markdown-mode
-(add-to-list 'load-path (concat library-root "markdown-mode/"))
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
@@ -114,13 +107,11 @@
   '(define-key markdown-mode-map (kbd "<tab>") 'yas/expand))
 
 ;; haml-mode
-(add-to-list 'load-path (concat library-root "haml-mode/"))
 (autoload 'haml-mode "haml-mode"
   "Major mode for editing HAML files" t)
 (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
 
 ;; sass-mode
-(add-to-list 'load-path (concat library-root "sass-mode/"))
 (autoload 'sass-mode "sass-mode"
   "Major mode for editing SASS files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(sass\\|scss\\)\\'" . sass-mode))
@@ -136,7 +127,6 @@
   '(setq js-indent-level 2))
 
 ;; coffee-mode
-(add-to-list 'load-path (concat library-root "coffee-mode"))
 (autoload 'coffee-mode "coffee-mode"
   "Major mode for editing CoffeeScript.")
 (add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
@@ -155,7 +145,6 @@
   '(define-key php-mode-map "\C-c\C-p" 'html-mode))
 
 ;; clojure-mode
-(add-to-list 'load-path (concat library-root "clojure-mode"))
 (autoload 'clojure-mode "clojure-mode"
   "Major mode for editing Clojure.")
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
@@ -168,7 +157,6 @@
   '(define-key html-mode-map "\C-c\C-p" 'php-mode))
 
 ;; yaml-mode
-(add-to-list 'load-path (concat library-root "yaml-mode/"))
 (autoload 'yaml-mode "yaml-mode"
   "Major mode for editing files in the YAML data serialization format" t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
