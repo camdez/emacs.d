@@ -93,11 +93,6 @@
           '(lambda ()
              (define-key ruby-mode-map "\C-x\C-t" 'transpose-lines)))
 
-;; rinari
-(when (require 'ruby-mode nil t)
-  (add-to-list 'load-path (concat library-root "rinari"))
-  (require 'rinari nil t))
-
 ;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
