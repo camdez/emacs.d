@@ -23,6 +23,7 @@
                       gist
                       git-commit-mode
                       haml-mode
+                      ido-at-point
                       ido-vertical-mode
                       idomenu
                       magit
@@ -56,8 +57,8 @@
 
 ;;; NON-MODE LIBRARIES
 
-(require 'ido-vertical-mode)
 (ido-vertical-mode)
+(ido-at-point-mode)
 
 ;; yasnippet - templated snippet insertion
 (when (require 'yasnippet nil t)
