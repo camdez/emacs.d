@@ -21,10 +21,16 @@
 
 ;;; PACKAGES
 
+(setq my-packages '(ido-vertical-mode magit))
+
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+
+(dolist (pkg my-packages)
+  (unless (package-installed-p pkg)
+    (package-install pkg)))
 
 ;;; NON-MODE LIBRARIES
 
