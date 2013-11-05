@@ -44,6 +44,9 @@
 (require 'projectile)
 (projectile-global-mode)
 
+(require 'ido-vertical-mode)
+(ido-vertical-mode)
+
 ;; icicles - badass input completion
 ;(add-to-list 'load-path (concat library-root "icicles/"))
 ;(when (require 'icicles nil t)
