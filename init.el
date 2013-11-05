@@ -34,7 +34,8 @@
                       nrepl
                       org
                       sass-mode
-                      yaml-mode))
+                      yaml-mode
+                      yasnippet))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -66,17 +67,9 @@
 (require 'ido-vertical-mode)
 (ido-vertical-mode)
 
-;; icicles - badass input completion
-;(add-to-list 'load-path (concat library-root "icicles/"))
-;(when (require 'icicles nil t)
-;  (icy-mode t))
-
 ;; yasnippet - templated snippet insertion
-(add-to-list 'load-path (concat library-root "yasnippet/"))
 (when (require 'yasnippet nil t)
-  ;(setq yas/root-directory (concat emacs-root "snippets/"))
-  ;(yas/load-directory yas/root-directory)
-  (setq yas/snippet-dirs (list (concat emacs-root "snippets/")))
+  (setq yas-snippet-dirs (list (concat emacs-root "snippets/")))
   (yas/global-mode 1))
 
 ;;; EMACS SERVER
