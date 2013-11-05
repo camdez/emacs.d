@@ -19,6 +19,13 @@
 (load-library "keys")                   ; keybindings
 (load-library "experimental")
 
+;;; PACKAGES
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
 ;;; NON-MODE LIBRARIES
 
 (add-to-list 'load-path (concat library-root "git-commit-mode"))
