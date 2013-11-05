@@ -21,20 +21,20 @@
 
 ;;; PACKAGES
 
-(setq my-packages '(clojure-mode
-                    coffee-mode
-                    feature-mode
-                    full-ack
-                    gh
-                    gist
-                    haml-mode
-                    ido-vertical-mode
-                    magit
-                    markdown-mode
-                    nrepl
-                    org
-                    sass-mode
-                    yaml-mode))
+(defvar my-packages '(clojure-mode
+                      coffee-mode
+                      feature-mode
+                      full-ack
+                      gh
+                      gist
+                      haml-mode
+                      ido-vertical-mode
+                      magit
+                      markdown-mode
+                      nrepl
+                      org
+                      sass-mode
+                      yaml-mode))
 
 (require 'package)
 (add-to-list 'package-archives
