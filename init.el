@@ -21,7 +21,7 @@
 
 ;;; PACKAGES
 
-(setq my-packages '(ido-vertical-mode magit markdown-mode))
+(setq my-packages '(clojure-mode ido-vertical-mode gh gist magit markdown-mode nrepl org))
 
 (require 'package)
 (add-to-list 'package-archives
