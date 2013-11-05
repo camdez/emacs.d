@@ -9,31 +9,29 @@
 (add-to-list 'load-path emacs-root)
 (add-to-list 'load-path library-root)
 
-;;; ROCK & ROLL
-
-(load-library "theme")                  ; make things look pretty
-(load-library "modes")                  ; modes for editing various types of files
-(load-library "commands")               ; various utility commands
-(load-library "skeletons")              ; skeletons (templates) and autoinsert settings
-(load-library "config")                 ; general settings
-(load-library "keys")                   ; keybindings
-(load-library "experimental")
-
 ;;; PACKAGES
 
-(defvar my-packages '(clojure-mode
+(defvar my-packages '(ace-jump-mode
+                      clojure-mode
                       coffee-mode
+                      color-theme
+                      deft
                       feature-mode
+                      find-file-in-project
                       full-ack
                       gh
                       gist
+                      git-commit-mode
                       haml-mode
                       ido-vertical-mode
+                      idomenu
                       magit
                       markdown-mode
+                      muse
                       nrepl
                       org
                       sass-mode
+                      visible-mark
                       yaml-mode
                       yasnippet))
 
@@ -46,23 +44,17 @@
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
+;;; ROCK & ROLL
+
+(load-library "theme")                  ; make things look pretty
+(load-library "modes")                  ; modes for editing various types of files
+(load-library "commands")               ; various utility commands
+(load-library "skeletons")              ; skeletons (templates) and autoinsert settings
+(load-library "config")                 ; general settings
+(load-library "keys")                   ; keybindings
+(load-library "experimental")
+
 ;;; NON-MODE LIBRARIES
-
-(add-to-list 'load-path (concat library-root "git-commit-mode"))
-(require 'git-commit)
-
-(require 'cl-lib)
-(add-to-list 'load-path (concat library-root "diff-hl"))
-(require 'diff-hl)
-
-(add-to-list 'load-path (concat library-root "helm"))
-(require 'helm-config)
-
-(add-to-list 'load-path (concat library-root "projectile"))
-(require 's)
-(require 'dash)
-(require 'projectile)
-(projectile-global-mode)
 
 (require 'ido-vertical-mode)
 (ido-vertical-mode)

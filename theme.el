@@ -22,14 +22,10 @@
      (set-face-background 'show-paren-match-face "black")))
 
 (when window-system
-  (add-to-list 'load-path (concat library-root "color-theme/"))
-  (add-to-list 'load-path (concat library-root "color-theme/themes/"))
-  (require 'color-theme)
+  (color-theme-initialize)
+  (add-to-list 'load-path (concat emacs-root "themes/"))
   (require 'color-theme-almost-monokai)
-  (eval-after-load 'color-theme
-    '(progn
-       (color-theme-initialize)
-       (color-theme-almost-monokai))))
+  (color-theme-almost-monokai))
 
 (eval-after-load 'diff-mode
   '(progn
