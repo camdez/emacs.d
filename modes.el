@@ -78,18 +78,10 @@
 (add-hook 'rst-mode-hook 'turn-on-visual-line-mode)
 
 ;; ruby-mode
-(add-to-list 'auto-mode-alist '("\\(Gem\\|Rake\\|Cap\\|Guard\\)file\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("config.ru\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.builder\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.prawn\\'" . ruby-mode))
-
-;; Could do it like this and make a single `add-to-list' call
-(regexp-opt '("Gemfile\\'" "Rakefile\\'" "Capfile\\'" "Guardfile\\'"
-              "\\.rake\\'" "\\.gemspec\\'" "config.ru\\'" "\\.jbuilder\\'"
-              "\\.builder\\'"))
+(let ((mode-files '("Gemfile" "Rakefile" "Capfile" "Guardfile" "config.ru"))
+      (mode-extns '("rake" "gemspec" "jbuilder" "builder" "prawn")))
+  (add-to-list 'auto-mode-alist (cons (concat       (regexp-opt mode-files) "\\'") 'ruby-mode))
+  (add-to-list 'auto-mode-alist (cons (concat "\\." (regexp-opt mode-extns) "\\'") 'ruby-mode)))
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
