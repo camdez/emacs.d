@@ -1,5 +1,6 @@
 *.elc
+.org-id-locations
 bookmarks
 elpa
 local.el
-.org-id-locations
+projectile-bookmarks.eld
