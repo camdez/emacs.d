@@ -67,6 +67,14 @@
 
 (setq inferior-lisp-program "sbcl --noinform --no-linedit")
 
+;; nrepl
+
+(setq nrepl-lein-command "lein")
+(eval-after-load 'nrepl-mode
+  '(progn
+     (define-key nrepl-mode-map (kbd "M-p") 'nrepl-previous-input)
+     (define-key nrepl-mode-map (kbd "M-n") 'nrepl-next-input)))
+
 ;; emacs-lisp-mode
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 
