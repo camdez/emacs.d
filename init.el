@@ -21,7 +21,7 @@
 
 ;;; PACKAGES
 
-(setq my-packages '(ido-vertical-mode magit))
+(setq my-packages '(ido-vertical-mode magit markdown-mode))
 
 (require 'package)
 (add-to-list 'package-archives
