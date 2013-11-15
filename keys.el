@@ -17,6 +17,7 @@
 (global-set-key "\C-x0" 'delete-window-replacement)
 (global-set-key "\C-x1" 'delete-other-windows-replacement)
 (global-set-key "\C-x4k" 'kill-buffer-other-window)
+(global-set-key (kbd "C-x C-p") 'camdez/show-buffer-file-name) ; shadows `mark-page`
 (global-set-key [C-right] 'next-buffer)
 (global-set-key [C-left] 'previous-buffer)
 (global-set-key [C-down] 'find-file-at-point)

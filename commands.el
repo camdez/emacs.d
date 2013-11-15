@@ -134,6 +134,16 @@ With a prefix, makes a new header at the parent level."
   (interactive)
   (load-file user-init-file))
 
+(defun camdez/show-buffer-file-name ()
+  "Show the full path to the current file in the minibuffer."
+  (interactive)
+  (let ((file-name (buffer-file-name)))
+    (if file-name
+        (progn
+          (message file-name)
+          (kill-new file-name))
+      (error "Buffer not visiting a file"))))
+
 (defun kill-buffer-other-window ()
   "Kill the buffer currently displayed in the other window."
   (interactive)
