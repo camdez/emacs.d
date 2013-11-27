@@ -14,7 +14,9 @@
 
 ;; help-mode
 (eval-after-load 'help-mode
-  '(define-key help-mode-map "l" 'help-go-back)) ; consistent with info-mode
+  '(progn
+     (define-key help-mode-map "l" 'help-go-back) ; consistent with info-mode
+     (define-key help-mode-map "i" 'camdez/Info-goto-from-command-help)))
 
 ;; info-mode
 (defun camdez/Info-mode-hook ()

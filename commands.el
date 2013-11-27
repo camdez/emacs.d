@@ -79,6 +79,17 @@ and mark in place."
       (newline)
       (yank))))
 
+(defun camdez/Info-goto-from-command-help ()
+  "Go to the Info node in the Emacs manual for the command
+currently being viewed in `help-mode'."
+  (interactive)
+  (let ((help-function (car help-xref-stack-item))
+        (help-symbol (cadr help-xref-stack-item)))
+    (if (and (eq help-function 'describe-function)
+             (commandp help-symbol))
+        (Info-goto-emacs-command-node help-symbol)
+      (error "Info is only available for commands."))))
+
 (defun outline-increase-region-depth (region-start region-end &optional depth)
   "Increase the depth of header lines in region by DEPTH.
 If no DEPTH is given, defaults to 1."
