@@ -88,7 +88,7 @@ currently being viewed in `help-mode'."
     (if (and (eq help-function 'describe-function)
              (commandp help-symbol))
         (Info-goto-emacs-command-node help-symbol)
-      (error "Info is only available for commands."))))
+      (error "Info is only available for commands"))))
 
 (defun outline-increase-region-depth (region-start region-end &optional depth)
   "Increase the depth of header lines in region by DEPTH.
