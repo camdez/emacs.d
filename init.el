@@ -65,6 +65,9 @@
   (setq yas-snippet-dirs (list (concat emacs-root "snippets/")))
   (yas/global-mode 1))
 
+;; imenu
+(setq imenu-auto-rescan t)
+
 ;;; EMACS SERVER
 
 ;(server-start)

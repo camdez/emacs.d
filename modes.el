@@ -68,7 +68,6 @@
 (setq inferior-lisp-program "sbcl --noinform --no-linedit")
 
 ;; nrepl
-
 (setq nrepl-lein-command "lein")
 (eval-after-load 'nrepl-mode
   '(progn
@@ -77,6 +76,7 @@
 
 ;; emacs-lisp-mode
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook 'imenu-add-menubar-index)
 
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda ()
@@ -95,6 +95,8 @@
           '(lambda ()
              (define-key ruby-mode-map "\C-x\C-t" 'transpose-lines)))
 
+(add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
+
 ;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -102,6 +104,16 @@
 
 (eval-after-load 'markdown-mode
   '(define-key markdown-mode-map (kbd "<tab>") 'yas/expand))
+
+(defvar camdez/markdown-imenu-generic-expression
+  '((nil "^#\\s-+\\(.+\\)$" 1)))
+
+(defun camdez/markdown-imenu-configure ()
+  (interactive)
+  (setq imenu-generic-expression camdez/markdown-imenu-generic-expression))
+
+(add-hook 'markdown-mode-hook 'camdez/markdown-imenu-configure)
+(add-hook 'markdown-mode-hook 'imenu-add-menubar-index)
 
 ;; haml-mode
 (autoload 'haml-mode "haml-mode"
@@ -145,6 +157,8 @@
 (autoload 'clojure-mode "clojure-mode"
   "Major mode for editing Clojure.")
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
+
+(add-hook 'clojure-mode-hook 'imenu-add-menubar-index)
 
 ;; html-mode
 (add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
