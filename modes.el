@@ -86,7 +86,7 @@
 (add-hook 'rst-mode-hook 'turn-on-visual-line-mode)
 
 ;; ruby-mode
-(let ((mode-files '("Gemfile" "Rakefile" "Capfile" "Guardfile" "config.ru"))
+(let ((mode-files '("Capfile" "Gemfile" "Guardfile" "Podfile" "Rakefile" "config.ru"))
       (mode-extns '("rake" "gemspec" "jbuilder" "builder" "prawn")))
   (add-to-list 'auto-mode-alist (cons (concat       (regexp-opt mode-files) "\\'") 'ruby-mode))
   (add-to-list 'auto-mode-alist (cons (concat "\\." (regexp-opt mode-extns) "\\'") 'ruby-mode)))
