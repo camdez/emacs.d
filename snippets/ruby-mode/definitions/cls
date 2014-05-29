@@ -2,12 +2,10 @@
 # contributor: hitesh <hitesh.jasani@gmail.com>
 # key: cls
 # --
-class ${1:`(let ((fn (capitalize (file-name-nondirectory
-                                        (file-name-sans-extension
-                                 (or (buffer-file-name)
-                                     (buffer-name (current-buffer))))))))
-           (cond
-             ((string-match "_" fn) (replace-match "" nil nil fn))
-              (t fn)))`}
+class ${1:`(let ((file-name (capitalize (file-name-nondirectory
+                              (file-name-sans-extension
+                               (or (buffer-file-name)
+                                   (buffer-name (current-buffer))))))))
+             (replace-regexp-in-string "_" "" file-name))`}
   $0
 end
