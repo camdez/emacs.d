@@ -124,6 +124,7 @@
 (autoload 'sass-mode "sass-mode"
   "Major mode for editing SASS files" t)
 (add-to-list 'auto-mode-alist '("\\.\\(sass\\|scss\\)\\'" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.sass.erb\\'" . sass-mode))
 
 ;; css-mode
 (eval-after-load 'css-mode
