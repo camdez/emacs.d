@@ -27,6 +27,7 @@
 
 ;; text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'html-mode-hook 'turn-off-auto-fill) ; inherits from text-mode
 
 ;; sh-mode
 (eval-after-load 'sh-script
@@ -160,6 +161,7 @@
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 
 (add-hook 'clojure-mode-hook 'imenu-add-menubar-index)
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
 ;; html-mode
 (add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
