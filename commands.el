@@ -210,6 +210,11 @@ buffer is associated with."
         (switch-to-buffer next-buffer)
       (message "No buffers exist with same file basename"))))
 
+(defun camdez/narrow-to-paragraph ()
+  (interactive)
+  (mark-paragraph)
+  (narrow-to-region (point) (mark)))
+
 (defun narrow-to-php ()
  "Narrow current buffer to the PHP tag currently enclosing point."
  (interactive)
