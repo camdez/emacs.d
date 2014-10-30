@@ -32,6 +32,7 @@
                       nrepl
                       org
                       sass-mode
+                      smex                 ; ido for M-x
                       visible-mark
                       yaml-mode
                       yasnippet))

@@ -14,6 +14,7 @@
 (global-set-key [f11] 'compile)
 (global-set-key [f12] 'recompile)
 (global-set-key [del] 'delete-char)
+(global-set-key (kbd "M-x") 'smex)
 (global-set-key "\C-x0" 'delete-window-replacement)
 (global-set-key "\C-x1" 'delete-other-windows-replacement)
 (global-set-key "\C-x4k" 'kill-buffer-other-window)
