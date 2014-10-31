@@ -30,8 +30,8 @@
 (global-set-key "\M-`" 'other-frame)
 (global-set-key "\M-o" 'occur)
 
+(global-set-key (kbd "C-c .") 'camdez/touch)
 (global-set-key "\C-cf" 'auto-fill-mode)
-;(global-set-key "\C-ch" 'hl-line-mode)
 (global-set-key "\C-ch" 'global-hl-line-mode)
 (global-set-key "\C-c#" 'comment-region)
 (global-set-key "\M-gf" 'find-function)

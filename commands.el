@@ -155,6 +155,13 @@ With a prefix, makes a new header at the parent level."
           (kill-new file-name))
       (error "Buffer not visiting a file"))))
 
+(defun camdez/touch ()
+  "Run touch command on current file."
+  (interactive)
+  (when buffer-file-name
+    (shell-command (concat "touch " (shell-quote-argument buffer-file-name)))
+    (clear-visited-file-modtime)))
+
 (defun kill-buffer-other-window ()
   "Kill the buffer currently displayed in the other window."
   (interactive)
