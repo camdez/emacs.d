@@ -297,6 +297,34 @@ if at the beginning of a line."
     (dotimes (i cc)
       (insert "="))))
 
+;; Suck in entire identifier in search mode.  Name could possibly use
+;; improvement.  If you steal one thing from my .emacs, make it this.
+(defun camdez/isearch-yank-identifier ()
+  (interactive)
+  (isearch-yank-internal (lambda ()
+                           (forward-sexp)
+                           (point))))
+
+;; Useful when viewing old elisp files with hard tabs assumed to be 8
+;; spaces wide.
+(defun camdez/toggle-tab-width ()
+  "Toggles `tab-width' between 8 and 2."
+  (interactive)
+  (setq tab-width
+        (if (= tab-width 2)
+            8
+          2))
+  (redraw-frame (selected-frame)) ; sometimes doesn't redisplay without input
+  (message "Tab width set to %d." tab-width))
+
+(defun camdez/toggle-show-paren-style ()
+  "Toggle `show-paren-style' between `parenthesis' and `expression'."
+  (interactive)
+  (setq show-paren-style
+        (if (eq show-paren-style 'parenthesis)
+            'expression
+          'parenthesis)))
+
 ;; Prefer horizontal window splitting to vertical.
 (defun split-window-sensibly (window)
   "Overwrite the normal version to prefer splitting

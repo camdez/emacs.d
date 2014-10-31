@@ -58,10 +58,14 @@
 (load-library "keys")                   ; keybindings
 (load-library "experimental")
 
-;;; NON-MODE LIBRARIES
+;;; NON-MAJOR-MODE LIBRARIES
 
 (ido-vertical-mode)
 (ido-at-point-mode)
+
+;; ace-jump - get there faster
+(when (require 'ace-jump-mode nil t)
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
 ;; guide-key - handy visual reference for keychains
 (when (require 'guide-key nil t)
@@ -101,6 +105,13 @@
           (lambda ()
             (kill-buffer nil)
             (delete-frame)))
+
+;;; NONSENSE
+
+;; Unbelievably this has to be here because of the bullshit lengths
+;; `display-startup-echo-area-message' goes to to verify it.  If it
+;; doesn't get patched soon I'm just going to override the method.
+(setq inhibit-startup-echo-area-message "camdez")
 
 ;;; CUSTOMIZATION SYSTEM
 

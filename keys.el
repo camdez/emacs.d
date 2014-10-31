@@ -30,14 +30,20 @@
 (global-set-key "\M-`" 'other-frame)
 (global-set-key "\M-o" 'occur)
 
+(global-set-key (kbd "C-c TAB") 'camdez/toggle-tab-width)
+(global-set-key (kbd "C-c P") 'camdez/toggle-show-paren-style)
 (global-set-key (kbd "C-c .") 'camdez/touch)
 (global-set-key "\C-cf" 'auto-fill-mode)
 (global-set-key "\C-ch" 'global-hl-line-mode)
 (global-set-key "\C-c#" 'comment-region)
 (global-set-key "\M-gf" 'find-function)
 
+(autoload 'idomenu "idomenu" nil t)
+(global-set-key (kbd "M-g i") 'idomenu)
+
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
+(global-set-key (kbd "C-c b") 'browse-url)
 (global-set-key (kbd "C-c e") 'eval-and-replace)
 (global-set-key "\C-cg" 'gist-list)
 ;(global-set-key "\C-cl" 'linum-mode)
@@ -48,6 +54,12 @@
 (global-set-key "\C-ct" 'toggle-truncate-lines)
 (global-set-key "\C-cw" 'whitespace-mode)
 (global-set-key (kbd "C-'") 'other-window)
+
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.")
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+(define-key isearch-mode-map "\C-e" 'camdez/isearch-yank-identifier)
 
 (when window-system
   (global-unset-key "\C-z"))

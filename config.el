@@ -7,6 +7,7 @@
 
 (setq echo-keystrokes 0.02)
 (setq inhibit-startup-message t)
+
 (setq visible-bell t)
 (blink-cursor-mode -1)                  ; make the bloody cursor stop blinking
 (setq x-stretch-cursor t)               ; make the cursor wide over spaces, etc.
@@ -15,10 +16,15 @@
 (setq require-final-newline t)          ; always terminate last line in file
 (setq default-major-mode 'text-mode)    ; default mode is text mode
 (setq default-indicate-empty-lines t)   ; show which lines at the end of the buffer are blank via the gutter
+(setq view-read-only t)                 ; use potentially-handy mode instead of just beeping all the time
+
 (transient-mark-mode 0)                 ; no way, dude
 (cua-mode 0)                            ; Aquamacs turns this crap on (messes with transient-mark-mode too)
+(setq scroll-preserve-screen-position t ; when scrolling, keep point in the same position on screen
+      isearch-allow-scroll t)           ; scrolling shouldn't cancel search
 
 (global-font-lock-mode t)               ; use syntax highlighting
+(column-number-mode)
 (show-paren-mode t)                     ; highlight matching parentheses
 (setq blink-matching-paren nil)         ; not needed since I'm highlighting the matches
 
@@ -44,6 +50,7 @@
 
 (xterm-mouse-mode 1)
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Enable disabled operations
@@ -88,6 +95,7 @@
 (when (featurep 'mac)
   (setq mac-option-modifier 'meta))
 
+;; Advice
 (defadvice kill-some-buffers (around kill-some-buffers-y-or-n first (&optional list))
   "When running `kill-some-buffers' use 'y' and 'n' for response,
 regardless of if 'yes' or 'no' are generally preferred."
@@ -100,5 +108,19 @@ regardless of if 'yes' or 'no' are generally preferred."
   "When running `quit-window', always kill the buffer."
   (ad-set-arg 0 t))
 (ad-activate 'quit-window)
+
+;; Make `backward-up-list' still succeed when point is inside a
+;; string.
+;;
+;; Lots of thanks to:
+;; http://stackoverflow.com/questions/18921320/emacs-bulletproof-up-list
+(defadvice backward-up-list (before dont-choke-on-strings
+                                    (&optional arg))
+  (let* ((s (syntax-ppss))
+         (in-list (nth 3 s))
+         (str-or-com-beg (nth 8 s)))
+    (when in-list
+      (goto-char str-or-com-beg))))
+(ad-activate 'backward-up-list)
 
 ;;; config.el ends here

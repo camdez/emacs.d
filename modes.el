@@ -30,8 +30,15 @@
 (add-hook 'html-mode-hook 'turn-off-auto-fill) ; inherits from text-mode
 
 ;; sh-mode
+(defun camdez/shell-execute-line ()
+  "Execute the current line as a shell command."
+  (interactive)
+  (sh-execute-region (line-beginning-position) (line-end-position)))
+
 (eval-after-load 'sh-script
-  '(setq sh-basic-offset 2))
+  '(progn
+     (setq sh-basic-offset 2)
+     (define-key sh-mode-map (kbd "C-c C-e") 'camdez/shell-execute-line)))
 
 ;; cc-mode
 (add-hook 'c-mode-hook
@@ -48,6 +55,14 @@
 (autoload 'ack "full-ack" nil t)
 (autoload 'ack-find-same-file "full-ack" nil t)
 (autoload 'ack-find-file "full-ack" nil t)
+
+;; occur-mode
+;; `occur-mode' uses M-n, M-p, but ack and `grep-mode' support n and
+;; p. `grep-mode' even supports TAB and <backtab>.  (Though there's
+;; actually a bit of difference in functionality between the M / non-M
+;; versions.)
+(define-key occur-mode-map "n" 'occur-next)
+(define-key occur-mode-map "p" 'occur-prev)
 
 ;; muse-mode - publish to various formats
 (add-to-list 'load-path (concat library-root "muse-mode/"))
@@ -92,9 +107,31 @@
   (add-to-list 'auto-mode-alist (cons (concat       (regexp-opt mode-files) "\\'") 'ruby-mode))
   (add-to-list 'auto-mode-alist (cons (concat "\\." (regexp-opt mode-extns) "\\'") 'ruby-mode)))
 
+;; TODO consider precisely what these should be and then submit a
+;; patch upstream.
+(defun camdez/ruby-fix-paragraph-delimiters ()
+  "Change the `ruby-mode' paragraph delimiters so paragraph
+movement is not thwarted by trailing whitespace.  Also work for
+paragraphs in comment blocks."
+  (interactive)
+  (setq paragraph-start (concat "[ 	]*#*[ 	]*$\\|" page-delimiter)
+        paragraph-separate paragraph-start))
+
+(defun camdez/ruby-replace-symbols ()
+  "Interactively replace old style Ruby hash syntax with 1.9
+syntax throughout buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (query-replace-regexp ":\\([a-z_]+\\)\\>\\s-*=>" "\\1:")))
+
+(add-hook 'ruby-mode-hook 'ruby-fix-paragraph-delimiters)
+
 (add-hook 'ruby-mode-hook
           '(lambda ()
-             (define-key ruby-mode-map "\C-x\C-t" 'transpose-lines)))
+             (define-key ruby-mode-map "\C-x\C-t" 'transpose-lines)
+             (define-key ruby-mode-map (kbd "C-c :") 'camdez/ruby-replace-symbols)
+             (define-key ruby-mode-map (kbd "C-c C-d") 'yari)))
 
 (add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
 
@@ -113,8 +150,21 @@
   (interactive)
   (setq imenu-generic-expression camdez/markdown-imenu-generic-expression))
 
+(defun camdez/marked-open-current-file ()
+  "Open a preview of the current (presumably Markdown) file in
+Marked.app."
+  (interactive)
+  ;; JEG2 uses this:
+  ;;(call-process "open" nil nil nil "-a" "Marked.app" (buffer-file-name))
+  (shell-command (format "open -a Marked.app %s"
+                         (shell-quote-argument (buffer-file-name)))))
+
 (add-hook 'markdown-mode-hook 'camdez/markdown-imenu-configure)
 (add-hook 'markdown-mode-hook 'imenu-add-menubar-index)
+
+;; TODO Test for existence of the app file before taking over binding.
+(eval-after-load 'markdown-mode
+  '(define-key markdown-mode-map (kbd "C-c C-c p") 'camdez/marked-open-current-file)) ; shadows `markdown-preview'
 
 ;; haml-mode
 (autoload 'haml-mode "haml-mode"
