@@ -32,6 +32,7 @@
                       muse
                       nrepl
                       org
+                      projectile
                       sass-mode
                       smex                 ; ido for M-x
                       visible-mark
@@ -66,6 +67,12 @@
 (when (require 'guide-key nil t)
   (setq guide-key/guide-key-sequence '("C-x r" "C-x v" "C-x 4" "C-x 5" "C-x RET" "C-x C-k" "C-c p" "M-s h"))
   (guide-key-mode 1))
+
+;; projectile - project interaction
+(when (require 'projectile nil t)
+  (projectile-global-mode)
+  (setq projectile-enable-caching t
+        projectile-switch-project-action 'projectile-dired))
 
 ;; yasnippet - templated snippet insertion
 (when (require 'yasnippet nil t)
