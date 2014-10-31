@@ -38,6 +38,7 @@
 
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
+(global-set-key (kbd "C-c e") 'eval-and-replace)
 (global-set-key "\C-cg" 'gist-list)
 ;(global-set-key "\C-cl" 'linum-mode)
 (global-set-key "\C-cm" 'magit-status)
