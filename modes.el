@@ -56,6 +56,13 @@
 (autoload 'ack-find-same-file "full-ack" nil t)
 (autoload 'ack-find-file "full-ack" nil t)
 
+;; Make ack's faces be the same as match
+(eval-after-load 'full-ack
+  '(progn
+     (set-face-background 'ack-match (face-background 'match))
+     (set-face-foreground 'ack-match (face-foreground 'match))
+     (set-face-foreground 'ack-file (face-foreground 'font-lock-type-face))))
+
 ;; occur-mode
 ;; `occur-mode' uses M-n, M-p, but ack and `grep-mode' support n and
 ;; p. `grep-mode' even supports TAB and <backtab>.  (Though there's
