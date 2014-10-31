@@ -96,4 +96,9 @@ regardless of if 'yes' or 'no' are generally preferred."
     ad-do-it))
 (ad-activate 'kill-some-buffers)
 
+(defadvice quit-window (before quit-window-always-kill)
+  "When running `quit-window', always kill the buffer."
+  (ad-set-arg 0 t))
+(ad-activate 'quit-window)
+
 ;;; config.el ends here

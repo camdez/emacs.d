@@ -66,6 +66,11 @@
   (setq yas-snippet-dirs (list (concat emacs-root "snippets/")))
   (yas/global-mode 1))
 
+;; midnight - clean up stale buffers (see `clean-buffer-list')
+(when (require 'midnight nil t)
+  (midnight-delay-set 'midnight-delay 0)    ; run at midnight
+  (setq clean-buffer-list-delay-general 1)) ; kill buffers after one day
+
 ;; imenu
 (setq imenu-auto-rescan t)
 

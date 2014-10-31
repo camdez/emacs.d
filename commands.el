@@ -277,14 +277,6 @@ then a space, then the current time according to the variable
       (dabbrev-expand nil)
     (indent-for-tab-command)))
 
-(defun pretty-lambdas ()
-  (interactive)
-  (font-lock-add-keywords
-   nil `(("(\\(lambda\\>\\)"
-          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                    ,(make-char 'greek-iso8859-7 107))
-                    nil))))))
-
 (defun underline-line ()
   "Underline the current line with `=', or underline the previous line
 if at the beginning of a line."
@@ -297,5 +289,27 @@ if at the beginning of a line."
     (newline)
     (dotimes (i cc)
       (insert "="))))
+
+;; Prefer horizontal window splitting to vertical.
+(defun split-window-sensibly (window)
+  "Overwrite the normal version to prefer splitting
+horizontally (side-by-side)."
+  (or (and (window-splittable-p window t)
+           ;; Split window horizontally.
+           (with-selected-window window
+             (split-window-right)))
+      (and (window-splittable-p window)
+           ;; Split window vertically.
+           (with-selected-window window
+             (split-window-below)))
+      (and (eq window (frame-root-window (window-frame window)))
+           (not (window-minibuffer-p window))
+           ;; If WINDOW is the only window on its frame and is not the
+           ;; minibuffer window, try to split it vertically disregarding
+           ;; the value of `split-height-threshold'.
+           (let ((split-height-threshold 0))
+             (when (window-splittable-p window)
+               (with-selected-window window
+                 (split-window-below)))))))
 
 ;;; commands.el ends here
