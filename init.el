@@ -22,6 +22,7 @@
                       gh
                       gist
                       git-commit-mode
+                      guide-key
                       haml-mode
                       ido-at-point
                       ido-vertical-mode
@@ -60,6 +61,11 @@
 
 (ido-vertical-mode)
 (ido-at-point-mode)
+
+;; guide-key - handy visual reference for keychains
+(when (require 'guide-key nil t)
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x v" "C-x 4" "C-x 5" "C-x RET" "C-x C-k" "C-c p" "M-s h"))
+  (guide-key-mode 1))
 
 ;; yasnippet - templated snippet insertion
 (when (require 'yasnippet nil t)
