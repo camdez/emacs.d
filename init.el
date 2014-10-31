@@ -15,9 +15,7 @@
                       clojure-mode
                       coffee-mode
                       color-theme
-                      deft
                       feature-mode
-                      find-file-in-project
                       full-ack
                       gh
                       gist
@@ -29,7 +27,6 @@
                       idomenu
                       magit
                       markdown-mode
-                      muse
                       nrepl
                       org
                       projectile
