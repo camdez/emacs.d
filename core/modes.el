@@ -72,7 +72,6 @@
 (define-key occur-mode-map "p" 'occur-prev)
 
 ;; muse-mode - publish to various formats
-(add-to-list 'load-path (concat library-root "muse-mode/"))
 (when (require 'muse-mode nil t)
   (require 'muse-html)
   ;;  (require 'muse-latex)
@@ -246,8 +245,6 @@ Marked.app."
              (set (make-local-variable 'require-final-newline) 1)))
 
 ;; org-mode
-(add-to-list 'load-path (concat library-root "org-mode/lisp"))
-(add-to-list 'load-path (concat library-root "org-mode/contrib/lisp"))
 (add-hook 'org-load-hook
           '(lambda ()
              (add-to-list 'org-modules 'org-habit)

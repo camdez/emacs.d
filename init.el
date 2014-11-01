@@ -1,51 +1,53 @@
 ;;; init.el - primary configuration file for Emacs (like a .emacs)
 ;;; Author: Cameron Desautels
 
-(defvar emacs-root
+(defvar camdez/emacs-dir
   (file-name-directory (or load-file-name
-                           buffer-file-name)))
-(defvar library-root (concat emacs-root "lib/"))
+                           buffer-file-name))
+  "The root directory of my Emacs configuration.")
+(defvar camdez/core-dir (expand-file-name "core" camdez/emacs-dir)
+  "Directory containing core configuration files.")
 
-(add-to-list 'load-path emacs-root)
-(add-to-list 'load-path library-root)
+(add-to-list 'load-path camdez/core-dir)
 
 ;;; PACKAGES
 
-(defvar my-packages '(ace-jump-mode
-                      clojure-mode
-                      coffee-mode
-                      color-theme
-                      feature-mode
-                      full-ack
-                      gh
-                      gist
-                      git-commit-mode
-                      guide-key
-                      haml-mode
-                      ido-at-point
-                      ido-vertical-mode
-                      idomenu
-                      magit
-                      markdown-mode
-                      nrepl
-                      org
-                      projectile
-                      sass-mode
-                      smex                 ; ido for M-x
-                      visible-mark
-                      yaml-mode
-                      yasnippet))
+(defvar camdez/my-packages
+  '(ace-jump-mode
+    clojure-mode
+    coffee-mode
+    color-theme
+    feature-mode
+    full-ack
+    gh
+    gist
+    git-commit-mode
+    guide-key
+    haml-mode
+    ido-at-point
+    ido-vertical-mode
+    idomenu
+    magit
+    markdown-mode
+    nrepl
+    org
+    projectile
+    sass-mode
+    smex              ; ido for M-x
+    visible-mark
+    yaml-mode
+    yasnippet))
 
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(dolist (pkg my-packages)
+(dolist (pkg camdez/my-packages)
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
-;;; ROCK & ROLL
+;;; CORE
 
 (load-library "theme")                  ; make things look pretty
 (load-library "modes")                  ; modes for editing various types of files
@@ -77,7 +79,7 @@
 
 ;; yasnippet - templated snippet insertion
 (when (require 'yasnippet nil t)
-  (setq yas-snippet-dirs (list (concat emacs-root "snippets/")))
+  (setq yas-snippet-dirs (list (expand-file-name "snippets" camdez/emacs-dir)))
   (yas/global-mode 1))
 
 ;; midnight - clean up stale buffers (see `clean-buffer-list')
@@ -112,7 +114,7 @@
 
 ;;; CUSTOMIZATION SYSTEM
 
-(setq custom-file (concat emacs-root "custom.el"))
+(setq custom-file (expand-file-name "custom.el" camdez/core-dir))
 (load custom-file)
 
 ;;; SITE-SPECIFIC CODE
