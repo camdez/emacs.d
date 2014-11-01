@@ -14,6 +14,7 @@
 
 (defvar camdez/my-packages
   '(ace-jump-mode
+    cider
     clojure-mode
     coffee-mode
     color-theme
@@ -29,7 +30,6 @@
     idomenu
     magit
     markdown-mode
-    nrepl
     org
     projectile
     sass-mode
