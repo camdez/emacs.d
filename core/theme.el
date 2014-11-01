@@ -23,7 +23,7 @@
 
 (when window-system
   (color-theme-initialize)
-  (add-to-list 'load-path (concat emacs-root "themes/"))
+  (add-to-list 'load-path (expand-file-name "themes" camdez/emacs-dir))
   (require 'color-theme-almost-monokai)
   (color-theme-almost-monokai))
 
