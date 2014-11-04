@@ -14,7 +14,8 @@
 (global-set-key [f11] 'compile)
 (global-set-key [f12] 'recompile)
 (global-set-key [del] 'delete-char)
-(global-set-key (kbd "M-x") 'smex)
+(eval-after-load 'smex
+  '(global-set-key (kbd "M-x") 'smex))
 (global-set-key "\C-x0" 'delete-window-replacement)
 (global-set-key "\C-x1" 'delete-other-windows-replacement)
 (global-set-key "\C-x4k" 'kill-buffer-other-window)
@@ -30,6 +31,7 @@
 (global-set-key "\M-`" 'other-frame)
 (global-set-key "\M-o" 'occur)
 
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 (global-set-key (kbd "C-c TAB") 'camdez/toggle-tab-width)
 (global-set-key (kbd "C-c P") 'camdez/toggle-show-paren-style)
 (global-set-key (kbd "C-c z") 'toggle-frame-maximized)

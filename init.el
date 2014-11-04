@@ -59,12 +59,16 @@
 
 ;;; NON-MAJOR-MODE LIBRARIES
 
-(ido-vertical-mode)
-(ido-at-point-mode)
+(when (require 'ido-vertical-mode nil t)
+  (ido-vertical-mode))
+
+(when (require 'ido-at-point nil t)
+  (ido-at-point-mode))
+
+(require 'smex nil t)
 
 ;; ace-jump - get there faster
-(when (require 'ace-jump-mode nil t)
-  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
+(require 'ace-jump-mode nil t)
 
 ;; guide-key - handy visual reference for keychains
 (when (require 'guide-key nil t)
