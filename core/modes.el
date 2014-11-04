@@ -131,7 +131,7 @@ syntax throughout buffer."
     (goto-char (point-min))
     (query-replace-regexp ":\\([a-z_]+\\)\\>\\s-*=>" "\\1:")))
 
-(add-hook 'ruby-mode-hook 'ruby-fix-paragraph-delimiters)
+(add-hook 'ruby-mode-hook 'camdez/ruby-fix-paragraph-delimiters)
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
