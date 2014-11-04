@@ -258,7 +258,7 @@ Marked.app."
 (add-hook 'org-agenda-mode-hook
           'camdez/org-agenda-mode-hook)
 
-(require 'org-install)
+(require 'org-install nil t)
 ;(require 'ox-md)
 (setq org-default-notes-file "~/org/notes.org"
       org-clock-idle-time 10
