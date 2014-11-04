@@ -32,6 +32,7 @@
 
 (global-set-key (kbd "C-c TAB") 'camdez/toggle-tab-width)
 (global-set-key (kbd "C-c P") 'camdez/toggle-show-paren-style)
+(global-set-key (kbd "C-c z") 'toggle-frame-maximized)
 (global-set-key (kbd "C-c .") 'camdez/touch)
 (global-set-key "\C-cf" 'auto-fill-mode)
 (global-set-key "\C-ch" 'global-hl-line-mode)
