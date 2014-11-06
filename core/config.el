@@ -54,10 +54,11 @@
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Enable disabled operations
-(put 'upcase-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
+(put 'erase-buffer 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)
-(put 'dired-find-alternate-file 'disabled nil)
+(put 'upcase-region 'disabled nil)
 
 ;; Disable annoying operations
 (put 'overwrite-mode 'disabled t)
