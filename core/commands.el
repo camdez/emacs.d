@@ -169,21 +169,20 @@ With a prefix, makes a new header at the parent level."
   (kill-buffer nil)
   (other-window 1))
 
-(defun delete-window-replacement (&optional p)
+(defun camdez/delete-window (&optional p)
   "Kill current window.  If called with PREFIX, kill the buffer too."
   (interactive "P")
-  (if p
-      (kill-buffer nil))
+  (when p (kill-buffer nil))
   (delete-window))
 
-(defun delete-other-windows-replacement (&optional p)
+(defun camdez/delete-other-windows (&optional p)
   "Make the selected window fill its frame.  If called with PREFIX,
 kill all other visible buffers."
   (interactive "P")
-  (if p
-      (dolist (window (window-list))
-        (unless (equal (window-buffer window) (current-buffer))
-          (kill-buffer (window-buffer window)))))
+  (when p
+    (dolist (window (window-list))
+      (unless (equal (window-buffer window) (current-buffer))
+        (kill-buffer (window-buffer window)))))
   (delete-other-windows))
 
 (defun buffer-file-basename (buffer)

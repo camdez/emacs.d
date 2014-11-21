@@ -16,8 +16,8 @@
 (global-set-key [del] 'delete-char)
 (eval-after-load 'smex
   '(global-set-key (kbd "M-x") 'smex))
-(global-set-key "\C-x0" 'delete-window-replacement)
-(global-set-key "\C-x1" 'delete-other-windows-replacement)
+(global-set-key "\C-x0" 'camdez/delete-window)
+(global-set-key "\C-x1" 'camdez/delete-other-windows)
 (global-set-key "\C-x4k" 'kill-buffer-other-window)
 (global-set-key (kbd "C-x C-p") 'camdez/show-buffer-file-name) ; shadows `mark-page`
 (global-set-key (kbd "C-x n h") 'camdez/narrow-to-paragraph)
