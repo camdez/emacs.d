@@ -21,11 +21,7 @@
      (set-face-foreground 'show-paren-match-face "red")
      (set-face-background 'show-paren-match-face "black")))
 
-(when window-system
-  (color-theme-initialize)
-  (add-to-list 'load-path (expand-file-name "themes" camdez/emacs-dir))
-  (require 'color-theme-almost-monokai)
-  (color-theme-almost-monokai))
+(load-theme 'monokai t)
 
 (eval-after-load 'diff-mode
   '(progn

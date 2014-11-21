@@ -14,33 +14,34 @@
 
 (defvar camdez/my-packages
   '(ace-jump-mode
+    auto-complete
     cider
     clojure-mode
     coffee-mode
-    color-theme
     feature-mode
     full-ack
     gh
     gist
     git-commit-mode
-    guide-key
+    ;guide-key        ; https://github.com/kai2nenobu/guide-key/issues/28
     haml-mode
-    ido-at-point
     ido-vertical-mode
-    idomenu
+    ;idomenu          ; ido for `imenu' --- emailed author about hosting on GitHub / tagging release
     magit
     markdown-mode
+    monokai-theme
     org
+    paredit
     projectile
     sass-mode
-    smex              ; ido for M-x
-    visible-mark
-    yaml-mode
+    smex              ; ido for `M-x'
+    ;yaml-mode        ; https://github.com/yoshiki/yaml-mode/issues/22
     yasnippet))
 
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+             t)
 (package-initialize)
 
 (dolist (pkg camdez/my-packages)
