@@ -26,7 +26,7 @@
     ;guide-key        ; https://github.com/kai2nenobu/guide-key/issues/28
     haml-mode
     ido-vertical-mode
-    ;idomenu          ; ido for `imenu' --- emailed author about hosting on GitHub / tagging release
+    idomenu           ; ido for `imenu'
     magit
     markdown-mode
     monokai-theme
