@@ -33,9 +33,10 @@
     org
     paredit
     projectile
+    rspec-mode
     sass-mode
     smex              ; ido for `M-x'
-    ;yaml-mode        ; https://github.com/yoshiki/yaml-mode/issues/22
+    yaml-mode
     yasnippet))
 
 (require 'package)
