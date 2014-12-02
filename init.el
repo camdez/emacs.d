@@ -19,11 +19,12 @@
     clojure-mode
     coffee-mode
     feature-mode
+    flycheck
     full-ack
     gh
     gist
     git-commit-mode
-    ;guide-key        ; https://github.com/kai2nenobu/guide-key/issues/28
+    guide-key
     haml-mode
     ido-vertical-mode
     idomenu           ; ido for `imenu'
