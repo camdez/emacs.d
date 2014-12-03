@@ -41,6 +41,7 @@
     projectile
     rspec-mode
     sass-mode
+    scala-mode2
     smex              ; ido for `M-x'
     yaml-mode
     yasnippet))
