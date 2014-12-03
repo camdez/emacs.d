@@ -32,6 +32,7 @@
     haml-mode
     ido-vertical-mode
     idomenu           ; ido for `imenu'
+    keyfreq           ; command use statistics
     magit
     markdown-mode
     monokai-theme
@@ -85,6 +86,11 @@
   (setq guide-key/guide-key-sequence '("C-x r" "C-x v" "C-x 4" "C-x 5" "C-x RET"
                                        "C-x C-k" "C-c p" "M-s h" "C-h"))
   (guide-key-mode 1))
+
+;; keyfreq - command use statistics (`keyfreq-show' to see stats)
+(when (require 'keyfreq nil t)
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
 
 ;; projectile - project interaction
 (when (require 'projectile nil t)
