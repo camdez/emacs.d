@@ -1,0 +1,21 @@
+# name: Request Addition to MELPA Stable
+# key: melpa-stable-add
+# uuid: 2776fd13-47f6-4438-902e-2f39c48fd790
+# contributor: Cameron Desautels <camdez@gmail.com>
+# --
+Hi!
+
+[MELPA Stable](http://stable.melpa.org/) is the new younger sibling of MELPA for users who'd rather run only stable versions of packages (MELPA can be a bit rocky since every commit comprises a new release), and it would be super cool if ${1:this package} could be installed via Stable.
+
+Fortunately it's also really easy to support—all you have to do is define a tag in the \`v...\` format and you're done. I'd submit a PR if I could, but since tags are global to a project, that's not something possible via PR.
+
+If you're cool with this idea, this should be all you have to do to make it happen:
+
+\`\`\`sh
+$ git tag v${2:stable-version-number} ${3:stable-version-commit-hash}
+$ git push origin v$2
+\`\`\`
+
+(Of course, confirm that $3 is the appropriate commit for the release, but it's the one where the version number was bumped to $2 so I suspect it is.)
+
+Thanks for your time and consideration!
