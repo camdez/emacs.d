@@ -4,3 +4,6 @@ bookmarks
 elpa
 local.el
 projectile-bookmarks.eld
+/.achievements
+/ac-comphist.dat
+/projectile.cache
