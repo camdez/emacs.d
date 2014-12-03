@@ -71,7 +71,7 @@
 
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
 (set-register ?k (cons 'file "~/Dropbox/Source/dotfiles/dot-emacs.d/core/keys.el"))
-(set-register ?x (cons 'file "~/Dropbox/Source/dotfiles/dot-emacs.d/core/experimental.el"))
+(set-register ?x (cons 'file camdez/experiments-file))
 (set-register ?s (cons 'file "~/.zshrc"))     ; quickly jump to .bashrc with C-x r j s
 (set-register ?o (cons 'file "~/org/personal.org"))
 (set-register ?p (cons 'file "~/org/posts.org"))

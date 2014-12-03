@@ -10,6 +10,9 @@
 
 (add-to-list 'load-path camdez/core-dir)
 
+(defvar camdez/experiments-file (expand-file-name "experimental.el" camdez/core-dir)
+  "File containing my latest elisp experiments.")
+
 ;;; PACKAGES
 
 (defvar camdez/my-packages
@@ -59,7 +62,10 @@
 (load-library "skeletons")              ; skeletons (templates) and autoinsert settings
 (load-library "config")                 ; general settings
 (load-library "keys")                   ; keybindings
-(load-library "experimental")
+
+;;; HACKS + EXPERIMENTS
+
+(load camdez/experiments-file 'no-error)
 
 ;;; NON-MAJOR-MODE LIBRARIES
 
@@ -124,10 +130,10 @@
 ;;; CUSTOMIZATION SYSTEM
 
 (setq custom-file (expand-file-name "custom.el" camdez/core-dir))
-(load custom-file)
+(load custom-file 'no-error)
 
 ;;; SITE-SPECIFIC CODE
 
-(load "local" t)
+(load "local" 'no-error)
 
 ;;; END
