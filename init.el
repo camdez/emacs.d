@@ -14,6 +14,7 @@
 
 (defvar camdez/my-packages
   '(ace-jump-mode
+    ack-and-a-half
     auto-complete
     cider
     clojure-mode
