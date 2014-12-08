@@ -22,6 +22,7 @@
     cider
     clojure-mode
     coffee-mode
+    diminish
     feature-mode
     flycheck
     full-ack
@@ -43,6 +44,7 @@
     sass-mode
     scala-mode2
     smex              ; ido for `M-x'
+    unfill
     yaml-mode
     yasnippet))
 
