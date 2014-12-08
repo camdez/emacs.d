@@ -15,7 +15,7 @@
 
 ;;; PACKAGES
 
-(defvar camdez/my-packages
+(defvar camdez/packages
   '(ace-jump-mode
     ack-and-a-half
     auto-complete
@@ -52,9 +52,18 @@
              t)
 (package-initialize)
 
-(dolist (pkg camdez/my-packages)
-  (unless (package-installed-p pkg)
-    (package-install pkg)))
+(require 'cl-lib)
+
+(defun camdez/install-packages ()
+  "Ensure the packages I use are installed. See `camdez/packages'."
+  (interactive)
+  (let ((missing-packages (cl-remove-if #'package-installed-p camdez/packages)))
+    (when missing-packages
+      (message "Installing %d missing package(s)" (length missing-packages))
+      (package-refresh-contents)
+      (mapc #'package-install missing-packages))))
+
+(camdez/install-packages)
 
 ;;; CORE
 
