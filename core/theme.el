@@ -10,8 +10,6 @@
 (set-foreground-color "white")
 (set-background-color "black")
 
-(set-face-background 'trailing-whitespace "gray19")
-
 ; use `current-frame-configuration' to check
 (setq frame-inherited-parameters
       '(font fontsize background-color foreground-color))
@@ -22,6 +20,8 @@
      (set-face-background 'show-paren-match-face "black")))
 
 (load-theme 'monokai t)
+
+(set-face-background 'trailing-whitespace "gray19")
 
 (eval-after-load 'diff-mode
   '(progn
