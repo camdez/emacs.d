@@ -40,15 +40,12 @@
 (setq-default show-trailing-whitespace t)
 
 (global-auto-revert-mode 1)             ; automatically reload files which are externally modified
-(mouse-wheel-mode 1)                    ; make the mouse wheel work
 (auto-image-file-mode 1)                ; open images as images
 (auto-compression-mode 1)               ; automagically explore compressed files when visited
 (menu-bar-mode -1)                      ; hide the menu bar
 (when window-system
   (tool-bar-mode -1)                    ; hide the tool bar
   (scroll-bar-mode -1))                 ; put the scroll bar on the right where it should be
-
-(xterm-mouse-mode 1)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
