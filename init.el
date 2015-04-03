@@ -43,7 +43,6 @@
     rspec-mode
     sass-mode
     scala-mode2
-    smex              ; ido for `M-x'
     unfill
     yaml-mode
     yasnippet))
@@ -87,8 +86,6 @@
 
 (when (require 'ido-at-point nil t)
   (ido-at-point-mode))
-
-(require 'smex nil t)
 
 ;; ace-jump - get there faster
 (require 'ace-jump-mode nil t)

@@ -14,8 +14,6 @@
 (global-set-key [f11] 'compile)
 (global-set-key [f12] 'recompile)
 (global-set-key [del] 'delete-char)
-(eval-after-load 'smex
-  '(global-set-key (kbd "M-x") 'smex))
 (global-set-key "\C-x0" 'camdez/delete-window)
 (global-set-key "\C-x1" 'camdez/delete-other-windows)
 (global-set-key "\C-x4k" 'kill-buffer-other-window)
