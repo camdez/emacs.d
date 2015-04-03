@@ -7,3 +7,6 @@ projectile-bookmarks.eld
 /.achievements
 /ac-comphist.dat
 /projectile.cache
+/.emacs.desktop
+/.emacs.desktop.lock
+/core/experimental.el
