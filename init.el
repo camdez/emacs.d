@@ -96,7 +96,8 @@
 ;; guide-key - handy visual reference for keychains
 (when (require 'guide-key nil t)
   (setq guide-key/guide-key-sequence '("C-x r" "C-x v" "C-x 4" "C-x 5" "C-x RET"
-                                       "C-x C-k" "C-c p" "M-s h" "C-h"))
+                                       "C-x C-k" "C-c p" "M-s h" "C-h" "C-c !"
+                                       "M-s" "C-x c"))
   (guide-key-mode 1))
 
 ;; keyfreq - command use statistics (`keyfreq-show' to see stats)
