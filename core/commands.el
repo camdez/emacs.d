@@ -360,4 +360,22 @@ horizontally (side-by-side)."
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 
+(defun camdez/lisp-insert-hr ()
+  "Insert a horizontal rule comment."
+  (interactive)
+  (insert (make-string fill-column ?\;))
+  (newline-and-indent))
+
+(defun camdez/add-experiment ()
+  "Add a new experiment to the experiments file."
+  (interactive)
+  (find-file camdez/experiments-file)
+  (goto-char (point-min))
+  (when (re-search-forward ";;; Code:" nil 'no-error)
+    (insert "\n\n"))
+  (camdez/lisp-insert-hr)
+  (insert ";; ")
+  (insert-date-and-time)
+  (insert "\n\n"))
+
 ;;; commands.el ends here
