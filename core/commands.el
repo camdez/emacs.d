@@ -169,6 +169,8 @@ With a prefix, makes a new header at the parent level."
   (kill-buffer nil)
   (other-window 1))
 
+;; Actually, it looks like there's a command that does this now, on
+;; `C-x 4 0`.  `kill-buffer-and-window'.  Compare.
 (defun camdez/delete-window (&optional p)
   "Kill current window.  If called with PREFIX, kill the buffer too."
   (interactive "P")
@@ -221,6 +223,7 @@ buffer is associated with."
   (mark-paragraph)
   (narrow-to-region (point) (mark)))
 
+;; TODO: trying using `clone-indirect-buffer' instead!
 (defun narrow-to-php ()
  "Narrow current buffer to the PHP tag currently enclosing point."
  (interactive)

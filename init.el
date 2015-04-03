@@ -113,7 +113,8 @@
 
 ;; yasnippet - templated snippet insertion
 (when (require 'yasnippet nil t)
-  (setq yas-snippet-dirs (list (expand-file-name "snippets" camdez/emacs-dir)))
+  (setq yas-snippet-dirs (list (expand-file-name "snippets" camdez/emacs-dir))
+        yas-verbosity 2)                    ; don't show messages at init time
   (yas/global-mode 1))
 
 ;; midnight - clean up stale buffers (see `clean-buffer-list')

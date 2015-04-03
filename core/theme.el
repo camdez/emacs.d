@@ -16,8 +16,8 @@
 
 (eval-after-load 'paren
   '(progn
-     (set-face-foreground 'show-paren-match-face "red")
-     (set-face-background 'show-paren-match-face "black")))
+     (set-face-foreground 'show-paren-match "black")
+     (set-face-background 'show-paren-match "red")))
 
 (load-theme 'monokai t)
 
