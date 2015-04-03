@@ -119,6 +119,15 @@
   (setq projectile-enable-caching t
         projectile-switch-project-action 'projectile-dired))
 
+;; diminish - hide extraneous mode indicators
+(when (require 'diminish nil t)
+  (eval-after-load 'auto-complete       '(diminish 'auto-complete-mode))
+  (eval-after-load 'eldoc               '(diminish 'eldoc-mode))
+  (eval-after-load 'guide-key           '(diminish 'guide-key-mode))
+  (eval-after-load 'projectile          '(diminish 'projectile-mode))
+  (eval-after-load 'volatile-highlights '(diminish 'volatile-highlights-mode))
+  (eval-after-load 'yasnippet           '(diminish 'yas-minor-mode)))
+
 ;; yasnippet - templated snippet insertion
 (when (require 'yasnippet nil t)
   (setq yas-snippet-dirs (list (expand-file-name "snippets" camdez/emacs-dir))
