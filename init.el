@@ -102,9 +102,20 @@
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
 
+;; Helm - incremental completion and selection narrowing framework
+(when (require 'helm-config nil t)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "C-x b") 'helm-mini)
+  (global-set-key (kbd "M-g i") 'helm-imenu)
+  (global-set-key (kbd "M-o") 'helm-occur)
+  (global-set-key (kbd "C-x r l") 'helm-bookmarks))
+
 ;; projectile - project interaction
 (when (require 'projectile nil t)
   (projectile-global-mode)
+  ;; Temporary change since I've dropped back to the stable version of
+  ;; projectile-mode which doesn't have this binding yet:
+  (define-key projectile-command-map (kbd "f") 'helm-projectile)
   (setq projectile-enable-caching t
         projectile-switch-project-action 'projectile-dired))
 
