@@ -28,13 +28,11 @@
     full-ack
     gh
     gist
-    git-commit-mode
     guide-key
     haml-mode
     ido-vertical-mode
     idomenu           ; ido for `imenu'
     keyfreq           ; command use statistics
-    magit
     markdown-mode
     monokai-theme
     org
