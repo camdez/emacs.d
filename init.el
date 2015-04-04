@@ -30,6 +30,7 @@
     gist
     guide-key
     haml-mode
+    highlight-symbol
     ido-vertical-mode
     idomenu           ; ido for `imenu'
     keyfreq           ; command use statistics
