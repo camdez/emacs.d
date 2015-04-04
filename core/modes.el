@@ -287,6 +287,8 @@ Marked.app."
                                "* %?\n  %i")
                               ("d" "Diary Entry" plain (file+datetree+prompt "~/org/diary.org")
                                "%?\n%i\n")
+                              ("n" "Note" entry (file "~/org/notes.org")
+                               "* %?\n  %i")
                               ("r" "Reading" entry (file+headline "~/org/reading.org" "In-Progress")
                                "* TODO _%?_ %t--\n")))
 
