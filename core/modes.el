@@ -108,11 +108,9 @@ paragraphs in comment blocks."
 
 (defun camdez/ruby-replace-symbols ()
   "Interactively replace old style Ruby hash syntax with 1.9
-syntax throughout buffer."
+syntax."
   (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (query-replace-regexp ":\\([a-z_]+\\)\\>\\s-*=>" "\\1:")))
+  (query-replace-regexp "\\_<:\\([a-z_]+\\>\\)\\(\\s-*\\)=>" "\\1:\\2"))
 
 (add-hook 'ruby-mode-hook 'camdez/ruby-fix-paragraph-delimiters)
 
