@@ -25,7 +25,6 @@
     diminish
     feature-mode
     flycheck
-    full-ack
     gh
     gist
     guide-key

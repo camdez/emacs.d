@@ -50,18 +50,13 @@
 (autoload 'magit-status "magit"
   "Mode for working with git." t)
 
-;; full-ack
-(autoload 'ack-same "full-ack" nil t)
-(autoload 'ack "full-ack" nil t)
-(autoload 'ack-find-same-file "full-ack" nil t)
-(autoload 'ack-find-file "full-ack" nil t)
-
-;; Make ack's faces be the same as match
-(eval-after-load 'full-ack
-  '(progn
-     (set-face-background 'ack-match (face-background 'match))
-     (set-face-foreground 'ack-match (face-foreground 'match))
-     (set-face-foreground 'ack-file (face-foreground 'font-lock-type-face))))
+(when (require 'ack-and-a-half nil 'no-error)
+  (defalias 'ack 'ack-and-a-half)
+  (defalias 'ack-same 'ack-and-a-half-same)
+  (defalias 'ack-find-file 'ack-and-a-half-find-file)
+  (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+  (define-key ack-and-a-half-mode-map (kbd "n") 'next-error-no-select)
+  (define-key ack-and-a-half-mode-map (kbd "p") 'previous-error-no-select))
 
 ;; occur-mode
 ;; `occur-mode' uses M-n, M-p, but ack and `grep-mode' support n and
