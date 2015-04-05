@@ -71,18 +71,6 @@
 (define-key occur-mode-map "n" 'occur-next)
 (define-key occur-mode-map "p" 'occur-prev)
 
-;; muse-mode - publish to various formats
-(when (require 'muse-mode nil t)
-  (require 'muse-html)
-  ;;  (require 'muse-latex)
-  (require 'muse-project) ; publish files in projects
-
-  (setq muse-project-alist
-        '(("Personal Wiki" ("~/Writings/notes" :default "index")
-           (:base "xhtml" :path "~/tmp/html_notes")
-          ;(:base "pdf"   :path "~/tmp/pdf_notes")
-           ))))
-
 ;; slime - the superior lisp interaction mode for emacs
 (when (require 'slime nil t)
   (slime-setup))
