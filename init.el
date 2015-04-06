@@ -81,9 +81,6 @@
 (when (require 'ido-vertical-mode nil t)
   (ido-vertical-mode))
 
-(when (require 'ido-at-point nil t)
-  (ido-at-point-mode))
-
 ;; ace-jump - get there faster
 (require 'ace-jump-mode nil t)
 
