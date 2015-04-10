@@ -17,7 +17,6 @@
 
 (defvar camdez/packages
   '(ace-jump-mode
-    ack-and-a-half
     auto-complete
     cider
     clojure-mode
@@ -25,8 +24,6 @@
     diminish
     feature-mode
     flycheck
-    gh
-    gist
     guide-key
     haml-mode
     highlight-symbol
