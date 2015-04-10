@@ -26,6 +26,8 @@
     flycheck
     guide-key
     haml-mode
+    helm
+    helm-projectile
     highlight-symbol
     ido-vertical-mode
     keyfreq           ; command use statistics
