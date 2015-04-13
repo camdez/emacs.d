@@ -40,9 +40,6 @@
 (global-set-key "\C-c#" 'comment-region)
 (global-set-key "\M-gf" 'find-function)
 
-(autoload 'idomenu "idomenu" nil t)
-(global-set-key (kbd "M-g i") 'idomenu)
-
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key (kbd "C-c b") 'browse-url)

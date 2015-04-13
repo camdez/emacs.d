@@ -221,8 +221,7 @@ Marked.app."
 ;; org-mode
 (add-hook 'org-load-hook
           '(lambda ()
-             (add-to-list 'org-modules 'org-habit)
-             (add-to-list 'org-modules 'org-mac-iCal)))
+             (add-to-list 'org-modules 'org-habit)))
 
 (defun camdez/org-agenda-mode-hook ()
   (interactive)
