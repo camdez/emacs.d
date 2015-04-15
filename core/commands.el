@@ -242,11 +242,61 @@ buffer is associated with."
 (defun toggle-chrome ()
   "Toggle display of graphical elements (tool bar, menu bar)."
   (interactive)
-    (if (eq menu-bar-mode tool-bar-mode)
-        (progn
-          (menu-bar-mode nil)
-          (tool-bar-mode nil))
-      (tool-bar-mode nil)))
+  (if (eq menu-bar-mode tool-bar-mode)
+      (progn
+        (menu-bar-mode nil)
+        (tool-bar-mode nil))
+    (tool-bar-mode nil)))
+
+;; Suck in entire identifier in search mode.  Name could possibly use
+;; improvement.  If you steal one thing from my .emacs, make it this.
+(defun camdez/isearch-yank-identifier ()
+  (interactive)
+  (isearch-yank-internal (lambda ()
+                           (forward-sexp)
+                           (point))))
+
+(defun camdez/cycle (options val)
+  "Returns the element following VAL in OPTIONS, or the first
+element if VAL is not found."
+  (interactive)
+  (or (cadr (memq val options))
+      (car options)))
+
+(defmacro setq-cycle (sym options)
+  `(setq ,sym (camdez/cycle ,options ,sym)))
+
+;; Useful when viewing old elisp files with hard tabs assumed to be 8
+;; spaces wide.
+(defun camdez/toggle-tab-width ()
+  "Toggles `tab-width' between 8 and 2."
+  (interactive)
+  (setq-cycle tab-width '(2 8))
+  (redraw-frame (selected-frame)) ; sometimes doesn't redisplay without input
+  (message "Tab width set to %d." tab-width))
+
+(defun camdez/toggle-show-paren-style ()
+  "Toggle `show-paren-style' between `parenthesis' and `expression'."
+  (interactive)
+  (setq-cycle show-paren-style '(parenthesis expression)))
+
+(defun camdez/lisp-insert-hr ()
+  "Insert a horizontal rule comment."
+  (interactive)
+  (insert (make-string fill-column ?\;))
+  (newline-and-indent))
+
+(defun camdez/add-experiment ()
+  "Add a new experiment to the experiments file."
+  (interactive)
+  (find-file camdez/experiments-file)
+  (goto-char (point-min))
+  (when (re-search-forward ";;; Code:" nil 'no-error)
+    (insert "\n\n"))
+  (camdez/lisp-insert-hr)
+  (insert ";; ")
+  (insert-date-and-time)
+  (insert "\n\n"))
 
 ;;; STUFF MOSTLY BORROWED FROM OTHERS
 
@@ -299,38 +349,6 @@ if at the beginning of a line."
     (dotimes (i cc)
       (insert "="))))
 
-;; Suck in entire identifier in search mode.  Name could possibly use
-;; improvement.  If you steal one thing from my .emacs, make it this.
-(defun camdez/isearch-yank-identifier ()
-  (interactive)
-  (isearch-yank-internal (lambda ()
-                           (forward-sexp)
-                           (point))))
-
-(defun camdez/cycle (options val)
-  "Returns the element following VAL in OPTIONS, or the first
-element if VAL is not found."
-  (interactive)
-  (or (cadr (memq val options))
-      (car options)))
-
-(defmacro setq-cycle (sym options)
-  `(setq ,sym (camdez/cycle ,options ,sym)))
-
-;; Useful when viewing old elisp files with hard tabs assumed to be 8
-;; spaces wide.
-(defun camdez/toggle-tab-width ()
-  "Toggles `tab-width' between 8 and 2."
-  (interactive)
-  (setq-cycle tab-width '(2 8))
-  (redraw-frame (selected-frame)) ; sometimes doesn't redisplay without input
-  (message "Tab width set to %d." tab-width))
-
-(defun camdez/toggle-show-paren-style ()
-  "Toggle `show-paren-style' between `parenthesis' and `expression'."
-  (interactive)
-  (setq-cycle show-paren-style '(parenthesis expression)))
-
 ;; Prefer horizontal window splitting to vertical.
 (defun split-window-sensibly (window)
   "Overwrite the normal version to prefer splitting
@@ -363,23 +381,5 @@ horizontally (side-by-side)."
              (current-buffer))
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
-
-(defun camdez/lisp-insert-hr ()
-  "Insert a horizontal rule comment."
-  (interactive)
-  (insert (make-string fill-column ?\;))
-  (newline-and-indent))
-
-(defun camdez/add-experiment ()
-  "Add a new experiment to the experiments file."
-  (interactive)
-  (find-file camdez/experiments-file)
-  (goto-char (point-min))
-  (when (re-search-forward ";;; Code:" nil 'no-error)
-    (insert "\n\n"))
-  (camdez/lisp-insert-hr)
-  (insert ";; ")
-  (insert-date-and-time)
-  (insert "\n\n"))
 
 ;;; commands.el ends here
