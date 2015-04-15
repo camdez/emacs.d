@@ -7,6 +7,12 @@
 (fset 'escape-region-double-quotes
    "\C-xnn\C-[<\C-[%\"\C-m\\\"\C-m!\C-[>\C-xnw")
 
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.")
+
+(autoload 'copy-from-above-command "misc"
+  "Copy characters from previous nonblank line, starting just above point.")
+
 (defalias 'elisp-mode 'emacs-lisp-mode)
 (defalias 'cleanup-whitespace 'whitespace-cleanup)
 
@@ -297,6 +303,14 @@ element if VAL is not found."
   (insert ";; ")
   (insert-date-and-time)
   (insert "\n\n"))
+
+(defun camdez/switch-to-other-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer)))
+
+(defun camdez/switch-to-scratch ()
+  (interactive)
+  (switch-to-buffer "*scratch*"))
 
 ;;; STUFF MOSTLY BORROWED FROM OTHERS
 

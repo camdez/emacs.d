@@ -1,74 +1,62 @@
 ;;; keys.el --- Emacs keybindings
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
-(global-set-key [f2] 'goto-line)
-(global-set-key [f3] (lambda ()
-                       (interactive)
-                       (switch-to-buffer (other-buffer))))
-(global-set-key [f8] 'eshell)
-(global-set-key [f9] 'speedbar)
-; If running under X, have [f10] toggle display of menu-bar (and
-; tool-bar) instead of running tmm-menubar.
-(if window-system
-    (global-set-key [f10] 'toggle-chrome))
-(global-set-key [f11] 'compile)
-(global-set-key [f12] 'recompile)
-(global-set-key [del] 'delete-char)
-(global-set-key "\C-x0" 'camdez/delete-window)
-(global-set-key "\C-x1" 'camdez/delete-other-windows)
-(global-set-key (kbd "C-x 4 k") 'camdez/kill-buffer-other-window)
-(global-set-key (kbd "C-x C-p") 'camdez/show-buffer-file-name) ; shadows `mark-page`
-(global-set-key (kbd "C-x n h") 'camdez/narrow-to-paragraph)
-(global-set-key [C-right] 'next-buffer)
-(global-set-key [C-left] 'previous-buffer)
-(global-set-key [C-down] 'find-file-at-point)
-(global-set-key [C-up] 'next-buffer-same-file-basename)
-; This practially makes the previous line useless, but the differences
-; should be investigated.
-;(global-set-key "\M-`" 'ff-find-other-file)
-(global-set-key "\M-`" 'other-frame)
-(global-set-key "\M-o" 'occur)
-
-(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
-(global-set-key (kbd "C-c TAB") 'camdez/toggle-tab-width)
-(global-set-key (kbd "C-c P") 'camdez/toggle-show-paren-style)
-(global-set-key (kbd "C-c x") 'camdez/add-experiment)
-(global-set-key (kbd "C-c z") 'toggle-frame-maximized)
-(global-set-key (kbd "C-c .") 'camdez/touch)
-(global-set-key "\C-cf" 'auto-fill-mode)
-(global-set-key "\C-ch" 'global-hl-line-mode)
-(global-set-key "\C-c#" 'comment-region)
-(global-set-key "\M-gf" 'find-function)
-
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key (kbd "C-c b") 'browse-url)
-(global-set-key (kbd "C-c e") 'eval-and-replace)
-(global-set-key "\C-cg" 'gist-list)
-;(global-set-key "\C-cl" 'linum-mode)
-(global-set-key "\C-cm" 'magit-status)
-(global-set-key "\C-cs" (lambda ()
-                          (interactive)
-                          (switch-to-buffer "*scratch*")))
-(global-set-key "\C-ct" 'toggle-truncate-lines)
-(global-set-key "\C-cw" 'whitespace-mode)
-(global-set-key (kbd "C-'") 'other-window)
-
-(autoload 'zap-up-to-char "misc"
-  "Kill up to, but not including ARGth occurrence of CHAR.")
-(global-set-key (kbd "M-Z") 'zap-up-to-char)
-
-(define-key isearch-mode-map "\C-e" 'camdez/isearch-yank-identifier)
+(mapc '(lambda (binding)
+         (let ((key (car binding))
+               (command (cadr binding)))
+           (global-set-key (kbd key) command)))
+      '(("<del>"     delete-char)
+        ("<f11>"     compile)
+        ("<f12>"     recompile)
+        ("<f2>"      goto-line)
+        ("<f3>"      camdez/switch-to-other-buffer)
+        ("<f8>"      eshell)
+        ("<f9>"      speedbar)
+        ("C-'"       other-window)
+        ("C-<down>"  find-file-at-point)
+        ("C-<left>"  previous-buffer)
+        ("C-<right>" next-buffer)
+        ("C-<up>"    next-buffer-same-file-basename)
+        ("C-c #"     comment-region)
+        ("C-c ."     camdez/touch)
+        ("C-c P"     camdez/toggle-show-paren-style)
+        ("C-c SPC"   ace-jump-mode)
+        ("C-c TAB"   camdez/toggle-tab-width)
+        ("C-c a"     org-agenda)
+        ("C-c b"     browse-url)
+        ("C-c c"     org-capture)
+        ("C-c e"     eval-and-replace)
+        ("C-c f"     auto-fill-mode)
+        ("C-c g"     gist-list)
+        ("C-c h"     global-hl-line-mode)
+        ("C-c m"     magit-status)
+        ("C-c s"     camdez/switch-to-scratch)
+        ("C-c t"     toggle-truncate-lines)
+        ("C-c w"     whitespace-mode)
+        ("C-c x"     camdez/add-experiment)
+        ("C-c z"     toggle-frame-maximized)
+        ("C-x 0"     camdez/delete-window)
+        ("C-x 1"     camdez/delete-other-windows)
+        ("C-x 4 k"   camdez/kill-buffer-other-window)
+        ("C-x C-p"   camdez/show-buffer-file-name) ; shadows `mark-page`
+        ("C-x n h"   camdez/narrow-to-paragraph)
+        ("M-Z"       zap-up-to-char)
+        ("M-`"       other-frame)
+        ("M-g f"     find-function)
+        ("M-o"       occur)))
 
 (when window-system
-  (global-unset-key "\C-z"))
+  (global-set-key (kbd "<f10>") 'toggle-chrome)
+  (global-unset-key (kbd "C-z")))
+
+(define-key isearch-mode-map (kbd "C-e") 'camdez/isearch-yank-identifier)
 
 (windmove-default-keybindings)
 
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
-(set-register ?k (cons 'file "~/Dropbox/Source/dotfiles/dot-emacs.d/core/keys.el"))
+(set-register ?k (cons 'file "~/.emacs.d/core/keys.el"))
 (set-register ?x (cons 'file camdez/experiments-file))
-(set-register ?s (cons 'file "~/.zshrc"))     ; quickly jump to .bashrc with C-x r j s
+(set-register ?s (cons 'file "~/.zshrc"))     ; quickly jump to shell config with C-x r j s
 (set-register ?o (cons 'file "~/org/personal.org"))
 (set-register ?p (cons 'file "~/org/posts.org"))
 
