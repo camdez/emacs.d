@@ -307,25 +307,29 @@ if at the beginning of a line."
                            (forward-sexp)
                            (point))))
 
+(defun camdez/cycle (options val)
+  "Returns the element following VAL in OPTIONS, or the first
+element if VAL is not found."
+  (interactive)
+  (or (cadr (memq val options))
+      (car options)))
+
+(defmacro setq-cycle (sym options)
+  `(setq ,sym (camdez/cycle ,options ,sym)))
+
 ;; Useful when viewing old elisp files with hard tabs assumed to be 8
 ;; spaces wide.
 (defun camdez/toggle-tab-width ()
   "Toggles `tab-width' between 8 and 2."
   (interactive)
-  (setq tab-width
-        (if (= tab-width 2)
-            8
-          2))
+  (setq-cycle tab-width '(2 8))
   (redraw-frame (selected-frame)) ; sometimes doesn't redisplay without input
   (message "Tab width set to %d." tab-width))
 
 (defun camdez/toggle-show-paren-style ()
   "Toggle `show-paren-style' between `parenthesis' and `expression'."
   (interactive)
-  (setq show-paren-style
-        (if (eq show-paren-style 'parenthesis)
-            'expression
-          'parenthesis)))
+  (setq-cycle show-paren-style '(parenthesis expression)))
 
 ;; Prefer horizontal window splitting to vertical.
 (defun split-window-sensibly (window)
