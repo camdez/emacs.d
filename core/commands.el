@@ -162,12 +162,12 @@ With a prefix, makes a new header at the parent level."
     (shell-command (concat "touch " (shell-quote-argument buffer-file-name)))
     (clear-visited-file-modtime)))
 
-(defun kill-buffer-other-window ()
+(defun camdez/kill-buffer-other-window ()
   "Kill the buffer currently displayed in the other window."
   (interactive)
   (other-window 1)
   (kill-buffer nil)
-  (other-window 1))
+  (other-window -1))
 
 ;; Actually, it looks like there's a command that does this now, on
 ;; `C-x 4 0`.  `kill-buffer-and-window'.  Compare.
