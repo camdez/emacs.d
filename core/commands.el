@@ -263,8 +263,11 @@ buffer is associated with."
   "Returns the element following VAL in OPTIONS, or the first
 element if VAL is not found."
   (interactive)
-  (or (cadr (memq val options))
-      (car options)))
+  (car
+   (let ((tail (cdr (memq val options))))
+     (if (consp tail)
+         tail
+       options))))
 
 (defmacro setq-cycle (sym options)
   `(setq ,sym (camdez/cycle ,options ,sym)))
