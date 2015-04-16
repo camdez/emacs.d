@@ -260,13 +260,14 @@ Marked.app."
                                "* %?\n  %i")
                               ("d" "Diary Entry" plain (file+datetree+prompt "~/org/diary.org")
                                "%?\n%i\n")
-                              ("n" "Note" entry (file "~/org/notes.org")
+                              ("n" "Note" entry (file)
                                "* %?\n  %i")
                               ("r" "Reading" entry (file+headline "~/org/reading.org" "In-Progress")
-                               "* TODO _%?_ %t--\n")))
-
-(setq org-mobile-inbox-for-pull "~/org/from-mobile.org")
-(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+                               "* TODO _%?_ %t--\n")
+                              ("w" "Work Log Entry" plain (file+datetree+prompt "~/org/worklog.org")
+                               "%?\n%i\n"))
+      org-mobile-inbox-for-pull "~/org/from-mobile.org"
+      org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
 ;; other
 (add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
