@@ -60,6 +60,7 @@
 (auto-image-file-mode    +1)     ; open images as images
 (auto-compression-mode   +1)     ; automagically explore compressed files when visited
 (ido-mode                +1)     ; use awesome buffer switching mode
+(winner-mode             +1)
 
 (if window-system
     (progn
