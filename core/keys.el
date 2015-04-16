@@ -46,7 +46,7 @@
         ("M-o"       occur)))
 
 (when window-system
-  (global-set-key (kbd "<f10>") 'toggle-chrome)
+  (global-set-key (kbd "<f10>") 'camdez/toggle-chrome)
   (global-unset-key (kbd "C-z")))
 
 (define-key isearch-mode-map (kbd "C-e") 'camdez/isearch-yank-identifier)

@@ -244,15 +244,12 @@ buffer is associated with."
    (if (fboundp 'php-mode)
        (php-mode))))
 
-;; TODO tool-bar-mode only exists under a window-system
-(defun toggle-chrome ()
+(defun camdez/toggle-chrome ()
   "Toggle display of graphical elements (tool bar, menu bar)."
   (interactive)
-  (if (eq menu-bar-mode tool-bar-mode)
-      (progn
-        (menu-bar-mode nil)
-        (tool-bar-mode nil))
-    (tool-bar-mode nil)))
+  (let ((state (if menu-bar-mode -1 +1)))
+    (menu-bar-mode state)
+    (tool-bar-mode state)))
 
 ;; Suck in entire identifier in search mode.  Name could possibly use
 ;; improvement.  If you steal one thing from my .emacs, make it this.
