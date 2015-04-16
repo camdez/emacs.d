@@ -39,6 +39,7 @@
         ("C-x 1"     camdez/delete-other-windows)
         ("C-x 4 k"   camdez/kill-buffer-other-window)
         ("C-x C-p"   camdez/show-buffer-file-name) ; shadows `mark-page`
+        ("C-x k"     kill-this-buffer)
         ("C-x n h"   camdez/narrow-to-paragraph)
         ("M-Z"       zap-up-to-char)
         ("M-`"       other-frame)
