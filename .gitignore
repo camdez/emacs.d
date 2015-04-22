@@ -10,3 +10,4 @@ projectile-bookmarks.eld
 /.emacs.desktop
 /.emacs.desktop.lock
 /core/experimental.el
+.cask

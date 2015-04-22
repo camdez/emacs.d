@@ -1,0 +1,13 @@
+* camdez's Emacs Config
+
+*Note:* This is an experimental branch adding a test library. A
+couple funny little notes about this:
+
+1. It depends on [[https://github.com/rejeep/ert-runner.el/pull/19][my changes to ert-runner]] because I want to mirror my
+   source tree in the test directory, and stock ert-runner doesn't do
+   that.  I'm hoping that can change.
+
+2. To run the tests, first install the dependencies by running =cask=,
+   and then you should be able to run =make unit=.  Note that if no
+   tests run, you're probably using a stock version of ert-runner (see
+   #1).
