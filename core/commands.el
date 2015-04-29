@@ -356,7 +356,7 @@ if at the beginning of a line."
   (interactive)
   (let ((cc (current-column)))
     (when (= cc 0)
-      (previous-line 1)
+      (forward-line -1)
       (end-of-line)
       (setq cc (current-column)))
     (newline)

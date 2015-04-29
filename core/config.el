@@ -9,7 +9,7 @@
       history-length 250
 
       inhibit-startup-message t
-      default-major-mode 'text-mode             ; default mode is text mode
+      major-mode 'text-mode                     ; default mode is text mode
       require-final-newline t                   ; always terminate last line in file
       view-read-only t                          ; use handy mode instead of just beeping all the time
       vc-follow-symlinks t
@@ -21,7 +21,7 @@
       echo-keystrokes 0.02
       isearch-allow-scroll t                    ; scrolling shouldn't cancel search
       scroll-preserve-screen-position t         ; when scrolling, keep point in the same position on screen
-      default-indicate-empty-lines t
+      indicate-empty-lines t
 
       version-control t                         ; keep numbered back-ups
       delete-old-versions t

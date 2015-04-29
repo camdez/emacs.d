@@ -1,10 +1,10 @@
 ;;; keys.el --- Emacs keybindings
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
-(mapc '(lambda (binding)
-         (let ((key (car binding))
-               (command (cadr binding)))
-           (global-set-key (kbd key) command)))
+(mapc #'(lambda (binding)
+          (let ((key (car binding))
+                (command (cadr binding)))
+            (global-set-key (kbd key) command)))
       '(("<del>"     delete-char)
         ("<f11>"     compile)
         ("<f12>"     recompile)
