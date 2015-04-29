@@ -193,6 +193,7 @@ Marked.app."
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 
 (add-hook 'clojure-mode-hook 'imenu-add-menubar-index)
+(add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
 ;; html-mode
