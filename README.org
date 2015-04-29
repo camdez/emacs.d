@@ -1,0 +1,8 @@
+* camdez's Emacs Config
+
+/Happy hacking!/
+
+** Tests
+
+To run the tests, first install the dependencies by running =cask=,
+and then run =make unit=.
