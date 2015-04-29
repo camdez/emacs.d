@@ -9,7 +9,6 @@
       history-length 250
 
       inhibit-startup-message t
-      major-mode 'text-mode                     ; default mode is text mode
       require-final-newline t                   ; always terminate last line in file
       view-read-only t                          ; use handy mode instead of just beeping all the time
       vc-follow-symlinks t
@@ -21,16 +20,17 @@
       echo-keystrokes 0.02
       isearch-allow-scroll t                    ; scrolling shouldn't cancel search
       scroll-preserve-screen-position t         ; when scrolling, keep point in the same position on screen
-      indicate-empty-lines t
 
       version-control t                         ; keep numbered back-ups
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2)
 
-(setq-default tab-width 2                       ; display tabs as being two spaces wide
+(setq-default major-mode 'text-mode             ; default mode is text mode
+              tab-width 2                       ; display tabs as being two spaces wide
               indent-tabs-mode nil              ; use spaces (not tabs) for indenting
               show-trailing-whitespace t
+              indicate-empty-lines t
               truncate-lines t)                 ; don't visually wrap long lines
 
 ;; Only under Aquamacs Emacs
