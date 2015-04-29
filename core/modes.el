@@ -76,6 +76,8 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'imenu-add-menubar-index)
 
+(add-to-list 'auto-mode-alist '("Cask\\'" . emacs-lisp-mode))
+
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda ()
                              (setq tab-width 8)))
