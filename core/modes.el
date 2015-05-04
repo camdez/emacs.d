@@ -78,6 +78,8 @@
 
 (add-to-list 'auto-mode-alist '("Cask\\'" . emacs-lisp-mode))
 
+(define-key emacs-lisp-mode-map (kbd "C-c C-k") 'eval-buffer)
+
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda ()
                              (setq tab-width 8)))
