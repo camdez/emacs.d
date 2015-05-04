@@ -196,6 +196,15 @@ Marked.app."
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
+(eval-after-load 'clojure-mode
+  '(define-clojure-indent
+     (.addShutdownHook 'defun)
+     (fact 'defun)
+     (facts 'defun)
+     (against-background 'defun)
+     (provided 0)
+     (component/system-map 'defun)))
+
 ;; html-mode
 (add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.xhtml\\'" . html-mode))
