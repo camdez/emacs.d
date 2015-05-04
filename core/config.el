@@ -12,6 +12,7 @@
       require-final-newline t                   ; always terminate last line in file
       view-read-only t                          ; use handy mode instead of just beeping all the time
       vc-follow-symlinks t
+      apropos-do-all t                          ; search all the things
 
       visible-bell t
       x-stretch-cursor t                        ; make the cursor wide over tabs, etc.
