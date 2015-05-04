@@ -113,4 +113,11 @@ regardless of if 'yes' or 'no' are generally preferred."
       (goto-char str-or-com-beg))))
 (ad-activate 'backward-up-list)
 
+(defun camdez/kill-sexp--delete-blank-line (&optional arg)
+  "If killing sexp leaves line blank, delete line too."
+  (when (and (looking-at-p "^$")
+             (not (eobp)))
+    (delete-char 1)))
+(advice-add 'kill-sexp :after #'camdez/kill-sexp--delete-blank-line)
+
 ;;; config.el ends here
