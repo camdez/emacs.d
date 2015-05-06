@@ -36,6 +36,7 @@
     org
     paredit
     projectile
+    rainbow-mode
     rspec-mode
     sass-mode
     scala-mode2
