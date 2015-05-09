@@ -18,6 +18,7 @@
 (defvar camdez/packages
   '(ace-jump-mode
     auto-complete
+    checkbox
     cider
     clojure-mode
     coffee-mode
