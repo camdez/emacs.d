@@ -14,6 +14,7 @@
       vc-follow-symlinks t
       apropos-do-all t                          ; search all the things
 
+      set-mark-command-repeat-pop t             ; after `C-u C-SPC`, keep popping with `C-SPC`
       visible-bell t
       x-stretch-cursor t                        ; make the cursor wide over tabs, etc.
       blink-matching-paren nil                  ; not needed since I'm highlighting the matches
