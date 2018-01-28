@@ -35,6 +35,7 @@
         ("C-c w"     whitespace-mode)
         ("C-c x"     camdez/add-experiment)
         ("C-c z"     toggle-frame-maximized)
+        ("C-x \\"    align-regexp)
         ("C-x 0"     camdez/delete-window)
         ("C-x 1"     camdez/delete-other-windows)
         ("C-x 4 k"   camdez/kill-buffer-other-window)
