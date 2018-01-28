@@ -140,7 +140,7 @@ Marked.app."
   (interactive)
   ;; JEG2 uses this:
   ;;(call-process "open" nil nil nil "-a" "Marked.app" (buffer-file-name))
-  (shell-command (format "open -a Marked.app %s"
+  (shell-command (format "open -a \"Marked 2.app\" %s"
                          (shell-quote-argument (buffer-file-name)))))
 
 (add-hook 'markdown-mode-hook 'camdez/markdown-imenu-configure)
