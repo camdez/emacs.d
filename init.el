@@ -18,11 +18,11 @@
 (defvar camdez/packages
   '(ace-jump-mode
     ag
-    auto-complete
     checkbox
     cider
     clojure-mode
     coffee-mode
+    company
     diminish
     feature-mode
     flycheck
@@ -79,6 +79,9 @@
 (load camdez/experiments-file 'no-error)
 
 ;;; NON-MAJOR-MODE LIBRARIES
+
+(when (require 'company nil t)
+  (company-mode-on))
 
 (when (require 'ido-vertical-mode nil t)
   (ido-vertical-mode))
