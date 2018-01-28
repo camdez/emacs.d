@@ -17,6 +17,7 @@
 
 (defvar camdez/packages
   '(ace-jump-mode
+    ag
     auto-complete
     checkbox
     cider
@@ -32,6 +33,7 @@
     highlight-symbol
     ido-vertical-mode
     keyfreq           ; command use statistics
+    magit
     markdown-mode
     monokai-theme
     org
@@ -40,7 +42,6 @@
     rainbow-mode
     rspec-mode
     sass-mode
-    scala-mode2
     unfill
     yaml-mode
     yasnippet))
