@@ -5,7 +5,6 @@
       user-mail-address "camdez@gmail.com"
       user-copyright-holder "Cameron Desautels" ; my creation
 
-      kill-ring-max 20                          ; don't save too many kills
       history-length 250
 
       inhibit-startup-message t
