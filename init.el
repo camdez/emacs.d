@@ -26,7 +26,6 @@
     diminish
     feature-mode
     flycheck
-    guide-key
     haml-mode
     helm
     helm-projectile
@@ -43,6 +42,7 @@
     rspec-mode
     sass-mode
     unfill
+    which-key
     yaml-mode
     yasnippet))
 
@@ -55,7 +55,7 @@
 (require 'cl-lib)
 
 (defun camdez/install-packages ()
-  "Ensure the packages I use are installed. See `camdez/packages'."
+  "Ensure the packages I use are installed.  See `camdez/packages'."
   (interactive)
   (let ((missing-packages (cl-remove-if #'package-installed-p camdez/packages)))
     (when missing-packages
@@ -89,22 +89,6 @@
 ;; ace-jump - get there faster
 (require 'ace-jump-mode nil t)
 
-;; guide-key - handy visual reference for keychains
-(when (require 'guide-key nil t)
-  (setq guide-key/guide-key-sequence '("C-c !"
-                                       "C-c p"
-                                       "C-h"
-                                       "C-x 4"
-                                       "C-x 5"
-                                       "C-x C-k"
-                                       "C-x RET"
-                                       "C-x c"
-                                       "C-x r"
-                                       "C-x v"
-                                       "M-s h"
-                                       "M-s"))
-  (guide-key-mode 1))
-
 ;; keyfreq - command use statistics (`keyfreq-show' to see stats)
 (when (require 'keyfreq nil t)
   (keyfreq-mode 1)
@@ -131,9 +115,9 @@
 (when (require 'diminish nil t)
   (eval-after-load 'auto-complete       '(diminish 'auto-complete-mode))
   (eval-after-load 'eldoc               '(diminish 'eldoc-mode))
-  (eval-after-load 'guide-key           '(diminish 'guide-key-mode))
   (eval-after-load 'projectile          '(diminish 'projectile-mode))
   (eval-after-load 'volatile-highlights '(diminish 'volatile-highlights-mode))
+  (eval-after-load 'which-key           '(diminish 'which-key-mode))
   (eval-after-load 'yasnippet           '(diminish 'yas-minor-mode)))
 
 ;; yasnippet - templated snippet insertion
