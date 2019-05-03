@@ -73,6 +73,7 @@
 (setq inferior-lisp-program "sbcl --noinform --no-linedit")
 
 ;; emacs-lisp-mode
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'imenu-add-menubar-index)
 
