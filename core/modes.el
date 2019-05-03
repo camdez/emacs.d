@@ -195,10 +195,18 @@ Marked.app."
   "Major mode for editing Clojure.")
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 
+(setq cljr-clojure-test-declaration "[clojure.test :refer :all]")
+
 (add-hook 'clojure-mode-hook 'imenu-add-menubar-index)
 (add-hook 'clojure-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'bug-reference-prog-mode)
 (add-hook 'cider-mode-hook 'eldoc-mode)
 
+(defun camdez/clojure-mode-hook ()
+  (clj-refactor-mode 1)
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(add-hook 'clojure-mode-hook 'camdez/clojure-mode-hook)
 
 (eval-after-load 'clojure-mode
   '(define-clojure-indent

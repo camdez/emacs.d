@@ -20,6 +20,7 @@
     ag
     checkbox
     cider
+    clj-refactor
     clojure-mode
     coffee-mode
     company
