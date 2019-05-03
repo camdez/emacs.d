@@ -126,7 +126,7 @@ syntax."
 (add-to-list 'auto-mode-alist '("\\.\\(mdown\\|markdown\\|markdn\\|md\\)\\'" . markdown-mode))
 
 (eval-after-load 'markdown-mode
-  '(define-key markdown-mode-map (kbd "<tab>") 'yas/expand))
+  '(define-key markdown-mode-map (kbd "<tab>") 'yas-expand))
 
 (defvar camdez/markdown-imenu-generic-expression
   '((nil "^#\\s-+\\(.+\\)$" 1)))
