@@ -1,12 +1,6 @@
 ;;; theme.el --- make things look pretty
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
-;; Set font for Cocoa Emacs
-(when (featurep 'ns)
-  (setq ns-input-font "Inconsolata")
-  (setq ns-input-fontsize 14)
-  (ns-respond-to-change-font))
-
 (set-foreground-color "white")
 (set-background-color "black")
 
