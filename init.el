@@ -90,6 +90,10 @@
 ;; ace-jump - get there faster
 (require 'ace-jump-mode nil t)
 
+;; which-key - display available keybindings
+(when (require 'which-key nil t)
+  (which-key-mode 1))
+
 ;; keyfreq - command use statistics (`keyfreq-show' to see stats)
 (when (require 'keyfreq nil t)
   (keyfreq-mode 1)
