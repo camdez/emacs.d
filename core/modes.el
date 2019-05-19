@@ -1,6 +1,13 @@
 ;;; modes.el --- load modes and tweaks for various file types
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
+;; prog-mode
+(defun camdez/prog-mode-hook ()
+  (interactive)
+  (setq show-trailing-whitespace t))
+
+(add-hook 'prog-mode-hook 'camdez/prog-mode-hook)
+
 ;; dired mode (+ dired-x)
 (add-hook 'dired-load-hook
           (lambda ()
@@ -17,13 +24,6 @@
   '(progn
      (define-key help-mode-map "l" 'help-go-back) ; consistent with info-mode
      (define-key help-mode-map "i" 'camdez/Info-goto-from-command-help)))
-
-;; info-mode
-(defun camdez/Info-mode-hook ()
-  (interactive)
-  (setq show-trailing-whitespace nil))
-
-(add-hook 'Info-mode-hook 'camdez/Info-mode-hook)
 
 ;; text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)

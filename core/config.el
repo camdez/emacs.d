@@ -30,7 +30,6 @@
 (setq-default major-mode 'text-mode             ; default mode is text mode
               tab-width 2                       ; display tabs as being two spaces wide
               indent-tabs-mode nil              ; use spaces (not tabs) for indenting
-              show-trailing-whitespace t
               indicate-empty-lines t
               truncate-lines t)                 ; don't visually wrap long lines
 
