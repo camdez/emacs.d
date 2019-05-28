@@ -98,20 +98,6 @@ regardless of if 'yes' or 'no' are generally preferred."
   (ad-set-arg 0 t))
 (ad-activate 'quit-window)
 
-;; Make `backward-up-list' still succeed when point is inside a
-;; string.
-;;
-;; Lots of thanks to:
-;; http://stackoverflow.com/questions/18921320/emacs-bulletproof-up-list
-(defadvice backward-up-list (before dont-choke-on-strings
-                                    (&optional arg))
-  (let* ((s (syntax-ppss))
-         (in-list (nth 3 s))
-         (str-or-com-beg (nth 8 s)))
-    (when in-list
-      (goto-char str-or-com-beg))))
-(ad-activate 'backward-up-list)
-
 (defun camdez/kill-sexp--delete-blank-line (&optional arg)
   "If killing sexp leaves line blank, delete line too."
   (when (and (looking-at-p "^$")
