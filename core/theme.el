@@ -1,6 +1,7 @@
 ;;; theme.el --- make things look pretty
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
+;;; Set up the basics
 (set-foreground-color "white")
 (set-background-color "black")
 
@@ -8,12 +9,14 @@
 (setq frame-inherited-parameters
       '(font fontsize background-color foreground-color))
 
+;;; Load the main theme
+(load-theme 'monokai t)
+
+;;; Tweak additional faces
 (eval-after-load 'paren
   '(progn
      (set-face-foreground 'show-paren-match "black")
      (set-face-background 'show-paren-match "red")))
-
-(load-theme 'monokai t)
 
 (set-face-background 'trailing-whitespace "gray19")
 
