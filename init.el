@@ -38,6 +38,7 @@
     monokai-theme
     org
     paredit
+    page-break-lines
     projectile
     rainbow-mode
     rspec-mode
@@ -107,6 +108,12 @@
   (global-set-key (kbd "M-o") 'helm-occur)
   (global-set-key (kbd "C-x r l") 'helm-bookmarks))
 
+;; page-break-lines - display page separator characters (^L) as lines
+(when (require 'page-break-lines nil t)
+  (setq page-break-lines-max-width 80)
+  (add-to-list 'page-break-lines-modes 'prog-mode)
+  (global-page-break-lines-mode +1))
+
 ;; projectile - project interaction
 (when (require 'projectile nil t)
   (projectile-global-mode)
@@ -120,6 +127,7 @@
 (when (require 'diminish nil t)
   (eval-after-load 'auto-complete       '(diminish 'auto-complete-mode))
   (eval-after-load 'eldoc               '(diminish 'eldoc-mode))
+  (eval-after-load 'page-break-lines    '(diminish 'page-break-lines-mode))
   (eval-after-load 'projectile          '(diminish 'projectile-mode))
   (eval-after-load 'volatile-highlights '(diminish 'volatile-highlights-mode))
   (eval-after-load 'which-key           '(diminish 'which-key-mode))
