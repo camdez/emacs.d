@@ -98,6 +98,25 @@ and mark in place."
       (newline)
       (yank))))
 
+(defvar camdez/project-notes-file
+  "notes.org"
+  "Name or relative path from project root to notes file.")
+
+;; TODO: create parent directories as needed. So I can store my notes
+;; in `camdez-local/notes.org' if I want to.  Also test out overriding
+;; this on a per-project basis.
+;;
+;; Maybe I should have a template that gets inserted / expanded for
+;; the new notes file and / or a capture template that is local to the
+;; project.
+(defun camdez/find-project-notes ()
+  "Open notes file for project."
+  (interactive)
+  (let ((project-dir (projectile-project-root)))
+    (if project-dir
+        (find-file (expand-file-name camdez/project-notes-file project-dir))
+      (error "Not in a project!"))))
+
 (defun camdez/Info-goto-from-command-help ()
   "Go to the Info node in the Emacs manual for the command
 currently being viewed in `help-mode'."

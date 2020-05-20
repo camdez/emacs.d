@@ -32,6 +32,7 @@
         ("C-c g"           gist-list)
         ("C-c h"           global-hl-line-mode)
         ("C-c m"           magit-status)
+        ("C-c n"           camdez/find-project-notes)
         ("C-c p"           projectile-command-map)
         ("C-c s"           camdez/switch-to-scratch)
         ("C-c t"           toggle-truncate-lines)
