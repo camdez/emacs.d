@@ -16,6 +16,19 @@
 (defalias 'elisp-mode 'emacs-lisp-mode)
 (defalias 'cleanup-whitespace 'whitespace-cleanup)
 
+(defun camdez/capitalize-word (&optional arg)
+  "Like `capitalize-word', but with universal argument,
+capitalize first letter and leave rest of word unchanged.
+
+For those frustrating cases like changing \"fooBarBaz\" ->
+\"FooBarBaz\"."
+  (interactive "P")
+  (if (consp arg)
+      (let ((char (capitalize (char-after))))
+        (delete-char 1)
+        (insert char))
+    (capitalize-word (prefix-numeric-value arg))))
+
 ;; Should make this uncomment if the line is already commented. Or at
 ;; least do so when an argument is given.
 (defun comment-line ()

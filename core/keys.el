@@ -45,6 +45,7 @@
         ("C-x n h"   camdez/narrow-to-paragraph)
         ("M-Z"       zap-up-to-char)
         ("M-`"       other-frame)
+        ("M-c"       camdez/capitalize-word)
         ("M-g f"     find-function)
         ("M-o"       occur)))
 
