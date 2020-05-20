@@ -4,7 +4,8 @@
 ;; prog-mode
 (defun camdez/prog-mode-hook ()
   (interactive)
-  (setq show-trailing-whitespace t))
+  (setq show-trailing-whitespace t)
+  (highlight-symbol-mode 1))
 
 (add-hook 'prog-mode-hook 'camdez/prog-mode-hook)
 
