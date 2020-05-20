@@ -17,8 +17,10 @@
         ("C-<left>"  previous-buffer)
         ("C-<right>" next-buffer)
         ("C-<up>"    next-buffer-same-file-basename)
+        ("C-M-<backspace>" backward-kill-sexp)
         ("C-c #"     comment-region)
         ("C-c ."     camdez/touch)
+        ("C-c H"     highlight-symbol-mode) ; also want `highlight-symbol-nav-mode`...
         ("C-c P"     camdez/toggle-show-paren-style)
         ("C-c SPC"   ace-jump-mode)
         ("C-c TAB"   camdez/toggle-tab-width)
