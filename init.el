@@ -27,6 +27,7 @@
     diminish
     feature-mode
     flycheck
+    flycheck-color-mode-line
     haml-mode
     helm
     helm-projectile
