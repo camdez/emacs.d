@@ -196,7 +196,8 @@ Marked.app."
   "Major mode for editing Clojure.")
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 
-(setq cljr-clojure-test-declaration "[clojure.test :refer :all]")
+(setq cljr-clojure-test-declaration "[clojure.test :refer :all]"
+      clojure-toplevel-inside-comment-form t)
 
 (add-hook 'clojure-mode-hook 'imenu-add-menubar-index)
 (add-hook 'clojure-mode-hook 'paredit-mode)
