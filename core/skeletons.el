@@ -74,7 +74,7 @@ This only makes sense for empty buffers."
 (require 'autoinsert)
 
 ;; Autoinsert text into empty files where defined
-(add-hook 'find-file-hooks 'auto-insert)
+(add-hook 'find-file-hook 'auto-insert)
 
 (eval-after-load 'autoinsert
   '(progn

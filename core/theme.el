@@ -14,6 +14,8 @@
 (load-theme 'monokai t)
 
 ;;; Tweak additional faces
+
+(set-face-foreground 'fringe "grey30")
 (set-face-background 'region "gray40")
 (set-face-background 'trailing-whitespace "gray19")
 

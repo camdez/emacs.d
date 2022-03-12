@@ -1,6 +1,13 @@
 ;;; init.el - primary configuration file for Emacs (like a .emacs)
 ;;; Author: Cameron Desautels
 
+(setq gc-cons-threshold 64000000)
+
+;; `benchmark-init/show-durations-tabulated'
+(require 'benchmark-init nil t)
+
+;;;
+
 (defvar camdez/emacs-dir
   (file-name-directory (or load-file-name
                            buffer-file-name))
@@ -103,6 +110,7 @@
 
 ;; Helm - incremental completion and selection narrowing framework
 (when (require 'helm-config nil t)
+  (require 'helm-mode) ; getting errors without this
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-x b") 'helm-mini)
   (global-set-key (kbd "M-g i") 'helm-imenu)
@@ -117,7 +125,7 @@
 
 ;; projectile - project interaction
 (when (require 'projectile nil t)
-  (projectile-global-mode)
+  (projectile-mode)
   ;; Temporary change since I've dropped back to the stable version of
   ;; projectile-mode which doesn't have this binding yet:
   (define-key projectile-command-map (kbd "f") 'helm-projectile)
@@ -138,7 +146,7 @@
 (when (require 'yasnippet nil t)
   (setq yas-snippet-dirs (list (expand-file-name "snippets" camdez/emacs-dir))
         yas-verbosity 2)                    ; don't show messages at init time
-  (yas/global-mode 1))
+  (yas-global-mode 1))
 
 ;; midnight - clean up stale buffers (see `clean-buffer-list')
 (when (require 'midnight nil t)

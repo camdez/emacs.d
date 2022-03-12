@@ -174,9 +174,9 @@ With a prefix, makes a new header at the parent level."
   (end-of-line))
 
 (add-hook 'outline-mode-hook
-          '(lambda ()
-             (define-key outline-mode-map "\C-j"
-               'outline-newline-and-indent)))
+          #'(lambda ()
+              (define-key outline-mode-map "\C-j"
+                'outline-newline-and-indent)))
 
 (defun reread-config-file ()
   "Reread .emacs file."

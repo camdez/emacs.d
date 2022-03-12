@@ -37,7 +37,7 @@
 (when (featurep 'aquamacs)
   (setq mac-command-modifier 'meta
         mac-allow-anti-aliasing t
-        x-select-enable-clipboard t))
+        select-enable-clipboard t))
 
 ;; Only under Cocoa Emacs
 (when (featurep 'ns)
