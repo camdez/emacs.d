@@ -96,7 +96,19 @@
 ;;; NON-MAJOR-MODE LIBRARIES
 
 (when (require 'company nil t)
-  (company-mode-on))
+  ;; TODO: take a look at `helm-company` and see if that's
+  ;; interesting.
+  (setq company-tooltip-align-annotations t
+        company-require-match nil)
+  ;; Not needed.  Pops up after a brief delay.  If we're going to have
+  ;; this, it needs to be disabled in the minibuffer where it fucks
+  ;; shit up.
+  ;;(global-set-key (kbd "<tab>") 'company-indent-or-complete-common)
+  ;;(global-set-key (kbd "TAB") 'company-indent-or-complete-common) ; terminal
+  (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
+  (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle) ; terminal
+  (define-key company-active-map (kbd "<backtab>") 'company-select-previous)
+  (global-company-mode))
 
 (when (require 'ido-vertical-mode nil t)
   (ido-vertical-mode))
