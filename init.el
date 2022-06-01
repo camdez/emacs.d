@@ -29,21 +29,21 @@
     cider
     clj-refactor
     clojure-mode
-    coffee-mode
     company
     diminish
     feature-mode
     flycheck
     flycheck-color-mode-line
-    haml-mode
     helm
     helm-projectile
     highlight-symbol
+    htmlize           ; highlight code in org exports
     ido-vertical-mode
     keyfreq           ; command use statistics
     magit
     markdown-mode
     monokai-theme
+    notmuch
     org
     paredit
     page-break-lines
@@ -52,6 +52,7 @@
     rspec-mode
     sass-mode
     unfill
+    use-package
     which-key
     yaml-mode
     yasnippet))
@@ -74,6 +75,9 @@
       (mapc #'package-install missing-packages))))
 
 (camdez/install-packages)
+
+(eval-when-compile
+  (require 'use-package))
 
 ;;; CORE
 
@@ -155,6 +159,18 @@
 
 ;; imenu
 (setq imenu-auto-rescan t)
+
+;; unicode-fonts (emoji!)
+(when (require 'unicode-fonts)
+  (unicode-fonts-setup))
+
+;; zoom - automatically balance window sizes
+(use-package zoom
+  :diminish
+  :config
+  (zoom-mode 1)
+  :custom
+  (zoom-size '(0.618 . 0.618)))
 
 ;;; EMACS SERVER
 
