@@ -68,7 +68,7 @@
       (scroll-bar-mode -1))      ; put the scroll bar on the right
   (menu-bar-mode -1))            ; hide the menu bar
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace) ; maybe only in `prog-mode`?
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Enable disabled operations
