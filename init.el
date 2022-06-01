@@ -90,7 +90,8 @@
 
 ;;; HACKS + EXPERIMENTS
 
-(load camdez/experiments-file 'no-error)
+;; Load experiments, preferring byte-compiled version
+(load (expand-file-name "experimental" camdez/core-dir) 'no-error)
 
 ;;; NON-MAJOR-MODE LIBRARIES
 
