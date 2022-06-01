@@ -58,9 +58,9 @@
     yasnippet))
 
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/")
-             t)
+(setq package-archives
+      '(("gnu"            . "http://elpa.gnu.org/packages/")
+        ("melpa-unstable" . "http://melpa.org/packages/")))
 (package-initialize)
 
 (require 'cl-lib)
