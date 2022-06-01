@@ -20,6 +20,7 @@
       frame-title-format "Emacs: %b %+%+ %f"
       echo-keystrokes 0.02
       isearch-allow-scroll t                    ; scrolling shouldn't cancel search
+      isearch-lazy-count t                      ; display count of search results in minibuffer
       scroll-preserve-screen-position t         ; when scrolling, keep point in the same position on screen
 
       version-control t                         ; keep numbered back-ups
