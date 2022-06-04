@@ -41,6 +41,7 @@
     ido-vertical-mode
     keyfreq           ; command use statistics
     magit
+    marginalia
     markdown-mode
     monokai-theme
     notmuch
@@ -133,6 +134,12 @@
   (global-set-key (kbd "M-g i") 'helm-imenu)
   (global-set-key (kbd "M-o") 'helm-occur)
   (global-set-key (kbd "C-x r l") 'helm-bookmarks))
+
+(use-package marginalia
+  :bind (:map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+  :init
+  (marginalia-mode))
 
 ;; page-break-lines - display page separator characters (^L) as lines
 (when (require 'page-break-lines nil t)
