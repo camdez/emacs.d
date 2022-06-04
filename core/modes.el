@@ -248,7 +248,15 @@ Marked.app."
 ;; org-mode
 (add-hook 'org-load-hook
           '(lambda ()
+             (require 'org-expiry "~/.emacs.d/lib/org-expiry")
+             ;; (org-expiry-insinuate)
+             (add-to-list 'org-modules 'org-depend)
+             (add-to-list 'org-modules 'org-expiry)
              (add-to-list 'org-modules 'org-habit)))
+
+(add-hook 'org-capture-before-finalize-hook
+          '(lambda ()
+             (org-expiry-insert-created)))
 
 (defun camdez/org-agenda-mode-hook ()
   (interactive)
