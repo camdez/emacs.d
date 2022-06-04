@@ -53,10 +53,12 @@
     rspec-mode
     sass-mode
     unfill
+    unicode-fonts
     use-package
     which-key
     yaml-mode
-    yasnippet))
+    yasnippet
+    zoom))
 
 (require 'package)
 (setq package-archives
