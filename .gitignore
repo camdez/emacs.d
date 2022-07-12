@@ -5,6 +5,7 @@
 /.emacs.desktop
 /.emacs.desktop.lock
 /.mc-lists.el
+/abbrev_defs
 /ac-comphist.dat
 /bookmarks
 /core/experimental.el
@@ -17,6 +18,7 @@
 /ido.last
 /image-dired/
 /logview-cache.extmap
+/org-roam.db
 /projectile-bookmarks.eld
 /projectile.cache
 /recentf
