@@ -54,19 +54,15 @@
 (blink-cursor-mode       -1)     ; make the bloody cursor stop blinking
 (transient-mark-mode     -1)     ; no way, dude
 (cua-mode                -1)     ; Aquamacs turns this crap on (messes with transient-mark-mode too)
-(global-font-lock-mode   +1)     ; use syntax highlighting
 (column-number-mode      +1)
 (show-paren-mode         +1)     ; highlight matching parentheses
-(global-auto-revert-mode +1)     ; automatically reload files which are externally modified
-(auto-image-file-mode    +1)     ; open images as images
-(auto-compression-mode   +1)     ; automagically explore compressed files when visited
 (ido-mode                +1)     ; use awesome buffer switching mode
-(winner-mode             +1)
+(winner-mode             +1)     ; remember window configurations
 
 (if window-system
     (progn
       (tool-bar-mode -1)         ; hide the tool bar
-      (scroll-bar-mode -1))      ; put the scroll bar on the right
+      (scroll-bar-mode -1))      ; hide the scroll bar
   (menu-bar-mode -1))            ; hide the menu bar
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ; maybe only in `prog-mode`?
