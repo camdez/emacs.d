@@ -329,7 +329,7 @@ element if VAL is not found."
   (interactive)
   (find-file camdez/experiments-file)
   (goto-char (point-min))
-  (when (re-search-forward ";;; Code:" nil 'no-error)
+  (when (re-search-forward ";;; Experiments:" nil 'no-error)
     (insert "\n\n"))
   (camdez/lisp-insert-hr)
   (insert ";; ")
