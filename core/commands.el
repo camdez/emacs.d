@@ -340,9 +340,21 @@ element if VAL is not found."
   (interactive)
   (switch-to-buffer (other-buffer)))
 
-(defun camdez/switch-to-scratch ()
-  (interactive)
-  (switch-to-buffer "*scratch*"))
+;; One quirk (not sure if I care) is that we don't get the scratch
+;; buffer message inserted into the buffer if it's newly-created.
+;; Also we're not setting the mode in the same way.
+;;
+;; Scratch gets its mode set in C code, but the basic algorithm is to
+;; default to using `initial-major-mode' and fall back to the default
+;; value of `major-mode' if that isn't set.
+(defun camdez/switch-to-scratch (&optional p)
+  (interactive "P")
+  (switch-to-buffer
+   (if p
+       (with-current-buffer (generate-new-buffer "*scratch*")
+         (funcall initial-major-mode)
+         (current-buffer))
+     "*scratch*")))
 
 ;;; STUFF MOSTLY BORROWED FROM OTHERS
 
