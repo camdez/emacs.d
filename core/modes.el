@@ -148,10 +148,10 @@ Marked.app."
 (add-hook 'markdown-mode-hook 'camdez/markdown-imenu-configure)
 (add-hook 'markdown-mode-hook 'imenu-add-menubar-index)
 
-;; TODO: Test for existence of the app file before taking over
-;; binding.
 (eval-after-load 'markdown-mode
-  '(define-key markdown-mode-map (kbd "C-c C-c p") 'camdez/marked-open-current-file)) ; shadows `markdown-preview'
+  '(when (file-exists-p "/Applications/Marked 2.app")
+     ;; Shadows `markdown-preview'
+     (define-key markdown-mode-map (kbd "C-c C-c p") 'camdez/marked-open-current-file)))
 
 ;; haml-mode
 (autoload 'haml-mode "haml-mode"
