@@ -86,6 +86,7 @@
 
 (load-library "theme")                  ; make things look pretty
 (load-library "modes")                  ; modes for editing various types of files
+(load-library "org-settings")           ; org-mode configuration
 (load-library "commands")               ; various utility commands
 (load-library "skeletons")              ; skeletons (templates) and autoinsert settings
 (load-library "config")                 ; general settings
