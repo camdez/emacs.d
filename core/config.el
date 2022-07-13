@@ -28,6 +28,19 @@
       kept-new-versions 6
       kept-old-versions 2)
 
+(setq whitespace-style
+      '(face
+        tabs
+        spaces
+        trailing
+        lines-tail                              ; instead of 'lines'
+        space-before-tab
+        indentation
+        empty
+        space-after-tab
+        space-mark
+        tab-mark))
+
 (setq-default major-mode 'text-mode             ; default mode is text mode
               tab-width 2                       ; display tabs as being two spaces wide
               indent-tabs-mode nil              ; use spaces (not tabs) for indenting
