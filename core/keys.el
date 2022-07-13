@@ -60,6 +60,17 @@
 
 (windmove-default-keybindings)
 
+;; Actually quit, don't bury buffer.
+(define-key Info-mode-map (kbd "q")
+  #'(lambda ()
+      (interactive)
+      (quit-window t)))
+
+(define-key special-mode-map (kbd "q")
+  #'(lambda ()
+      (interactive)
+      (quit-window t)))
+
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
 (set-register ?k (cons 'file "~/.emacs.d/core/keys.el"))
 (set-register ?x (cons 'file camdez/experiments-file))
@@ -68,6 +79,7 @@
 (set-register ?p (cons 'file "~/org/posts.org"))
 
 ;; How cool would it be if global-set-key could add a permanent
-;; binding?
+;; binding? (Like, just run it have it be persisted for future
+;; sessions).
 
 ;;; keys.el ends here

@@ -103,11 +103,9 @@ regardless of if 'yes' or 'no' are generally preferred."
     ad-do-it))
 (ad-activate 'kill-some-buffers)
 
-(defadvice quit-window (before quit-window-always-kill)
-  "When running `quit-window', always kill the buffer."
-  (ad-set-arg 0 t))
-(ad-activate 'quit-window)
-
+;; This can be problematic when `kill-sexp' called from elisp.
+;; Probably better to change the binding to a different function than
+;; to do this.
 (defun camdez/kill-sexp--delete-blank-line (&optional arg)
   "If killing sexp leaves line blank, delete line too."
   (when (and (looking-at-p "^$")
