@@ -19,6 +19,31 @@
 (set-face-background 'region "gray40")
 (set-face-background 'trailing-whitespace "gray19")
 
+(when (x-list-fonts "Fira Code")
+  (set-face-attribute 'font-lock-comment-face nil
+                      :font "Fira Code"
+                      :slant 'italic))
+
+(eval-after-load 'org-faces
+  '(when (x-list-fonts "Helvetica")
+     (set-face-attribute 'org-document-title nil
+                         :font "Helvetica"
+                         :height 2.5
+                         :weight 'bold)))
+
+;; Make active window more obvious.
+;;
+;; Still deciding if I like this box...
+(let ((box t))
+  (set-face-attribute 'mode-line nil
+                      :background "#49483E"
+                      :foreground "white"
+                      :box (when box "grey35"))
+
+  (set-face-attribute 'mode-line-inactive nil
+                      :background "gray10"
+                      :box (when box "#75715E")))
+
 (eval-after-load 'eldoc
   '(set-face-underline 'eldoc-highlight-function-argument "red"))
 
