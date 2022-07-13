@@ -219,6 +219,11 @@ Marked.app."
      (provided 0)
      (component/system-map 'defun)))
 
+(eval-after-load 'cljr-slash
+  '(dolist (mapping '(("d"   . "datomic.api")
+                      ("sc"  . "schema.core")))
+     (add-to-list 'cljr-magic-require-namespaces mapping t)))
+
 ;; html-mode
 (add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.xhtml\\'" . html-mode))
