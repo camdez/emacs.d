@@ -95,7 +95,7 @@
   (add-to-list 'auto-mode-alist (cons (concat       (regexp-opt mode-files) "\\'") 'ruby-mode))
   (add-to-list 'auto-mode-alist (cons (concat "\\." (regexp-opt mode-extns) "\\'") 'ruby-mode)))
 
-;; TODO consider precisely what these should be and then submit a
+;; TODO: consider precisely what these should be and then submit a
 ;; patch upstream.
 (defun camdez/ruby-fix-paragraph-delimiters ()
   "Change the `ruby-mode' paragraph delimiters so paragraph
@@ -148,7 +148,8 @@ Marked.app."
 (add-hook 'markdown-mode-hook 'camdez/markdown-imenu-configure)
 (add-hook 'markdown-mode-hook 'imenu-add-menubar-index)
 
-;; TODO Test for existence of the app file before taking over binding.
+;; TODO: Test for existence of the app file before taking over
+;; binding.
 (eval-after-load 'markdown-mode
   '(define-key markdown-mode-map (kbd "C-c C-c p") 'camdez/marked-open-current-file)) ; shadows `markdown-preview'
 

@@ -1,7 +1,5 @@
 ;;; commands.el --- my utility commands
-
-;; Copyright (C) 2010  Cameron Desautels
-;; Author: Cameron Desautels <camdez@gmail.com>, others as noted
+;;; Author: Cameron Desautels <camdez@gmail.com>, others as noted
 
 ;; Escape all double-quotes (") in the region
 (fset 'escape-region-double-quotes
