@@ -30,6 +30,7 @@
     clj-refactor
     clojure-mode
     company
+    deft
     diminish
     feature-mode
     flycheck
