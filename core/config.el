@@ -103,12 +103,10 @@ regardless of if 'yes' or 'no' are generally preferred."
     ad-do-it))
 (ad-activate 'kill-some-buffers)
 
-;; This can be problematic when `kill-sexp' called from elisp.
-;; Probably better to change the binding to a different function than
-;; to do this.
-(defun camdez/kill-sexp--delete-blank-line (&optional arg)
+(defun camdez/kill-sexp--delete-blank-line (&optional arg interactive)
   "If killing sexp leaves line blank, delete line too."
-  (when (and (looking-at-p "^$")
+  (when (and interactive
+             (looking-at-p "^$")
              (not (eobp)))
     (delete-char 1)))
 (advice-add 'kill-sexp :after #'camdez/kill-sexp--delete-blank-line)
