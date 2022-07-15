@@ -84,8 +84,6 @@
 
 (define-key isearch-mode-map (kbd "C-e") 'camdez/isearch-yank-identifier)
 
-(windmove-default-keybindings)
-
 ;; Actually quit, don't bury buffer.
 (define-key Info-mode-map (kbd "q")
   #'(lambda ()
