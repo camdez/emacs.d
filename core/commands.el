@@ -184,7 +184,9 @@ With a prefix, makes a new header at the parent level."
 (defun camdez/show-buffer-file-name ()
   "Show the full path to the current file in the minibuffer."
   (interactive)
-  (let ((file-name (buffer-file-name)))
+  (let ((file-name (or (buffer-file-name)
+                       (and (boundp 'dired-directory)
+                            dired-directory))))
     (if file-name
         (progn
           (message file-name)
