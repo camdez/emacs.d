@@ -222,6 +222,7 @@ Marked.app."
 
 (eval-after-load 'cljr-slash
   '(dolist (mapping '(("d"   . "datomic.api")
+                      ("edn" . "clojure.edn")
                       ("sc"  . "schema.core")))
      (add-to-list 'cljr-magic-require-namespaces mapping t)))
 
