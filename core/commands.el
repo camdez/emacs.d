@@ -181,6 +181,29 @@ With a prefix, makes a new header at the parent level."
   (interactive)
   (load-file user-init-file))
 
+;; TODO: This command is nice but it bugs me that you don't have access to
+;; the existing file name during the renaming process.  Should offer
+;; the current file name as future history.
+;;
+;; Also it asks for the filename before checking if the buffer is
+;; visiting a file.  Not cool.  It's a function of how `interactive'
+;; works here.
+;;
+;; From Steve Yegge
+(defun camdez/rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn (rename-file name new-name 1)
+               (rename-buffer new-name)
+               (set-visited-file-name new-name)
+               (set-buffer-modified-p nil))))))
+
 (defun camdez/show-buffer-file-name ()
   "Show the full path to the current file in the minibuffer."
   (interactive)
