@@ -96,6 +96,24 @@ and mark in place."
       (newline)
       (yank))))
 
+(defun camdez/cider-eldoc-insert-args ()
+  (interactive)
+  (if-let ((arglists (mapcar
+                      (lambda (arglist)
+                        (string-join arglist " "))
+                      (thread-first
+                        (cider-eldoc-info-at-sexp-beginning)
+                        (lax-plist-get "eldoc-info")
+                        (lax-plist-get "arglists")))))
+      (let ((arg-str (if (length= arglists 1)
+                         (first arglists)
+                       (completing-read "Which argument list: " arglists nil t))))
+        (push-mark)
+        (when (not (looking-back "[[:space:]]"))
+          (insert " "))
+        (insert arg-str))
+    (message "Arguments not known")))
+
 (defvar camdez/project-notes-file
   "notes.org"
   "Name or relative path from project root to notes file.")
