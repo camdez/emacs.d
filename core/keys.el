@@ -25,6 +25,8 @@
         ("C-<right>"       next-buffer)
         ("C-<up>"          next-buffer-same-file-basename)
         ("C-M-<backspace>" backward-kill-sexp)
+        ("C-c C-x C-j"     org-clock-goto)
+        ("C-c C-x C-o"     org-clock-out)
         ("C-c #"           comment-region)
         ;; "C-c $"         toggle commenting line?  sexp?  See also "M-'" in experiments
         ("C-c ."           camdez/touch)
