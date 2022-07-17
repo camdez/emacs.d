@@ -36,11 +36,9 @@
         tabs
         spaces
         trailing
-        lines-tail                              ; instead of 'lines'
         space-before-tab
         indentation
         empty
-        space-after-tab
         space-mark
         tab-mark))
 
