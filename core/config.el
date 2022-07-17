@@ -106,6 +106,10 @@ regardless of if 'yes' or 'no' are generally preferred."
     ad-do-it))
 (ad-activate 'kill-some-buffers)
 
+;; This is kind of annoying when killing multiple forms in succession
+;; and then yanking them back.  It removes the newlines.  Maybe we can
+;; notice that case and do things right?  Or kill at least one newline
+;; (rather than deleting).
 (defun camdez/kill-sexp--delete-blank-line (&optional arg interactive)
   "If killing sexp leaves line blank, delete line too."
   (when (and interactive
