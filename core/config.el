@@ -112,4 +112,11 @@ regardless of if 'yes' or 'no' are generally preferred."
     (delete-char 1)))
 (advice-add 'kill-sexp :after #'camdez/kill-sexp--delete-blank-line)
 
+(defun camdez/hide-minor-modes (orig-fn &rest args)
+  "Make it look like we don't have any minor modes."
+  (let ((minor-mode-alist nil)
+        (minor-mode-list nil))
+    (apply orig-fn args)))
+(advice-add 'describe-mode :around #'camdez/hide-minor-modes)
+
 ;;; config.el ends here
