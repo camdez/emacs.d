@@ -11,8 +11,12 @@
 (autoload 'copy-from-above-command "misc"
   "Copy characters from previous nonblank line, starting just above point.")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defalias 'elisp-mode 'emacs-lisp-mode)
 (defalias 'cleanup-whitespace 'whitespace-cleanup)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun camdez/capitalize-word (&optional arg)
   "Like `capitalize-word', but with universal argument,
@@ -133,6 +137,17 @@ and mark in place."
         (find-file (expand-file-name camdez/project-notes-file project-dir))
       (error "Not in a project!"))))
 
+(defun camdez/function-key-bindings (fn)
+  "Return list of key bindings for function symbol `fn'."
+  (with-temp-buffer
+    (where-is fn t)
+    (goto-char (point-min))
+    (thread-first
+     (if (search-forward-regexp " (.*);?$" nil t)
+         (buffer-substring 1 (match-beginning 0))
+       (buffer-string))
+     (split-string ", "))))
+
 (defun camdez/Info-goto-from-command-help ()
   "Go to the Info node in the Emacs manual for the command
 currently being viewed in `help-mode'."
@@ -143,6 +158,17 @@ currently being viewed in `help-mode'."
              (commandp help-symbol))
         (Info-goto-emacs-command-node help-symbol)
       (error "Info is only available for commands"))))
+
+(defun camdez/org-insert-function-reference (fn)
+  "Insert Org-Mode formatted reference to Emacs Lisp function `fn',
+including current key bindings."
+  (interactive (find-function-read))
+  (insert "~" (symbol-name fn) "~ ("
+          (thread-first
+            (mapcar #'(lambda (b) (concat "=" b "="))
+                    (camdez/function-key-bindings fn))
+            (string-join ", "))
+          ")"))
 
 (defun outline-increase-region-depth (region-start region-end &optional depth)
   "Increase the depth of header lines in region by DEPTH.
