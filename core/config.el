@@ -8,25 +8,28 @@
       history-length 250
 
       inhibit-startup-message t
-      require-final-newline t                   ; always terminate last line in file
-      view-read-only t                          ; use handy mode instead of just beeping all the time
+      require-final-newline t                    ; always terminate last line in file
+      view-read-only t                           ; use handy mode instead of just beeping all the time
       vc-follow-symlinks t
-      apropos-do-all t                          ; search all the things
+      apropos-do-all t                           ; search all the things
 
-      set-mark-command-repeat-pop t             ; after `C-u C-SPC`, keep popping with `C-SPC`
+      set-mark-command-repeat-pop t              ; after `C-u C-SPC`, keep popping with `C-SPC`
       visible-bell t
-      x-stretch-cursor t                        ; make the cursor wide over tabs, etc.
-      blink-matching-paren nil                  ; not needed since I'm highlighting the matches
+      x-stretch-cursor t                         ; make the cursor wide over tabs, etc.
+      blink-matching-paren nil                   ; not needed since I'm highlighting the matches
       frame-title-format "Emacs: %b %+%+ %f"
       echo-keystrokes 0.02
-      isearch-allow-scroll t                    ; scrolling shouldn't cancel search
-      isearch-lazy-count t                      ; display count of search results in minibuffer
-      scroll-preserve-screen-position t         ; when scrolling, keep point in the same position on screen
+      isearch-allow-scroll t                     ; scrolling shouldn't cancel search
+      isearch-lazy-count t                       ; display count of search results in minibuffer
+      scroll-preserve-screen-position t          ; when scrolling, keep point in the same position on screen
 
-      version-control t                         ; keep numbered back-ups
+      version-control t                          ; keep numbered back-ups
       delete-old-versions t
       kept-new-versions 6
-      kept-old-versions 2)
+      kept-old-versions 2
+
+      dired-kill-when-opening-new-dired-buffer t ; only one dired buffer when navigating
+      dired-listing-switches "-alh")             ; use human-friendly file sizes
 
 (setq whitespace-style
       '(face
