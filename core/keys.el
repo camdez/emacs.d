@@ -97,11 +97,12 @@
       (interactive)
       (quit-window t)))
 
+;; I tend to use ?a, ?b, ?c when editing, so leave those free.
 (set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
 (set-register ?k (cons 'file "~/.emacs.d/core/keys.el"))
 (set-register ?x (cons 'file camdez/experiments-file))
 (set-register ?s (cons 'file "~/.zshrc"))     ; quickly jump to shell config with C-x r j s
-(set-register ?o (cons 'file "~/org/personal.org"))
-(set-register ?p (cons 'file "~/org/posts.org"))
+(set-register ?o (cons 'file "~/Sync/org/personal.org"))
+(set-register ?p (cons 'file "~/Sync/org/posts.org"))
 
 ;;; keys.el ends here
