@@ -31,7 +31,7 @@
                          :height 2.5
                          :weight 'bold)))
 
-'(eval-after-load 'org-faces
+(eval-after-load 'org-faces
   '(set-face-attribute 'org-clock-overlay nil
                        :background 'unspecified
                        :foreground "#E6DB74"
