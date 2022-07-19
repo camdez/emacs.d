@@ -57,19 +57,36 @@ This only makes sense for empty buffers."
   "# Date:   " (insert-date-and-time) \n
   \n \n)
 
+;; TODO: Ask about license, copyright holder
 (define-skeleton markdown-readme-skeleton
   "Inserts a README.md template."
-  nil
-  "# Intro" \n \n
-  "TODO" \n \n
-  "# Basic Usage" \n \n
-  "TODO" \n \n
-  "# Installation" \n \n
-  "TODO" \n \n
-  "# Contributing" \n \n
-  "TODO" \n \n
-  "# License" \n \n
-  "TODO" \n \n)
+  "One-line description: "
+  "# " (file-name-nondirectory
+        (directory-file-name
+         (file-name-directory
+          buffer-file-name)))
+  \n \n
+  str | "*TODO: Write one-line description*"
+  \n \n
+  "## Introduction" \n \n
+  "*TODO: Write project introduction*" \n \n
+  "## Basic Usage" \n \n
+  "*TODO: Describe basic usage*" \n \n
+  "## Status" \n \n
+  "*TODO: How mature is the project?*" \n \n
+  "## Installation" \n \n
+  "*TODO: How does a user install the project?*" \n \n
+  "## Documentation" \n \n
+  "*TODO: Is there more documentation somewhere?*" \n \n
+  "## Testing" \n \n
+  "*TODO: How is the project tested?*" \n \n
+  "## Contributing" \n \n
+  "*TODO: How can someone else contribute?*" \n \n
+  "## License" \n \n
+  "Copyright © " user-copyright-holder ", " `(format-time-string "%Y")
+  \n \n
+  "All rights reserved."
+  \n \n)
 
 (require 'autoinsert)
 
@@ -78,6 +95,7 @@ This only makes sense for empty buffers."
 
 (eval-after-load 'autoinsert
   '(progn
+     (add-to-list 'auto-insert-alist '("README\\.md\\'" . markdown-readme-skeleton))
      (add-to-list 'auto-insert-alist '("\\.blog\\'" . blog-entry-skeleton))
      (add-to-list 'auto-insert-alist '("\\.dot\\'" . graphviz-dot-skeleton))
      (add-to-list 'auto-insert-alist '(("\\.\\([Hh]\\|hh\\|hpp\\)\\'" . "C / C++ header") . c-c++-header-skeleton))
