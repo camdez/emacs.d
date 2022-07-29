@@ -120,11 +120,13 @@
       org-capture-templates '(("h" "Habit" entry (file+headline "~/Sync/org/habits.org" "Active")
                                "* TODO [#C] %?\n  SCHEDULED: <%<%F %a> .+1d>\n  :PROPERTIES:\n  :STYLE:    habit\n  :END:\n\n    %i"
                                :empty-lines 1)
-                              ("j" "Journal Entry" plain (file+datetree+prompt "~/Sync/org/journal.org" "Dailies")
+                              ("j" "Journal Entry" plain (file+olp+datetree "~/Sync/org/journal.org" "Dailies")
                                "%?\n%i\n"
-                               :empty-lines 1)
-                              ("l" "Log Entry" entry (file+datetree+prompt "~/Sync/org/personal.org" "Log")
-                               "* %? %T\n")
+                               :empty-lines 1
+                               :time-prompt t)
+                              ("l" "Log Entry" entry (file+olp+datetree "~/Sync/org/personal.org" "Log")
+                               "* %? %T\n"
+                               :time-prompt t)
                               ("n" "Note" entry (file+headline "~/Sync/org/notes.org" "Inbox")
                                "* %?%(unless (string= \"\" \"%:description\") \"\\\"%:description\\\"\")\n\n  %:link\n\n  %i"
                                :empty-lines 1)
@@ -139,7 +141,9 @@
                               ("w" "Work Task" entry (file+headline "~/Sync/org/work.org" "Tasks")
                                "* TODO %?\n  %i"
                                :empty-lines 1)
-                              ("W" "Work Log Entry" plain (file+datetree+prompt "~/Sync/org/work-log.org")
-                               "%?\n%i\n")))
+                              ("W" "Work Log Entry" plain (file+olp+datetree "~/Sync/org/work-log.org")
+                               "%?\n%i\n"
+                               :empty-lines 1
+                               :time-prompt t)))
 
 ;;; org.el ends here
