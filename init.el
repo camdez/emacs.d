@@ -192,8 +192,6 @@
 ;; zoom - automatically balance window sizes
 (use-package zoom
   :diminish
-  :config
-  (zoom-mode 1)
   :custom
   (zoom-size '(0.618 . 0.618)))
 
