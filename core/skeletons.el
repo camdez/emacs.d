@@ -55,6 +55,10 @@ This only makes sense for empty buffers."
   ?# \n
   "# Author: " user-full-name " <" user-mail-address ">" \n
   "# Date:   " (insert-date-and-time) \n
+  \n
+  "set -o errexit" \n
+  "set -o nounset" \n
+  "set -o pipefail" \n
   \n \n)
 
 ;; TODO: Ask about license, copyright holder
