@@ -23,10 +23,15 @@
       isearch-lazy-count t                       ; display count of search results in minibuffer
       scroll-preserve-screen-position t          ; when scrolling, keep point in the same position on screen
 
+      backup-directory-alist
+      `(("." . ,(expand-file-name "backups" user-emacs-directory)))
+      make-backup-files t
+      backup-by-copying t
       version-control t                          ; keep numbered back-ups
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2
+      delete-by-moving-to-trash t
 
       dired-kill-when-opening-new-dired-buffer t ; only one dired buffer when navigating
       dired-listing-switches "-alh"              ; use human-friendly file sizes
