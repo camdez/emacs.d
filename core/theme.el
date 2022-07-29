@@ -19,13 +19,15 @@
 (set-face-background 'region "gray40")
 (set-face-background 'trailing-whitespace "gray19")
 
-(when (x-list-fonts "Fira Code")
+(when (and window-system
+	         (x-list-fonts "Fira Code"))
   (set-face-attribute 'font-lock-comment-face nil
                       :font "Fira Code"
                       :slant 'italic))
 
 (eval-after-load 'org-faces
-  '(when (x-list-fonts "Helvetica")
+  '(when (and window-system
+              (x-list-fonts "Helvetica"))
      (set-face-attribute 'org-document-title nil
                          :font "Helvetica"
                          :height 2.5
