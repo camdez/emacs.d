@@ -3,7 +3,6 @@
 
 ;; prog-mode
 (defun camdez/prog-mode-hook ()
-  (interactive)
   (setq show-trailing-whitespace t)
   (highlight-symbol-mode 1))
 
@@ -115,10 +114,10 @@ syntax."
 (add-hook 'ruby-mode-hook 'camdez/ruby-fix-paragraph-delimiters)
 
 (add-hook 'ruby-mode-hook
-          '(lambda ()
-             (define-key ruby-mode-map "\C-x\C-t" 'transpose-lines)
-             (define-key ruby-mode-map (kbd "C-c :") 'camdez/ruby-replace-symbols)
-             (define-key ruby-mode-map (kbd "C-c C-d") 'yari)))
+          #'(lambda ()
+              (define-key ruby-mode-map "\C-x\C-t" 'transpose-lines)
+              (define-key ruby-mode-map (kbd "C-c :") 'camdez/ruby-replace-symbols)
+              (define-key ruby-mode-map (kbd "C-c C-d") 'yari)))
 
 (add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
 
@@ -187,8 +186,8 @@ Marked.app."
 (add-to-list 'auto-mode-alist '("\\.php[s34]?\\'" . php-mode))
 
 (add-hook 'php-mode-hook
-          '(lambda ()
-             (set (make-local-variable 'parens-require-spaces) nil))) ; Don't insert spaces when inserting parentheses
+          #'(lambda ()
+              (set (make-local-variable 'parens-require-spaces) nil))) ; Don't insert spaces when inserting parentheses
 
 (eval-after-load 'php-mode
   '(define-key php-mode-map "\C-c\C-p" 'html-mode))
@@ -250,8 +249,8 @@ Marked.app."
 
 ;; snippet-mode
 (add-hook 'snippet-mode-hook
-          '(lambda ()
-             (set (make-local-variable 'require-final-newline) 1)))
+          #'(lambda ()
+              (set (make-local-variable 'require-final-newline) 1)))
 
 ;; other
 (add-to-list 'completion-ignored-extensions ".DS_Store") ; Never autocomplete .DS_Store files
