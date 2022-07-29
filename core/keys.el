@@ -82,6 +82,7 @@
 
 (when window-system
   (global-set-key (kbd "<f10>") 'camdez/toggle-chrome)
+  (global-unset-key (kbd "C-c C-z"))
   (global-unset-key (kbd "C-z")))
 
 (define-key isearch-mode-map (kbd "C-e") 'camdez/isearch-yank-identifier)
