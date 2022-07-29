@@ -18,6 +18,7 @@
                   (concat dired-omit-files "\\|.DS_Store$"))))
 (add-hook 'dired-mode-hook
           (lambda ()
+            (dired-collapse-mode 1)
             (dired-omit-mode 1)))
 
 ;; help-mode

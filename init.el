@@ -32,6 +32,7 @@
     company
     deft
     diminish
+    dired-collapse
     feature-mode
     flycheck
     flycheck-color-mode-line
