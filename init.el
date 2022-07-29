@@ -1,8 +1,6 @@
 ;;; init.el - primary configuration file for Emacs (like a .emacs)
 ;;; Author: Cameron Desautels
 
-(setq gc-cons-threshold 64000000)
-
 ;; `benchmark-init/show-durations-tabulated'
 (require 'benchmark-init nil t)
 
@@ -225,5 +223,9 @@
 ;;; SITE-SPECIFIC CODE
 
 (load "local" 'no-error)
+
+;;; GARBAGE COLLECTION
+
+(setq gc-cons-threshold 800000) ; restore from value set in `early-init-file'
 
 ;;; END
