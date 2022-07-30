@@ -164,9 +164,13 @@ Marked.app."
 (add-to-list 'auto-mode-alist '("\\.\\(sass\\|scss\\)\\'" . sass-mode))
 (add-to-list 'auto-mode-alist '("\\.sass.erb\\'" . sass-mode))
 
+(add-hook 'sass-mode-hook 'electric-pair-local-mode)
+
 ;; css-mode
 (eval-after-load 'css-mode
   '(setq css-indent-offset 2))
+
+(add-hook 'css-mode-hook 'electric-pair-local-mode)
 
 ;; js-mode
 (add-to-list 'auto-mode-alist '("\\.js\\(on\\)?\\'" . js-mode))
