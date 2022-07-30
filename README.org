@@ -1,4 +1,7 @@
-* camdez's Emacs Config
+#+TITLE: camdez's Emacs Config
+
+#+ATTR_HTML: :alt CircleCI status badge
+[[https://dl.circleci.com/status-badge/redirect/gh/camdez/emacs.d/tree/master][https://dl.circleci.com/status-badge/img/gh/camdez/emacs.d/tree/master.svg?style=svg]]
 
 /Happy hacking!/
 
