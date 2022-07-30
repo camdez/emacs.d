@@ -146,4 +146,16 @@
                                :empty-lines 1
                                :time-prompt t)))
 
+;; TODO: functional, but probably not the best way to do this
+(setq org-html-head-extra
+      "<style>
+  img { max-width: 600px; margin: auto; }
+  body { max-width: 800px; margin: auto; font-family: sans-serif; line-height: 1.5; }
+  sup { line-height: 0; } /* don't make lines taller */
+  pre.src { background-color: #272822; color: #F8F8F2; line-height: normal; }
+  pre.src:before { background-color: #272822; color: #F8F8F2; }
+  li { margin-bottom: 0.7em }
+  #table-of-contents li { margin-bottom: 0; }
+</style>")
+
 ;;; org.el ends here
