@@ -1,21 +1,14 @@
 EMACS ?= emacs
-CASK ?= cask
 
 all: test
 
-test: clean
+test:
 	${MAKE} unit
-	${MAKE} compile
-	${MAKE} unit
-	${MAKE} clean
 
 unit:
-	${CASK} exec ert-runner
-
-compile:
-	${CASK} exec ${EMACS} -Q -batch -f batch-byte-compile *.el core/*.el
+	${EMACS} -batch -l ert -L test/ -l test/test-helper.el -l test/all-tests.el -f ert-run-tests-batch-and-exit
 
 clean:
-	rm -f *.elc core/*.elc
+	${RM} -f *.elc core/*.elc
 
 .PHONY:	all test unit

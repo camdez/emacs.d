@@ -4,5 +4,4 @@
 
 ** Tests
 
-To run the tests, first install the dependencies by running =cask=,
-and then run =make unit=.
+To run the tests, run =make test=.
