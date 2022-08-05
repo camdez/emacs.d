@@ -76,6 +76,8 @@
 (transient-mark-mode     -1)     ; no way, dude
 (cua-mode                -1)     ; Aquamacs turns this crap on (messes with transient-mark-mode too)
 (column-number-mode      +1)
+(global-hl-line-mode     +1)
+(recentf-mode            +1)     ; track recently-opened files
 (show-paren-mode         +1)     ; highlight matching parentheses
 (ido-mode                +1)     ; use awesome buffer switching mode
 (winner-mode             +1)     ; remember window configurations
@@ -123,6 +125,7 @@ regardless of if 'yes' or 'no' are generally preferred."
     (delete-char 1)))
 (advice-add 'kill-sexp :after #'camdez/kill-sexp--delete-blank-line)
 
+;; Don't display (lengthy) minor mode information in `describe-mode'.
 (defun camdez/hide-minor-modes (orig-fn &rest args)
   "Make it look like we don't have any minor modes."
   (let ((minor-mode-alist nil)
