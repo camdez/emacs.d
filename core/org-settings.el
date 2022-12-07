@@ -1,4 +1,4 @@
-;;; org.el --- Org-Mode configuration                -*- lexical-binding: t; -*-
+;;; org-settings.el --- Org-Mode configuration                -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
 ;;; Commentary:
@@ -75,6 +75,16 @@
       org-startup-with-inline-images t
       org-log-done 'time
       org-log-reschedule 'time
+      ;; Here's how I think about priority:
+      ;;
+      ;; A: MUST do
+      ;; B: SHOULD do
+      ;; C: GOOD to do, but nice-to-have
+      ;; D: PROBABLY GOOD to do, maybe still considering
+      org-priority-lowest 68 ; add 'D' option
+      org-todo-keywords '((sequence "TODO(t)" "STARTED(s!)" "WAIT(w@)"
+                                    "|"
+                                    "DONE(d!)" "CANCELED(c@)"))
       org-agenda-custom-commands '(("a" "NEW Agenda for current day or week"
                                     ((agenda) ; TODO: exclude "WAIT" from here
                                      (todo "WAIT"))
@@ -158,4 +168,4 @@
   #table-of-contents li { margin-bottom: 0; }
 </style>")
 
-;;; org.el ends here
+;;; org-settings.el ends here
