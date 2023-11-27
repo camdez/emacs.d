@@ -51,6 +51,7 @@
     paredit
     page-break-lines
     projectile
+    rainbow-delimiters
     rainbow-mode
     rspec-mode
     sass-mode
