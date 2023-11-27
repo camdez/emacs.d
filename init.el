@@ -31,6 +31,7 @@
     deft
     diminish
     dired-collapse
+    dockerfile-mode
     feature-mode
     flycheck
     flycheck-color-mode-line
@@ -46,6 +47,7 @@
     monokai-theme
     notmuch
     org
+    org-cliplink
     paredit
     page-break-lines
     projectile
@@ -104,6 +106,12 @@
   ;; interesting.
   (setq company-tooltip-align-annotations t
         company-require-match nil)
+
+  ;; Fix company autocomplete fucking with text case when trying to
+  ;; autocomplete code.
+  (with-eval-after-load 'company-dabbrev-code
+    (add-to-list 'company-dabbrev-code-modes 'yaml-mode))
+
   ;; Not needed.  Pops up after a brief delay.  If we're going to have
   ;; this, it needs to be disabled in the minibuffer where it fucks
   ;; shit up.
@@ -192,6 +200,25 @@
   :diminish
   :custom
   (zoom-size '(0.618 . 0.618)))
+
+;; dashboard - use dashboard for initial buffer
+(when (require 'dashboard nil t)
+  (setq dashboard-projects-backend 'projectile
+        dashboard-items '((recents . 5)
+                          (projects . 5)
+                          (bookmarks . 5)
+                          ;;(agenda . 20) ; too slow!
+                          )
+        dashboard-set-footer nil
+        dashboard-set-file-icons t
+        dashboard-set-heading-icons t
+        dashboard-startup-banner 'logo
+        dashboard-week-agenda nil)
+
+  (add-to-list 'dashboard-mode-hook
+               (lambda ()
+                 (setq indicate-empty-lines nil)))
+  (dashboard-setup-startup-hook))
 
 ;;; EMACS SERVER
 

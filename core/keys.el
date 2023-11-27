@@ -78,6 +78,7 @@
         ("M-`"             other-frame)
         ("M-c"             camdez/capitalize-word)
         ("M-g f"           find-function)
+        ("M-g i"           imenu)
         ("M-o"             occur)))
 
 (when window-system

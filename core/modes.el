@@ -4,7 +4,9 @@
 ;; prog-mode
 (defun camdez/prog-mode-hook ()
   (setq show-trailing-whitespace t)
-  (highlight-symbol-mode 1))
+  (highlight-symbol-mode 1)
+  (highlight-symbol-nav-mode 1)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace nil t))
 
 (add-hook 'prog-mode-hook 'camdez/prog-mode-hook)
 
@@ -201,7 +203,7 @@ Marked.app."
   "Major mode for editing Clojure.")
 (add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
 
-(setq cljr-clojure-test-declaration "[clojure.test :refer :all]"
+(setq cljr-clojure-test-declaration "[clojure.test :refer [deftest is]]"
       clojure-toplevel-inside-comment-form t)
 
 (add-hook 'clojure-mode-hook 'imenu-add-menubar-index)
@@ -222,7 +224,8 @@ Marked.app."
      (facts 'defun)
      (against-background 'defun)
      (provided 0)
-     (component/system-map 'defun)))
+     (component/system-map 'defun)
+     (prop/for-all 'defun)))
 
 (eval-after-load 'cljr-slash
   '(dolist (mapping '(("d"   . "datomic.api")

@@ -5,6 +5,14 @@
 
 /Happy hacking!/
 
+** Benchmarking
+
+   Load time is reported at startup.  To delve into possible sources
+   of slowness, use the following commands:
+
+   - ~benchmark-init/show-durations-tabulated~
+   - ~benchmark-init/show-durations-tree~
+
 ** Tests
 
-To run the tests, run =make test=.
+   To run the tests, run =make test=.

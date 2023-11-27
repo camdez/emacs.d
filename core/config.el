@@ -35,6 +35,9 @@
 
       dired-kill-when-opening-new-dired-buffer t ; only one dired buffer when navigating
       dired-listing-switches "-alh"              ; use human-friendly file sizes
+      dired-dwim-target t                        ; guess target directory from open Dired windows
+
+      recentf-max-saved-items 50
 
       eldoc-idle-delay 0)
 
@@ -55,22 +58,17 @@
               indicate-empty-lines t
               truncate-lines t)                 ; don't visually wrap long lines
 
-;; Only under Aquamacs Emacs
-(when (featurep 'aquamacs)
-  (setq mac-command-modifier 'meta
-        mac-allow-anti-aliasing t
-        select-enable-clipboard t))
-
 ;; Only under Cocoa Emacs
 (when (featurep 'ns)
   (setq ns-command-modifier 'meta
         trash-directory "~/.Trash"
-        delete-by-moving-to-trash t
         dired-use-ls-dired nil))
 
 ;; Only under the Mac port
 (when (featurep 'mac)
-  (setq mac-option-modifier 'meta))
+  (setq mac-option-modifier 'meta
+        mac-right-command-modifier 'super
+        mac-right-option-modifier 'hyper))
 
 (blink-cursor-mode       -1)     ; make the bloody cursor stop blinking
 (transient-mark-mode     -1)     ; no way, dude
@@ -88,7 +86,6 @@
       (scroll-bar-mode -1))      ; hide the scroll bar
   (menu-bar-mode -1))            ; hide the menu bar
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ; maybe only in `prog-mode`?
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Enable disabled operations
