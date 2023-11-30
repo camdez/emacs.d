@@ -69,12 +69,10 @@
         ("melpa-unstable" . "http://melpa.org/packages/")))
 (package-initialize)
 
-(require 'cl-lib)
-
 (defun camdez/install-packages ()
   "Ensure the packages I use are installed.  See `camdez/packages'."
   (interactive)
-  (let ((missing-packages (cl-remove-if #'package-installed-p camdez/packages)))
+  (let ((missing-packages (seq-remove #'package-installed-p camdez/packages)))
     (when missing-packages
       (message "Installing %d missing package(s)" (length missing-packages))
       (package-refresh-contents)
