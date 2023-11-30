@@ -11,6 +11,10 @@ jobs:
           name: Run tests
           command: make test
 
+      - run:
+          name: Test config initialization
+          command: emacs --batch --load init.el
+
 workflows:
   test:
     jobs:
