@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: silex/emacs
+      - image: silex/emacs:master-ci
     steps:
       - checkout
 
