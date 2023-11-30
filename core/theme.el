@@ -1,4 +1,4 @@
-;;; theme.el --- make things look pretty
+;;; theme.el --- make things look pretty  -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
 ;;; Set up the basics

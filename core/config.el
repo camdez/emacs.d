@@ -1,4 +1,4 @@
-;;; config.el --- various general settings
+;;; config.el --- various general settings  -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
 (setq user-full-name "Cameron Desautels"

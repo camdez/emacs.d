@@ -1,4 +1,4 @@
-;;; skeletons.el --- templates, mostly for new files
+;;; skeletons.el --- templates, mostly for new files  -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
 (define-skeleton blog-entry-skeleton

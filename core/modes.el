@@ -1,4 +1,4 @@
-;;; modes.el --- load modes and tweaks for various file types
+;;; modes.el --- load modes and tweaks for various file types  -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
 ;; prog-mode

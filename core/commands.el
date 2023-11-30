@@ -1,4 +1,4 @@
-;;; commands.el --- my utility commands
+;;; commands.el --- my utility commands  -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels <camdez@gmail.com>, others as noted
 
 ;; Escape all double-quotes (") in the region

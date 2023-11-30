@@ -1,4 +1,4 @@
-;;; keys.el --- Emacs keybindings
+;;; keys.el --- Emacs keybindings  -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
 ;;; Commentary:

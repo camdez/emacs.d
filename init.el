@@ -1,4 +1,4 @@
-;;; init.el - primary configuration file for Emacs (like a .emacs)
+;;; init.el - primary configuration file for Emacs (like a .emacs)  -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels
 
 ;; `benchmark-init/show-durations-tabulated'
