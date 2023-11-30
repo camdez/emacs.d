@@ -9,7 +9,7 @@ jobs:
 
       - run:
           name: Run tests
-          command: emacs -Q -batch -l ert -L test/ -l test/test-helper.el -l test/all-tests.el -f ert-run-tests-batch-and-exit
+          command: make test
 
 workflows:
   test:
