@@ -11,9 +11,19 @@ jobs:
           name: Run tests
           command: make test
 
+      - restore_cache:
+          keys:
+          - v2-deps--{{ checksum "init.el" }}
+          - v2-deps--
+
       - run:
           name: Test config initialization
           command: emacs --batch --load init.el
+
+      - save_cache:
+          paths:
+            - ~/.emacs.d/elpa
+          key: v2-deps--{{ checksum "init.el" }}
 
 workflows:
   test:
