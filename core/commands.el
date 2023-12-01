@@ -18,6 +18,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defun camdez/byte-compile-config ()
+  "Byte compile entire Emacs configuration."
+  (interactive)
+  (dolist (file '("early-init.el" "init.el"))
+    (byte-recompile-file (expand-file-name file camdez/emacs-dir) nil 0))
+  (byte-recompile-directory camdez/core-dir 0))
+
 (defun camdez/capitalize-word (&optional arg)
   "Like `capitalize-word', but with universal argument,
 capitalize first letter and leave rest of word unchanged.
