@@ -16,6 +16,7 @@
   (highlight-symbol-nav-mode 1)
   (add-hook 'before-save-hook 'delete-trailing-whitespace nil t))
 
+(add-hook 'prog-mode-hook 'camdez/font-lock-comment-annotations)
 (add-hook 'prog-mode-hook 'camdez/prog-mode-hook)
 
 ;; dired mode (+ dired-x)

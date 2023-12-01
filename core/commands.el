@@ -160,6 +160,17 @@ Leaves point after."
        (buffer-string))
      (split-string ", "))))
 
+;; From https://emacsredux.com/blog/2013/07/24/highlight-comment-annotations/
+;;
+;; `hl-todo-mode' is an alternative with more power (and complexity).
+(defun camdez/font-lock-comment-annotations ()
+  "Highlight common comment annotations.
+
+Add to hooks for desired modes."
+  (font-lock-add-keywords
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\|DEBUG\\):"
+          1 font-lock-warning-face t))))
+
 (defun camdez/Info-goto-from-command-help ()
   "Go to the Info node in the Emacs manual for the command
 currently being viewed in `help-mode'."
