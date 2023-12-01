@@ -14,7 +14,17 @@
 (defvar camdez/core-dir (expand-file-name "core" camdez/emacs-dir)
   "Directory containing core configuration files.")
 
-(add-to-list 'load-path camdez/core-dir)
+(defvar camdez/core-modules
+  '("theme"            ; make things look pretty
+    "modes"            ; modes for editing various types of files
+    "org-settings"     ; org-mode configuration
+    "commands"         ; various utility commands
+    "skeletons"        ; skeletons (templates) and autoinsert settings
+    "config"           ; general settings
+    "keys")            ; keybindings
+  "Core configuration files to load, in load order.  Paths are
+relative to `camdez/core-dir'.  Excludes file extensions so
+compiled versions can be preferred, where present.")
 
 (defvar camdez/experiments-file (expand-file-name "experimental.el" camdez/core-dir)
   "File containing my latest elisp experiments.")
@@ -95,13 +105,8 @@
 
 ;;; CORE
 
-(load-library "theme")                  ; make things look pretty
-(load-library "modes")                  ; modes for editing various types of files
-(load-library "org-settings")           ; org-mode configuration
-(load-library "commands")               ; various utility commands
-(load-library "skeletons")              ; skeletons (templates) and autoinsert settings
-(load-library "config")                 ; general settings
-(load-library "keys")                   ; keybindings
+(dolist (module camdez/core-modules)
+  (load (expand-file-name module camdez/core-dir)))
 
 ;;; HACKS + EXPERIMENTS
 
