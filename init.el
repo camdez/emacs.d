@@ -34,6 +34,7 @@
     dockerfile-mode
     feature-mode
     flycheck
+    flycheck-clj-kondo
     flycheck-color-mode-line
     helm
     helm-projectile

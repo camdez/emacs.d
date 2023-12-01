@@ -198,40 +198,37 @@ Marked.app."
 (eval-after-load 'php-mode
   '(define-key php-mode-map "\C-c\C-p" 'html-mode))
 
-;; clojure-mode
-(autoload 'clojure-mode "clojure-mode"
-  "Major mode for editing Clojure.")
-(add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
+;; clojure-mode + friends
+(use-package clojure-mode
+  :config
+  (require 'flycheck-clj-kondo)
+  (setq clojure-toplevel-inside-comment-form t)
+  (define-clojure-indent
+    (.addShutdownHook 'defun)
+    (fact 'defun)
+    (facts 'defun)
+    (against-background 'defun)
+    (provided 0)
+    (component/system-map 'defun)
+    (prop/for-all 'defun))
+  :hook
+  (clojure-mode . imenu-add-menubar-index)
+  (clojure-mode . paredit-mode)
+  (clojure-mode . bug-reference-prog-mode)
+  (clojure-mode . flycheck-mode)
+  (clojure-mode . clj-refactor-mode))
 
-(setq cljr-clojure-test-declaration "[clojure.test :refer [deftest is]]"
-      clojure-toplevel-inside-comment-form t)
+(use-package clj-refactor
+  :defer t
+  :config
+  (setq cljr-clojure-test-declaration "[clojure.test :refer [deftest is]]")
+  (cljr-add-keybindings-with-prefix "C-c C-m")
+  (dolist (mapping '(("d"   . "datomic.api")
+                     ("edn" . "clojure.edn")
+                     ("sc"  . "schema.core")))
+    (add-to-list 'cljr-magic-require-namespaces mapping t)))
 
-(add-hook 'clojure-mode-hook 'imenu-add-menubar-index)
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'clojure-mode-hook 'bug-reference-prog-mode)
 (add-hook 'cider-mode-hook 'eldoc-mode)
-
-(defun camdez/clojure-mode-hook ()
-  (clj-refactor-mode 1)
-  (cljr-add-keybindings-with-prefix "C-c C-m"))
-
-(add-hook 'clojure-mode-hook 'camdez/clojure-mode-hook)
-
-(eval-after-load 'clojure-mode
-  '(define-clojure-indent
-     (.addShutdownHook 'defun)
-     (fact 'defun)
-     (facts 'defun)
-     (against-background 'defun)
-     (provided 0)
-     (component/system-map 'defun)
-     (prop/for-all 'defun)))
-
-(eval-after-load 'cljr-slash
-  '(dolist (mapping '(("d"   . "datomic.api")
-                      ("edn" . "clojure.edn")
-                      ("sc"  . "schema.core")))
-     (add-to-list 'cljr-magic-require-namespaces mapping t)))
 
 ;; html-mode
 (add-to-list 'auto-mode-alist '("\\.blog\\'" . html-mode))
