@@ -208,6 +208,7 @@
   :diminish
   :config
   (setq projectile-completion-system 'helm
+        projectile-create-missing-test-files t
         projectile-enable-caching t
         projectile-switch-project-action 'projectile-dired)
   (projectile-mode))
