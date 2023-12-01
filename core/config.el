@@ -37,9 +37,9 @@
       dired-listing-switches "-alh"              ; use human-friendly file sizes
       dired-dwim-target t                        ; guess target directory from open Dired windows
 
-      recentf-max-saved-items 50
+      imenu-auto-rescan t
 
-      eldoc-idle-delay 0)
+      recentf-max-saved-items 50)
 
 (setq whitespace-style
       '(face

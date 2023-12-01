@@ -37,7 +37,7 @@
         ("C-c N"           linum-mode)
         ("C-c P"           camdez/toggle-show-paren-style)
         ("C-c R"           rainbow-delimiters-mode)
-        ("C-c SPC"         ace-jump-mode)
+        ;; "C-c SPC"       ace-jump-mode
         ("C-c TAB"         camdez/toggle-tab-width)
         ("C-c a"           org-agenda)
         ("C-c b"           browse-url)
@@ -51,10 +51,10 @@
         ;; "C-c j"         ace (experimental)
         ;; "C-c k"         ace (experimental)
         ("C-c l"           org-store-link)
-        ("C-c m"           magit-status)
+        ;; "C-c m"         magit-status)
         ;; "C-c n"         camdez/find-project-notes ; disabling while playing with Roam
         ;; "C-c o"         ...open stuff (experimental)
-        ("C-c p"           projectile-command-map)
+        ;; "C-c p"         projectile-command-map
         ;; "C-c q"         FREE
         ;; "C-c r"         FREE
         ("C-c s"           camdez/switch-to-scratch)
@@ -63,7 +63,7 @@
         ;; "C-c v"         FREE
         ("C-c w"           whitespace-mode)
         ("C-c x"           camdez/add-experiment)
-        ("C-c y"           helm-show-kill-ring)
+        ;; "C-c y"         helm-show-kill-ring
         ("C-c z"           toggle-frame-maximized)
         ("C-c /"           isearch-forward-symbol-at-point) ; standard `M-s .` binding shadowed by Paredit
         ("C-x 0"           camdez/delete-window)
@@ -78,8 +78,9 @@
         ("M-`"             other-frame)
         ("M-c"             camdez/capitalize-word)
         ("M-g f"           find-function)
-        ("M-g i"           imenu)
-        ("M-o"             occur)))
+        ;; "M-g i"         helm-imenu
+        ;; "M-o"           helm-occur
+        ))
 
 (when window-system
   (global-set-key (kbd "<f10>") 'camdez/toggle-chrome)

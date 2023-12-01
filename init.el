@@ -83,6 +83,7 @@
 
 (eval-when-compile
   (require 'use-package))
+(require 'diminish)
 
 ;;; CORE
 
@@ -101,14 +102,23 @@
 
 ;;; NON-MAJOR-MODE LIBRARIES
 
-(when (require 'company nil t)
-  ;; TODO: take a look at `helm-company` and see if that's
-  ;; interesting.
+;; ace-jump - get there faster
+(use-package ace-jump-mode
+  :bind ("C-c SPC" . ace-jump-mode))
+
+;; company - fancy in-buffer completion
+(use-package company
+  :demand t
+  :bind (:map company-active-map
+              (("<tab>" . company-complete-common-or-cycle)
+               ("TAB" . company-complete-common-or-cycle) ; terminal
+               ("<backtab>" . company-select-previous)))
+  :config
   (setq company-tooltip-align-annotations t
         company-require-match nil)
 
-  ;; Fix company autocomplete fucking with text case when trying to
-  ;; autocomplete code.
+  ;; Fix company changing case of text when trying to autocomplete
+  ;; code.
   (with-eval-after-load 'company-dabbrev-code
     (add-to-list 'company-dabbrev-code-modes 'yaml-mode))
 
@@ -117,92 +127,12 @@
   ;; shit up.
   ;;(global-set-key (kbd "<tab>") 'company-indent-or-complete-common)
   ;;(global-set-key (kbd "TAB") 'company-indent-or-complete-common) ; terminal
-  (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
-  (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle) ; terminal
-  (define-key company-active-map (kbd "<backtab>") 'company-select-previous)
   (global-company-mode))
 
-(when (require 'ido-vertical-mode nil t)
-  (ido-vertical-mode))
-
-;; ace-jump - get there faster
-(require 'ace-jump-mode nil t)
-
-;; which-key - display available keybindings
-(when (require 'which-key nil t)
-  (which-key-mode 1))
-
-;; keyfreq - command use statistics (`keyfreq-show' to see stats)
-(when (require 'keyfreq nil t)
-  (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1))
-
-;; Helm - incremental completion and selection narrowing framework
-(when (require 'helm-config nil t)
-  (require 'helm-mode) ; getting errors without this
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-x b") 'helm-mini)
-  (global-set-key (kbd "M-g i") 'helm-imenu)
-  (global-set-key (kbd "M-o") 'helm-occur)
-  (global-set-key (kbd "C-x r l") 'helm-bookmarks))
-
-(use-package marginalia
-  :bind (:map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
-  :init
-  (marginalia-mode))
-
-;; page-break-lines - display page separator characters (^L) as lines
-(when (require 'page-break-lines nil t)
-  (setq page-break-lines-max-width 80)
-  (add-to-list 'page-break-lines-modes 'prog-mode)
-  (global-page-break-lines-mode +1))
-
-;; projectile - project interaction
-(when (require 'projectile nil t)
-  (projectile-mode)
-  ;; Temporary change since I've dropped back to the stable version of
-  ;; projectile-mode which doesn't have this binding yet:
-  (define-key projectile-command-map (kbd "f") 'helm-projectile)
-  (setq projectile-enable-caching t
-        projectile-switch-project-action 'projectile-dired))
-
-;; diminish - hide extraneous mode indicators
-(when (require 'diminish nil t)
-  (eval-after-load 'auto-complete       '(diminish 'auto-complete-mode))
-  (eval-after-load 'eldoc               '(diminish 'eldoc-mode))
-  (eval-after-load 'page-break-lines    '(diminish 'page-break-lines-mode))
-  (eval-after-load 'projectile          '(diminish 'projectile-mode))
-  (eval-after-load 'volatile-highlights '(diminish 'volatile-highlights-mode))
-  (eval-after-load 'which-key           '(diminish 'which-key-mode))
-  (eval-after-load 'yasnippet           '(diminish 'yas-minor-mode)))
-
-;; yasnippet - templated snippet insertion
-(when (require 'yasnippet nil t)
-  (setq yas-snippet-dirs (list (expand-file-name "snippets" camdez/emacs-dir))
-        yas-verbosity 2)                    ; don't show messages at init time
-  (yas-global-mode 1))
-
-;; midnight - clean up stale buffers (see `clean-buffer-list')
-(when (require 'midnight nil t)
-  (midnight-delay-set 'midnight-delay 0)    ; run at midnight
-  (setq clean-buffer-list-delay-general 1)) ; kill buffers after one day
-
-;; imenu
-(setq imenu-auto-rescan t)
-
-;; unicode-fonts (emoji!)
-(when (require 'unicode-fonts)
-  (unicode-fonts-setup))
-
-;; zoom - automatically balance window sizes
-(use-package zoom
-  :diminish
-  :custom
-  (zoom-size '(0.618 . 0.618)))
-
-;; dashboard - use dashboard for initial buffer
-(when (require 'dashboard nil t)
+;; dashboard - makes a nice initial buffer with jumping off points
+(use-package dashboard
+  :defer
+  :config
   (setq dashboard-projects-backend 'projectile
         dashboard-items '((recents . 5)
                           (projects . 5)
@@ -214,15 +144,103 @@
         dashboard-set-heading-icons t
         dashboard-startup-banner 'logo
         dashboard-week-agenda nil)
-
   (add-to-list 'dashboard-mode-hook
                (lambda ()
-                 (setq indicate-empty-lines nil)))
-  (dashboard-setup-startup-hook))
+                 (setq indicate-empty-lines nil))))
+
+;; eldoc - show function arguments in minibuffer
+(use-package eldoc
+  :diminish eldoc-mode
+  :defer
+  :config
+  (setq eldoc-idle-delay 0))
+
+;; keyfreq - command use statistics (`keyfreq-show' to see stats)
+(use-package keyfreq
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
+
+;; Helm - incremental completion and selection narrowing framework
+(use-package helm
+  :demand t
+  :bind (("C-c y" . helm-show-kill-ring)
+         ("C-x b" . helm-mini)
+         ("C-x r l" . helm-bookmarks)
+         ("M-g i" . helm-imenu)
+         ("M-o" . helm-occur)
+         ("M-x" . helm-M-x)))
+
+;; ido-vertical-mode - display ido completion options vertically
+(use-package ido-vertical-mode
+  :config
+  (ido-vertical-mode))
+
+;; magit - the greatest git client known to man
+(use-package magit
+  :bind ("C-c m" . magit-status))
+
+;; Marginalia - add marginalia to minibuffer completions
+(use-package marginalia
+  :demand t
+  :bind (:map minibuffer-local-map
+              ("M-A" . marginalia-cycle))
+  :config
+  (marginalia-mode))
+
+;; midnight - kill stale buffers automagically (see `clean-buffer-list')
+(use-package midnight
+  :defer 30
+  :config
+  (midnight-delay-set 'midnight-delay 0)    ; run at midnight
+  (setq clean-buffer-list-delay-general 1)) ; kill buffers after one day
+
+;; page-break-lines - display page separator characters (^L) as lines
+(use-package page-break-lines
+  :diminish
+  :config
+  (setq page-break-lines-max-width 80)
+  (add-to-list 'page-break-lines-modes 'prog-mode)
+  (global-page-break-lines-mode))
+
+;; projectile - project interaction
+(use-package projectile
+  :bind ("C-c p" . projectile-command-map)
+  :diminish
+  :config
+  (setq projectile-completion-system 'helm
+        projectile-enable-caching t
+        projectile-switch-project-action 'projectile-dired)
+  (projectile-mode))
+
+;; unicode-fonts - emoji!
+(use-package unicode-fonts
+  :config
+  (unicode-fonts-setup))
+
+;; which-key - display available keybindings
+(use-package which-key
+  :diminish
+  :config
+  (which-key-mode))
+
+;; yasnippet - templated snippet insertion
+(use-package yasnippet
+  :diminish yas-minor-mode
+  :config
+  (setq yas-snippet-dirs (list (expand-file-name "snippets" camdez/emacs-dir))
+        yas-verbosity 2)            ; don't show messages at init time
+  (yas-global-mode))
+
+;; zoom - automatically balance window sizes
+(use-package zoom
+  :diminish
+  :custom
+  (zoom-size '(0.618 . 0.618)))
 
 ;;; EMACS SERVER
 
-;(server-start)
+;;(server-start)
 
 (add-hook 'server-switch-hook
           (lambda ()
@@ -234,6 +252,10 @@
           (lambda ()
             (kill-buffer nil)
             (delete-frame)))
+
+;;; DASHBOARD
+
+(dashboard-setup-startup-hook)
 
 ;;; NONSENSE
 
