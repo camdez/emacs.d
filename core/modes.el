@@ -1,6 +1,14 @@
 ;;; modes.el --- load modes and tweaks for various file types  -*- lexical-binding: t; -*-
 ;;; Author: Cameron Desautels <camdez@gmail.com>
 
+;; `imenu-list-smart-toggle'
+(use-package imenu-list
+  :config
+  ;; Faces are a little aggressive.  Unify with theme via: `M-x
+  ;; customize-group RET imenu-list RET`.
+  (setq imenu-list-position 'left
+        imenu-list-size 50))
+
 ;; prog-mode
 (defun camdez/prog-mode-hook ()
   (setq show-trailing-whitespace t)
