@@ -42,7 +42,7 @@
         ("C-c a"           org-agenda)
         ("C-c b"           browse-url)
         ("C-c c"           org-capture)
-        ;; "C-c d"         camdez/duplicate-paragraph (experimental) -- change to keychain to duplicate more things (lines, defuns, paragraphs, pages)
+        ("C-c d"           camdez/duplicate-paragraph)
         ("C-c e"           eval-and-replace)
         ("C-c f"           auto-fill-mode)
         ("C-c g"           gist-list) ; FIXME: broken

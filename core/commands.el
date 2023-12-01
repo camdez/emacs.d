@@ -100,6 +100,18 @@ and mark in place."
       (newline)
       (yank))))
 
+(defun camdez/duplicate-paragraph ()
+  "Duplicate paragraph or defun containing point.
+Leaves point after."
+  (interactive)
+  (if (and (derived-mode-p 'prog-mode)
+           (not (nth 4 (syntax-ppss)))) ; in comment
+      (mark-defun)
+      (mark-paragraph))
+  (exchange-point-and-mark)
+  (copy-region-as-kill (point) (mark))
+  (yank))
+
 (defun camdez/cider-eldoc-insert-args ()
   (interactive)
   (if-let ((arglists (mapcar
