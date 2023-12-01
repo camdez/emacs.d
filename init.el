@@ -57,7 +57,6 @@
     rspec-mode
     sass-mode
     unfill
-    unicode-fonts
     use-package
     which-key
     yaml-mode
@@ -212,11 +211,6 @@
         projectile-enable-caching t
         projectile-switch-project-action 'projectile-dired)
   (projectile-mode))
-
-;; unicode-fonts - emoji!
-(use-package unicode-fonts
-  :config
-  (unicode-fonts-setup))
 
 ;; which-key - display available keybindings
 (use-package which-key
