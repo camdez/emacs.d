@@ -130,7 +130,6 @@
 
 ;; dashboard - makes a nice initial buffer with jumping off points
 (use-package dashboard
-  :defer
   :config
   (setq dashboard-projects-backend 'projectile
         dashboard-items '((recents . 5)
@@ -145,7 +144,8 @@
         dashboard-week-agenda nil)
   (add-to-list 'dashboard-mode-hook
                (lambda ()
-                 (setq indicate-empty-lines nil))))
+                 (setq indicate-empty-lines nil)))
+  (dashboard-setup-startup-hook))
 
 ;; eldoc - show function arguments in minibuffer
 (use-package eldoc
@@ -247,10 +247,6 @@
           (lambda ()
             (kill-buffer nil)
             (delete-frame)))
-
-;;; DASHBOARD
-
-(dashboard-setup-startup-hook)
 
 ;;; NONSENSE
 
