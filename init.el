@@ -284,7 +284,7 @@ compiled versions can be preferred, where present.")
 
 ;;; SITE-SPECIFIC CODE
 
-(load "local" 'no-error)
+(load (expand-file-name "local" camdez/core-dir) 'no-error)
 
 ;;; GARBAGE COLLECTION
 
