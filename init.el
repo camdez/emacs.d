@@ -10,6 +10,7 @@
   (file-name-directory (or load-file-name
                            buffer-file-name))
   "The root directory of my Emacs configuration.")
+
 (defvar camdez/core-dir (expand-file-name "core" camdez/emacs-dir)
   "Directory containing core configuration files.")
 
@@ -82,6 +83,7 @@
 
 (eval-when-compile
   (require 'use-package))
+(require 'bind-key)
 (require 'diminish)
 
 ;;; CORE
