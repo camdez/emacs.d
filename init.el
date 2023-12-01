@@ -39,6 +39,7 @@ compiled versions can be preferred, where present.")
     clj-refactor
     clojure-mode
     company
+    dashboard
     deft
     diminish
     dired-collapse
@@ -52,6 +53,7 @@ compiled versions can be preferred, where present.")
     highlight-symbol
     htmlize           ; highlight code in org exports
     ido-vertical-mode
+    imenu-list
     keyfreq           ; command use statistics
     magit
     marginalia
