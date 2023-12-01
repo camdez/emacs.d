@@ -101,7 +101,7 @@
       (quit-window t)))
 
 ;; I tend to use ?a, ?b, ?c when editing, so leave those free.
-(set-register ?e (cons 'file user-init-file))  ; quickly jump to init.el (".emacs") with C-x r j e
+(set-register ?e (cons 'file (expand-file-name "init.el" camdez/emacs-dir))) ; quickly jump to init.el (".emacs") with C-x r j e
 (set-register ?k (cons 'file "~/.emacs.d/core/keys.el"))
 (set-register ?x (cons 'file camdez/experiments-file))
 (set-register ?s (cons 'file "~/.zshrc"))     ; quickly jump to shell config with C-x r j s
