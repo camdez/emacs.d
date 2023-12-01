@@ -24,7 +24,7 @@
       scroll-preserve-screen-position t          ; when scrolling, keep point in the same position on screen
 
       backup-directory-alist
-      `(("." . ,(expand-file-name "backups" user-emacs-directory)))
+      `(("." . ,(expand-file-name "var/backup" user-emacs-directory)))
       make-backup-files t
       backup-by-copying t
       version-control t                          ; keep numbered back-ups
@@ -37,9 +37,7 @@
       dired-listing-switches "-alh"              ; use human-friendly file sizes
       dired-dwim-target t                        ; guess target directory from open Dired windows
 
-      imenu-auto-rescan t
-
-      recentf-max-saved-items 50)
+      imenu-auto-rescan t)
 
 (setq whitespace-style
       '(face
@@ -75,7 +73,6 @@
 (cua-mode                -1)     ; Aquamacs turns this crap on (messes with transient-mark-mode too)
 (column-number-mode      +1)
 (global-hl-line-mode     +1)
-(recentf-mode            +1)     ; track recently-opened files
 (show-paren-mode         +1)     ; highlight matching parentheses
 (ido-mode                +1)     ; use awesome buffer switching mode
 (winner-mode             +1)     ; remember window configurations

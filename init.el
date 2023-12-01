@@ -47,6 +47,7 @@
     marginalia
     markdown-mode
     monokai-theme
+    no-littering
     notmuch
     org
     org-cliplink
@@ -81,10 +82,16 @@
 
 (camdez/install-packages)
 
+;;;
+
 (eval-when-compile
   (require 'use-package))
 (require 'bind-key)
 (require 'diminish)
+
+;;;
+
+(use-package no-littering)              ; needs to happen early
 
 ;;; CORE
 
@@ -214,6 +221,14 @@
         projectile-enable-caching t
         projectile-switch-project-action 'projectile-dired)
   (projectile-mode))
+
+;; recentf - track recently opened files (built-in)
+(use-package recentf
+  :config
+  (setq recentf-max-saved-items 50)
+  (add-to-list 'recentf-exclude
+               (recentf-expand-file-name no-littering-var-directory))
+  (recentf-mode))
 
 ;; which-key - display available keybindings
 (use-package which-key
