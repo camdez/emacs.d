@@ -33,8 +33,8 @@
         ;; "C-c '"         camdez/change-outer (experimental)
         ;; "C-c ;"         mark-line (experimental)
         ;; "C-c B"         camdez/browse-url-dwim (experimental)
-        ("C-c H"           highlight-symbol-mode) ; also want `highlight-symbol-nav-mode`...
-        ("C-c N"           linum-mode)
+        ("C-c H"           highlight-symbol-mode) ; also want `highlight-symbol-nav-mode'...
+        ("C-c N"           display-line-numbers-mode)
         ("C-c P"           camdez/toggle-show-paren-style)
         ("C-c R"           rainbow-delimiters-mode)
         ;; "C-c SPC"       ace-jump-mode
@@ -43,7 +43,7 @@
         ("C-c b"           browse-url)
         ("C-c c"           org-capture)
         ("C-c d"           camdez/duplicate-paragraph)
-        ("C-c e"           eval-and-replace)
+        ("C-c e"           eval-and-replace) ; global so I can use anywhere, but "C-u M-:" is probably sufficient
         ("C-c f"           auto-fill-mode)
         ("C-c g"           gist-list) ; FIXME: broken
         ("C-c h"           global-hl-line-mode)
@@ -65,15 +65,17 @@
         ("C-c x"           camdez/add-experiment)
         ;; "C-c y"         helm-show-kill-ring
         ("C-c z"           toggle-frame-maximized)
-        ("C-c /"           isearch-forward-symbol-at-point) ; standard `M-s .` binding shadowed by Paredit
+        ("C-c /"           isearch-forward-symbol-at-point) ; standard "M-s ." binding shadowed by Paredit
         ("C-x 0"           camdez/delete-window)
         ("C-x 1"           camdez/delete-other-windows)
         ("C-x 4 k"         camdez/kill-buffer-other-window)
-        ("C-x C-p"         camdez/show-buffer-file-name) ; shadows `mark-page`
+        ("C-x C-p"         camdez/show-buffer-file-name) ; shadows `mark-page'
         ("C-x \\"          align-regexp)
+        ;; "C-x b"         helm-mini
         ("C-x k"           kill-this-buffer)
         ;; "C-x p"         back-window (experimental)
         ("C-x n h"         camdez/narrow-to-paragraph)
+        ;; "C-x r l"       helm-bookmarks
         ("M-Z"             zap-up-to-char)
         ("M-`"             other-frame)
         ("M-c"             camdez/capitalize-word)
