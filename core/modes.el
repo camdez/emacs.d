@@ -93,6 +93,8 @@
 
 (define-key emacs-lisp-mode-map (kbd "C-c C-k") 'eval-buffer)
 
+(add-hook 'lisp-data-mode-hook 'paredit-mode)
+
 ;; shell-mode
 (add-hook 'shell-mode-hook (lambda ()
                              (setq tab-width 8)))
