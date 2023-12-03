@@ -18,6 +18,7 @@
       x-stretch-cursor t                         ; make the cursor wide over tabs, etc.
       blink-matching-paren nil                   ; not needed since I'm highlighting the matches
       frame-title-format "Emacs: %b %+%+ %f"
+      window-combination-resize t                ; when splitting, take space from all windows
       echo-keystrokes 0.02
       isearch-allow-scroll t                     ; scrolling shouldn't cancel search
       isearch-lazy-count t                       ; display count of search results in minibuffer
