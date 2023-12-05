@@ -23,6 +23,11 @@
 	         (x-list-fonts "Fira Code"))
   (set-face-attribute 'font-lock-comment-face nil
                       :font "Fira Code"
+                      ;; Must be explicitly unspecified, or won't
+                      ;; scale with `:text-scale-adjust'.  Specifying
+                      ;; probably works too, but leaving it out makes
+                      ;; a mess.
+                      :height 'unspecified
                       :slant 'italic))
 
 (eval-after-load 'org-faces
