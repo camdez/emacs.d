@@ -52,6 +52,8 @@
      (setq sh-basic-offset 2)
      (define-key sh-mode-map (kbd "C-c C-e") 'camdez/shell-execute-line)))
 
+(add-hook 'sh-mode-hook 'flycheck-mode)
+
 ;; cc-mode
 (add-hook 'c-mode-hook
           (lambda ()
