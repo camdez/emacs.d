@@ -56,7 +56,7 @@
         ;; "C-c o"         ...open stuff (experimental)
         ;; "C-c p"         projectile-command-map
         ;; "C-c q"         FREE
-        ("C-c r"           helm-recentf)
+        ;; "C-c r"         helm-recentf
         ("C-c s"           camdez/switch-to-scratch)
         ("C-c t"           toggle-truncate-lines)
         ;; "C-c u"         FREE
