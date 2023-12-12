@@ -40,6 +40,7 @@ compiled versions can be preferred, where present.")
     clojure-mode
     company
     dashboard
+    dedicated
     deft
     diminish
     dired-collapse
@@ -162,6 +163,10 @@ compiled versions can be preferred, where present.")
                (lambda ()
                  (setq indicate-empty-lines nil)))
   (dashboard-setup-startup-hook))
+
+(use-package dedicated
+  :if (version< emacs-version "30.1")
+  :bind (("C-x w d" . dedicated-mode)))
 
 ;; eldoc - show function arguments in minibuffer
 (use-package eldoc
