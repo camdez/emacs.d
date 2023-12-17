@@ -49,11 +49,8 @@ compiled versions can be preferred, where present.")
     flycheck
     flycheck-clj-kondo
     flycheck-color-mode-line
-    helm
-    helm-projectile
     highlight-symbol
     htmlize           ; highlight code in org exports
-    ido-vertical-mode
     imenu-list
     keyfreq           ; command use statistics
     magit
@@ -181,20 +178,40 @@ compiled versions can be preferred, where present.")
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
 
-;; Helm - incremental completion and selection narrowing framework
-(use-package helm
-  :demand t
-  :bind (("C-c y" . helm-show-kill-ring)
-         ("C-x b" . helm-mini)
-         ("C-x r l" . helm-bookmarks)
-         ("M-g i" . helm-imenu)
-         ("M-o" . helm-occur)
-         ("M-x" . helm-M-x)))
+;; vertico + friends - completion framework
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode)
+  (keymap-set vertico-map "TAB" #'minibuffer-complete)) ; complete common prefix
 
-;; ido-vertical-mode - display ido completion options vertically
-(use-package ido-vertical-mode
+(use-package vertico-directory
   :config
-  (ido-vertical-mode))
+  (keymap-set vertico-map "RET" #'vertico-directory-enter)
+  (keymap-set vertico-map "DEL" #'vertico-directory-delete-char)
+  (keymap-set vertico-map "M-DEL" #'vertico-directory-delete-word)
+  (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy))
+
+(use-package orderless
+  :ensure t
+  :config
+  (setq completion-styles '(substring orderless basic))
+  (setq completion-category-overrides '((file (styles basic partial-completion)))))
+
+;; Don't allow the cursor to move into the minibuffer prompt.
+(setq minibuffer-prompt-properties
+      '(read-only t cursor-intangible t face minibuffer-prompt))
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+(use-package consult
+  :ensure t
+  :bind (("C-c r"   . consult-recent-file)
+         ("C-c y"   . consult-yank-from-kill-ring)
+         ("C-x b"   . consult-buffer)
+         ("C-x r l" . consult-bookmark)
+         ("M-g i"   . consult-imenu)
+         ("M-o"     . consult-line))
+  :config (setq consult-narrow-key "<")) ; type at the beginning of line
 
 ;; magit - the greatest git client known to man
 (use-package magit
@@ -228,7 +245,7 @@ compiled versions can be preferred, where present.")
   :bind ("C-c p" . projectile-command-map)
   :diminish
   :config
-  (setq projectile-completion-system 'helm
+  (setq projectile-completion-system 'auto
         projectile-create-missing-test-files t
         projectile-enable-caching t
         projectile-switch-project-action 'projectile-dired)

@@ -75,7 +75,6 @@
 (column-number-mode      +1)
 (global-hl-line-mode     +1)
 (show-paren-mode         +1)     ; highlight matching parentheses
-(ido-mode                +1)     ; use awesome buffer switching mode
 (winner-mode             +1)     ; remember window configurations
 
 (if window-system
