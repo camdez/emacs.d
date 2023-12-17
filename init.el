@@ -111,7 +111,9 @@ compiled versions can be preferred, where present.")
 ;;; HACKS + EXPERIMENTS
 
 ;; Load experiments, preferring byte-compiled version
-(load (expand-file-name "experimental" camdez/core-dir) 'no-error)
+(condition-case err
+    (load (expand-file-name "experimental" camdez/core-dir) 'no-error)
+  (error (message "Error while loading experimental: %s" (error-message-string err))))
 
 ;;; NON-MAJOR-MODE LIBRARIES
 
