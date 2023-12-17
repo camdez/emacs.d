@@ -239,7 +239,15 @@ Marked.app."
   (dolist (mapping '(("d"   . "datomic.api")
                      ("edn" . "clojure.edn")
                      ("sc"  . "schema.core")))
-    (add-to-list 'cljr-magic-require-namespaces mapping t)))
+    (add-to-list 'cljr-magic-require-namespaces mapping t))
+
+  ;; Don't auto add `require' form for `user' namespace.
+  (defun cljr--unresolved-alias-ref--unless-user (alias-ref)
+    (unless (string= "user" alias-ref)
+      alias-ref))
+
+  (advice-add 'cljr--unresolved-alias-ref :before-while
+              #'cljr--unresolved-alias-ref--unless-user))
 
 (add-hook 'cider-mode-hook 'eldoc-mode)
 
