@@ -39,6 +39,7 @@ compiled versions can be preferred, where present.")
     clj-refactor
     clojure-mode
     company
+    consult
     dashboard
     dedicated
     deft
@@ -59,6 +60,7 @@ compiled versions can be preferred, where present.")
     monokai-theme
     no-littering
     notmuch
+    orderless
     org
     org-cliplink
     paredit
@@ -70,6 +72,7 @@ compiled versions can be preferred, where present.")
     sass-mode
     unfill
     use-package
+    vertico
     which-key
     yaml-mode
     yasnippet
@@ -182,7 +185,6 @@ compiled versions can be preferred, where present.")
 
 ;; vertico + friends - completion framework
 (use-package vertico
-  :ensure t
   :init
   (vertico-mode)
   (keymap-set vertico-map "TAB" #'minibuffer-complete)) ; complete common prefix
@@ -195,7 +197,6 @@ compiled versions can be preferred, where present.")
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy))
 
 (use-package orderless
-  :ensure t
   :config
   (setq completion-styles '(substring orderless basic))
   (setq completion-category-overrides '((file (styles basic partial-completion)))))
@@ -206,7 +207,6 @@ compiled versions can be preferred, where present.")
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
 (use-package consult
-  :ensure t
   :bind (("C-c r"   . consult-recent-file)
          ("C-c y"   . consult-yank-from-kill-ring)
          ("C-x b"   . consult-buffer)
