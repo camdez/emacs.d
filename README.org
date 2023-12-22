@@ -13,6 +13,14 @@
    - ~benchmark-init/show-durations-tabulated~
    - ~benchmark-init/show-durations-tree~
 
+** Keybindings
+
+   To discover keybindings, check ~core/keys.el~ and run =M-x
+   describe-personal-keybindings RET=.
+
+   (I'm in a bit of a transitional phase where things are bound via
+   different mechanisms.)
+
 ** Tests
 
    To run the tests, run =make test=.
