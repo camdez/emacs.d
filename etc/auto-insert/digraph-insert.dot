@@ -1,0 +1,6 @@
+digraph {
+    start -> running
+    running -> pause
+    running -> finished
+    pause -> running [ label = "restart" ]
+}

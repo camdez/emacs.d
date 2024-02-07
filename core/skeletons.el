@@ -22,17 +22,6 @@ This only makes sense for empty buffers."
   _ \n \n
   "#endif /*" str "*/")
 
-(define-skeleton graphviz-dot-skeleton
-  "Inserts a small dot (Graphviz) skeleton."
-  nil
-  "digraph {" \n
-  "start -> running" \n
-  "running -> pause" \n
-  "running -> finished" \n
-  "pause -> running [ label = \"restart\" ]" \n
-  _ \n
-  "}" \n \n)
-
 (define-skeleton php-header-skeleton
   "Inserts a small PHP skeleton."
   "Description: "
@@ -100,8 +89,9 @@ This only makes sense for empty buffers."
 (eval-after-load 'autoinsert
   '(progn
      (add-to-list 'auto-insert-alist '("README\\.md\\'" . markdown-readme-skeleton))
+     (add-to-list 'auto-insert-alist '("deps\\.edn\\'" . "deps-insert.edn"))
      (add-to-list 'auto-insert-alist '("\\.blog\\'" . blog-entry-skeleton))
-     (add-to-list 'auto-insert-alist '("\\.dot\\'" . graphviz-dot-skeleton))
+     (add-to-list 'auto-insert-alist '("\\.dot\\'" . "digraph-insert.dot"))
      (add-to-list 'auto-insert-alist '(("\\.\\([Hh]\\|hh\\|hpp\\)\\'" . "C / C++ header") . c-c++-header-skeleton))
      (add-to-list 'auto-insert-alist '(("\\.php\\'" . "PHP script") . php-header-skeleton))
      (add-to-list 'auto-insert-alist '(sh-mode . bash-script-skeleton))))
