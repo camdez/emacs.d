@@ -250,6 +250,8 @@ Marked.app."
   (advice-add 'cljr--unresolved-alias-ref :before-while
               #'cljr--unresolved-alias-ref--unless-user))
 
+(setq cider-repl-buffer-size-limit 100000)
+
 (add-hook 'cider-mode-hook 'eldoc-mode)
 
 ;; html-mode
