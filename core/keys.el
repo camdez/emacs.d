@@ -72,7 +72,7 @@
         ("C-x C-p"         camdez/show-buffer-file-name) ; shadows `mark-page'
         ("C-x \\"          align-regexp)
         ;; "C-x b"         helm-mini
-        ("C-x k"           kill-this-buffer)
+        ("C-x k"           kill-current-buffer)
         ;; "C-x p"         back-window (experimental)
         ("C-x n h"         camdez/narrow-to-paragraph)
         ;; "C-x r l"       helm-bookmarks
