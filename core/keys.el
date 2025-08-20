@@ -13,8 +13,6 @@
                 (command (cadr binding)))
             (global-set-key (kbd key) command)))
       '(("<del>"           delete-char)
-        ("<f2>"            goto-line)
-        ("<f3>"            camdez/switch-to-other-buffer)
         ("<f8>"            eshell)
         ("<f9>"            speedbar)
         ("<f11>"           compile)
