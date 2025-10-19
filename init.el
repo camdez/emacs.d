@@ -57,6 +57,7 @@ compiled versions can be preferred, where present.")
     marginalia
     markdown-mode
     monokai-theme
+    nix-mode
     no-littering
     notmuch
     orderless
