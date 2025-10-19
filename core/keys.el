@@ -35,7 +35,7 @@
         ("C-c N"           display-line-numbers-mode)
         ("C-c P"           camdez/toggle-show-paren-style)
         ("C-c R"           rainbow-delimiters-mode)
-        ;; "C-c SPC"       ace-jump-mode
+        ;; "C-c SPC"       avy-goto-word-1
         ("C-c TAB"         camdez/toggle-tab-width)
         ("C-c a"           org-agenda)
         ("C-c b"           browse-url)
@@ -49,7 +49,7 @@
         ;; "C-c j"         ace (experimental)
         ;; "C-c k"         ace (experimental)
         ("C-c l"           org-store-link)
-        ;; "C-c m"         magit-status)
+        ;; "C-c m"         magit-status
         ;; "C-c n"         camdez/find-project-notes ; disabling while playing with Roam
         ;; "C-c o"         ...open stuff (experimental)
         ;; "C-c p"         projectile-command-map

@@ -32,8 +32,8 @@ compiled versions can be preferred, where present.")
 ;;; PACKAGES
 
 (defvar camdez/packages
-  '(ace-jump-mode
-    ag
+  '(ag
+    avy
     checkbox
     cider
     clj-refactor
@@ -120,9 +120,9 @@ compiled versions can be preferred, where present.")
 
 ;;; NON-MAJOR-MODE LIBRARIES
 
-;; ace-jump - get there faster
-(use-package ace-jump-mode
-  :bind ("C-c SPC" . ace-jump-mode))
+;; avy - get there faster
+(use-package avy
+  :bind ("C-c SPC" . avy-goto-word-1))
 
 ;; company - fancy in-buffer completion
 (use-package company
