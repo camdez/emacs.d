@@ -54,14 +54,14 @@
         ;; "C-c o"         ...open stuff (experimental)
         ;; "C-c p"         projectile-command-map
         ;; "C-c q"         FREE
-        ;; "C-c r"         helm-recentf
+        ;; "C-c r"         consult-recent-file
         ("C-c s"           camdez/switch-to-scratch)
         ("C-c t"           toggle-truncate-lines)
         ;; "C-c u"         FREE
         ;; "C-c v"         FREE
         ("C-c w"           whitespace-mode)
         ("C-c x"           camdez/add-experiment)
-        ;; "C-c y"         helm-show-kill-ring
+        ;; "C-c y"         consult-yank-from-kill-ring
         ("C-c z"           toggle-frame-maximized)
         ("C-c /"           isearch-forward-symbol-at-point) ; standard "M-s ." binding shadowed by Paredit
         ("C-x 0"           camdez/delete-window)
@@ -69,17 +69,17 @@
         ("C-x 4 k"         camdez/kill-buffer-other-window)
         ("C-x C-p"         camdez/show-buffer-file-name) ; shadows `mark-page'
         ("C-x \\"          align-regexp)
-        ;; "C-x b"         helm-mini
+        ;; "C-x b"         consult-buffer
         ("C-x k"           kill-current-buffer)
         ;; "C-x p"         back-window (experimental)
         ("C-x n h"         camdez/narrow-to-paragraph)
-        ;; "C-x r l"       helm-bookmarks
+        ;; "C-x r l"       consult-bookmark
         ("M-Z"             zap-up-to-char)
         ("M-`"             other-frame)
         ("M-c"             camdez/capitalize-word)
         ("M-g f"           find-function)
-        ;; "M-g i"         helm-imenu
-        ;; "M-o"           helm-occur
+        ;; "M-g i"         consult-imenu
+        ;; "M-o"           consult-line
         ))
 
 (when window-system
