@@ -43,6 +43,7 @@
         ("C-c d"           camdez/duplicate-paragraph)
         ("C-c e"           eval-and-replace) ; global so I can use anywhere, but "C-u M-:" is probably sufficient
         ("C-c f"           auto-fill-mode)
+        ("C-c F"           camdez/ai-relative-file-name)
         ("C-c g"           gist-list) ; FIXME: broken
         ("C-c h"           global-hl-line-mode)
         ;; "C-c i"         FREE

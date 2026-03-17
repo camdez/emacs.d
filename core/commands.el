@@ -290,6 +290,20 @@ With a prefix, makes a new header at the parent level."
           (kill-new file-name))
       (error "Buffer not visiting a file"))))
 
+(defun camdez/ai-relative-file-name ()
+  "Add the project-relative path of the current file to the kill ring
+formatted for AI reference (e.g. Claude Code)."
+  (interactive)
+  (let* ((file-name (or (buffer-file-name)
+                        (and (boundp 'dired-directory)
+                             dired-directory)
+                        (error "Buffer not visiting a file")))
+         (root      (or (projectile-project-root)
+                        (error "Not in a project")))
+         (rel-name  (concat "@" (file-relative-name file-name root))))
+    (message rel-name)
+    (kill-new rel-name)))
+
 (defun camdez/touch ()
   "Run touch command on current file."
   (interactive)
