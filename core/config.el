@@ -38,6 +38,8 @@
       dired-listing-switches "-alh"              ; use human-friendly file sizes
       dired-dwim-target t                        ; guess target directory from open Dired windows
 
+      comment-auto-fill-only-comments t
+
       imenu-auto-rescan t)
 
 (setq whitespace-style
