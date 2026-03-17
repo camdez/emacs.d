@@ -68,6 +68,7 @@ compiled versions can be preferred, where present.")
     projectile
     rainbow-delimiters
     rainbow-mode
+    rg
     rspec-mode
     sass-mode
     unfill
