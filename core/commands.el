@@ -279,7 +279,8 @@ With a prefix, makes a new header at the parent level."
                (set-buffer-modified-p nil))))))
 
 (defun camdez/show-buffer-file-name ()
-  "Show the full path to the current file in the minibuffer."
+  "Show the full path to the current file in the minibuffer and add it to
+the kill ring."
   (interactive)
   (let ((file-name (or (buffer-file-name)
                        (and (boundp 'dired-directory)
