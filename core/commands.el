@@ -200,6 +200,11 @@ including current key bindings."
             (string-join ", "))
           ")"))
 
+;; TODO: replace with built-in after upgrading to Emacs 31+.
+(defun camdez/other-window-backward ()
+  (interactive)
+  (other-window -1))
+
 (defun outline-increase-region-depth (region-start region-end &optional depth)
   "Increase the depth of header lines in region by DEPTH.
 If no DEPTH is given, defaults to 1."

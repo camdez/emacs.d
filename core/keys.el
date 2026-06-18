@@ -70,9 +70,9 @@
         ("C-x 4 k"         camdez/kill-buffer-other-window)
         ("C-x C-p"         camdez/show-buffer-file-name) ; shadows `mark-page'
         ("C-x \\"          align-regexp)
+        ("C-x O"           camdez/other-window-backward)
         ;; "C-x b"         consult-buffer
         ("C-x k"           kill-current-buffer)
-        ;; "C-x p"         back-window (experimental)
         ("C-x n h"         camdez/narrow-to-paragraph)
         ;; "C-x r l"       consult-bookmark
         ("M-Z"             zap-up-to-char)
