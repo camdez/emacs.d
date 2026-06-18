@@ -51,7 +51,7 @@
         ;; "C-c k"         ace (experimental)
         ("C-c l"           org-store-link)
         ;; "C-c m"         magit-status
-        ;; "C-c n"         camdez/find-project-notes ; disabling while playing with Roam
+        ("C-c n"           camdez/find-project-notes)
         ;; "C-c o"         ...open stuff (experimental)
         ;; "C-c p"         projectile-command-map
         ;; "C-c q"         FREE
