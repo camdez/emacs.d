@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (setq gc-cons-threshold most-positive-fixnum)
 
 ;; Turn off tool bar for faster start-up.  See:
