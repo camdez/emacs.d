@@ -91,10 +91,11 @@
 (define-key isearch-mode-map (kbd "C-e") 'camdez/isearch-yank-identifier)
 
 ;; Actually quit, don't bury buffer.
-(define-key Info-mode-map (kbd "q")
-  #'(lambda ()
-      (interactive)
-      (quit-window t)))
+(with-eval-after-load 'info
+  (define-key Info-mode-map (kbd "q")
+              #'(lambda ()
+                  (interactive)
+                  (quit-window t))))
 
 (define-key special-mode-map (kbd "q")
   #'(lambda ()
