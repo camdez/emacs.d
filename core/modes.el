@@ -64,14 +64,6 @@
 (autoload 'magit-status "magit"
   "Mode for working with git." t)
 
-(when (require 'ack-and-a-half nil 'no-error)
-  (defalias 'ack 'ack-and-a-half)
-  (defalias 'ack-same 'ack-and-a-half-same)
-  (defalias 'ack-find-file 'ack-and-a-half-find-file)
-  (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
-  (define-key ack-and-a-half-mode-map (kbd "n") 'next-error-no-select)
-  (define-key ack-and-a-half-mode-map (kbd "p") 'previous-error-no-select))
-
 ;; occur-mode
 ;; `occur-mode' uses M-n, M-p, but ack and `grep-mode' support n and
 ;; p. `grep-mode' even supports TAB and <backtab>.  (Though there's
@@ -193,12 +185,6 @@ Marked.app."
 
 (eval-after-load 'js
   '(setq js-indent-level 2))
-
-;; coffee-mode
-(autoload 'coffee-mode "coffee-mode"
-  "Major mode for editing CoffeeScript.")
-(add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
-(add-to-list 'auto-mode-alist '("Cakefile\\'" . coffee-mode))
 
 ;; php-mode
 (autoload 'php-mode "php-mode"
