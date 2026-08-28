@@ -34,6 +34,7 @@
       kept-old-versions 2
       delete-by-moving-to-trash t
 
+      dired-auto-revert-buffer t
       dired-kill-when-opening-new-dired-buffer t ; only one dired buffer when navigating
       dired-listing-switches "-alh"              ; use human-friendly file sizes
       dired-dwim-target t                        ; guess target directory from open Dired windows
