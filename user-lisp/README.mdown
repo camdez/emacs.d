@@ -1,4 +1,4 @@
-lib/ Directory
+user-lisp/ Directory
 ==============
 
 Contains Emacs libraries I've pulled from various sources around the

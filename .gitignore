@@ -5,4 +5,5 @@
 /core/local.el
 /eln-cache/
 /elpa
+/user-lisp/.user-lisp-autoloads.el
 /var/

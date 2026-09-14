@@ -10,11 +10,11 @@
 
 (add-hook 'org-load-hook
           #'(lambda ()
-              (require 'org-depend "~/.emacs.d/lib/org-depend")))
+              (require 'org-depend)))
 
 (add-hook 'org-load-hook
           #'(lambda ()
-              (require 'org-expiry "~/.emacs.d/lib/org-expiry")
+              (require 'org-expiry)
               ;; (org-expiry-insinuate)
               (add-to-list 'org-modules 'org-depend)
               (add-to-list 'org-modules 'org-expiry)
